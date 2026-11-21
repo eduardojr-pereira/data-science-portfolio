@@ -1,0 +1,24 @@
+# Python and Jupyter
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments and local secrets
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+credentials.json
+service-account*.json
+*.pem
+*.key
+
+# Editor and OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
