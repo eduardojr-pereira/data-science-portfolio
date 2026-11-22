@@ -34,5 +34,14 @@ def logo_data_uri():
 def render_footer():
     values=_values()
     html=_sub((ROOT/'components/web/footer.html').read_text(encoding='utf-8'),values)
-    css=(ROOT/'components/web/footer.css').read_text(encoding='utf-8')
+    css_paths = [
+        ROOT / 'styles' / 'colors.css',
+        ROOT / 'styles' / 'typography.css',
+        ROOT / 'styles' / 'layout.css',
+        ROOT / 'components/web/footer.css',
+    ]
+    css = '\n'.join(
+        path.read_text(encoding='utf-8').rstrip()
+        for path in css_paths
+    ) + '\n'
     return html,css
