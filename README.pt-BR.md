@@ -32,9 +32,9 @@
 
 Este repositório reúne trabalhos práticos e complementa a [Base de Conhecimento em Ciência de Dados](https://github.com/eduardojr-pereira/data-science-knowledge-base). Ele separa projetos aplicados selecionados de exercícios de aprendizagem, facilitando a navegação conforme a finalidade e a maturidade de cada trabalho.
 
-**Situação atual:** Bike Sharing foi promovido localmente a primeiro Projeto Selecionado. Os dados diário e horário foram conciliados, o notebook único anterior, com 57 células, foi executado (nova validação após a migração pendente) e o relatório interativo segue em revisão final. A publicação do novo caminho está pendente; os modelos são análises retrospectivas, não preditores de produção.
+**Situação atual:** O portfólio contém dois projetos: **Bike Sharing**, um estudo aplicado de análise de dados, e **Jogo da Forca**, um Learning Lab interativo em Python e JavaScript. Ambos possuem documentação e demonstrações acessíveis pelo navegador. O Bike Sharing apresenta análises retrospectivas, não previsões operacionais; as ressalvas de reexecução do notebook permanecem no README do projeto.
 
-**Idiomas:** esta apresentação está disponível em inglês e português brasileiro. Os futuros projetos poderão utilizar qualquer um dos idiomas; seus READMEs indicarão o conteúdo efetivamente disponível.
+**Idiomas:** o portfólio e os dois projetos atuais têm documentação em inglês e português brasileiro. O jogo web da Forca também oferece interface bilíngue.
 
 <p align="right"><a href="#readme-top">↑ VOLTAR AO TOPO</a></p>
 
@@ -52,15 +52,18 @@ Este repositório reúne trabalhos práticos e complementa a [Base de Conhecimen
 | [Learning Labs](./learning_labs/README.pt-BR.md) | Notebooks menores e estudos técnicos, independentemente da origem acadêmica |
 | [Experimentos Independentes](./learning_labs/independent_experiments/README.pt-BR.md) | Investigações exploratórias ainda não promovidas a estudos de caso selecionados |
 
-### Primeiro Projeto Selecionado
+### Projetos Publicados
 
-| Projeto | Relatório Interativo (após publicação) | Notebook |
-|---|---|---|
-| Bike Sharing — Demanda e Insights Operacionais | [GitHub Pages](https://eduardojr-pereira.github.io/data-science-portfolio/selected_projects/bike_sharing/reports/) | [Abrir notebook](./selected_projects/bike_sharing/bike_sharing_analysis.ipynb) |
+| Projeto | Coleção | Experiência online | Código / documentação |
+|---|---|---|---|
+| **Bike Sharing — Demanda e Insights Operacionais** | Projetos Selecionados | [Relatório interativo](https://eduardojr-pereira.github.io/data-science-portfolio/selected_projects/bike_sharing/reports/) | [README](./selected_projects/bike_sharing/README.pt-BR.md) · [Notebook](./selected_projects/bike_sharing/bike_sharing_analysis.ipynb) |
+| **Jogo da Forca — Laboratório de Python** | Learning Labs | [Jogar agora](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python/jogo_da_forca/reports/index.html) | [README](./learning_labs/python/jogo_da_forca/README.pt-BR.md) · [Código Python](./learning_labs/python/jogo_da_forca/forca.py) |
+
+[Explorar a vitrine interativa do portfólio](https://eduardojr-pereira.github.io/data-science-portfolio/).
 
 ### Navegação por Tema
 
-Regressão, classificação, NLP e análise de demanda serão categorias da vitrine, não pastas vazias. Novos projetos serão indexados após validação.
+Os projetos disponíveis abordam **análise de demanda e avaliação de modelos de regressão** (Bike Sharing) e **fundamentos de Python e interatividade no navegador** (Jogo da Forca). Outros temas serão incluídos somente quando houver projetos publicados.
 
 ### Organização de Diretórios
 
@@ -71,16 +74,19 @@ data-science-portfolio/
 │   ├── README.md / README.pt-BR.md
 │   └── bike_sharing/
 │       ├── bike_sharing_analysis.ipynb
-│       ├── report_builder.py
-│       ├── datasets/ (day.csv, hour.csv)
-│       ├── outputs/ (diário e horário)
+│       ├── datasets/ e outputs/
 │       └── reports/index.html
-└── learning_labs/
-    ├── README.md / README.pt-BR.md
-    └── independent_experiments/
+├── learning_labs/
+│   ├── README.md / README.pt-BR.md
+│   ├── python/jogo_da_forca/
+│   │   ├── forca.py e tests/
+│   │   ├── web/
+│   │   └── reports/index.html
+│   └── independent_experiments/
+└── tools/
 ~~~
 
-Bike Sharing é o primeiro Projeto Selecionado promovido localmente. Os materiais históricos continuam preservados fora do portfólio; novos estudos serão incorporados aos Learning Labs após revisão.
+Bike Sharing e Jogo da Forca são os primeiros projetos incorporados às respectivas coleções. Os materiais históricos continuam preservados separadamente; novos projetos serão adicionados após revisão.
 
 <p align="right"><a href="#readme-top">↑ VOLTAR AO TOPO</a></p>
 
@@ -105,7 +111,7 @@ ls learning_labs
 ls learning_labs/independent_experiments
 ~~~
 
-Não existe **`requirements.txt` global**. O piloto Bike Sharing possui dependências e instruções próprias. Consulte o README de cada projeto para verificar ambiente, acesso aos dados e comandos de execução. Não pressuponha que todos os futuros projetos utilizem o mesmo ambiente Python.
+Não existe **`requirements.txt` global**. O Bike Sharing documenta dependências e execução próprias; o Jogo da Forca utiliza a biblioteca padrão do Python na versão de terminal e HTML/CSS/JavaScript no navegador. Consulte o README de cada projeto em vez de presumir um ambiente comum.
 
 <p align="right"><a href="#readme-top">↑ VOLTAR AO TOPO</a></p>
 
@@ -115,7 +121,7 @@ Não existe **`requirements.txt` global**. O piloto Bike Sharing possui dependê
 
 ## Instruções de Uso
 
-Comece por **Projetos Selecionados** para conhecer análises aplicadas, resolução de problemas e conclusões. Consulte **Laboratórios de Aprendizado** para experimentos menores e exercícios acadêmicos autorais que demonstram técnicas específicas.
+Comece por [Projetos Selecionados](./selected_projects/README.pt-BR.md) para análises aplicadas ou por [Learning Labs](./learning_labs/README.pt-BR.md) para projetos de programação menores. A [vitrine interativa](https://eduardojr-pereira.github.io/data-science-portfolio/) oferece acesso direto às duas experiências web.
 
 Antes da publicação, cada trabalho candidato será revisado quanto à autoria, proveniência e direitos de redistribuição dos dados, informações sensíveis, reprodutibilidade, integridade dos outputs e documentação. Materiais didáticos de terceiros não serão apresentados como trabalhos autorais. Os acervos históricos originais permanecerão preservados separadamente.
 
@@ -131,11 +137,11 @@ Os futuros projetos deverão documentar objetivo, fontes de dados, preparação 
 
 | Verificação | Situação documentada |
 |---|---|
-| Estrutura de diretórios e placeholders | Publicada |
-| Apresentação bilíngue | Disponível |
-| Projetos selecionados | Bike Sharing promovido localmente; publicação pendente |
-| Learning labs | Área reservada para futuros estudos |
-| Execução e reprodutibilidade dos projetos | Validação e limitações do Bike Sharing documentadas no README específico |
+| Estrutura do repositório e índice bilíngue | Disponíveis na branch `main` |
+| Projetos selecionados | Código e relatório interativo do Bike Sharing incluídos |
+| Learning Labs | Jogo da Forca, interface web e oito testes unitários Python aprovados |
+| Reprodutibilidade do Bike Sharing | Verificação dos dados, resultados e ressalvas de execução registrados no [README do projeto](./selected_projects/bike_sharing/README.pt-BR.md) |
+| Novos projetos | Revisados individualmente antes da inclusão |
 
 **A publicação do piloto não valida os próximos projetos.** Cada README específico documentará a execução, a reprodutibilidade e as limitações metodológicas efetivamente verificadas.
 

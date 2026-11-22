@@ -12,7 +12,13 @@
 
 </div>
 
-[Back to Selected Projects](../README.md) · [Portfolio home](../../README.md)
+<p align="center">
+  <a href="../README.md">Back to Selected Projects</a> &nbsp;·&nbsp; <a href="../../README.md">Portfolio home</a> &nbsp;·&nbsp; <a href="https://eduardojr-pereira.github.io/data-science-portfolio/">Interactive showcase</a>
+</p>
+
+<p align="center">
+  <a href="https://eduardojr-pereira.github.io/data-science-portfolio/selected_projects/bike_sharing/reports/index.html"><strong>▶ Open interactive HTML report in browser</strong></a>
+</p>
 
 ---
 
@@ -33,7 +39,7 @@
 
 **Business problem:** How do bike rentals vary across the day, calendar and rider segments, and which patterns could inform fleet operations? This case study examines the Capital Bikeshare system (Washington, D.C., 2011–2012) using **731 daily observations and 17,379 hourly records** from the same UCI source.
 
-**Portfolio status:** Selected project; previous local notebook execution (57 cells, no errors), source reconciliation and initial report review completed. A fresh run after this migration is required. This local promotion remains **pending Git publication and final audit**.
+**Portfolio status:** Published as a Selected Project in the GitHub repository, with an interactive HTML report in the portfolio showcase. The daily and hourly datasets were reconciled, and an earlier version of the 57-cell notebook executed without errors. A complete rerun of the notebook after the report-building migration remains to be verified; publication does not imply that this rerun has occurred.
 
 **Model evidence:** The daily Polynomial ridge (degree 2) model has a chronological holdout R² of **-0.257**. The hourly Random forest reaches R² **0.695** on its historical holdout. Their RMSE/MAE values have different units (rentals per day versus rentals per hour) and should not be compared directly.
 
@@ -178,7 +184,7 @@ The last controlled execution used **Python 3.13.5, pandas 2.2.3, scikit-learn 1
 
 1. Read the single notebook top-to-bottom: daily EDA and models, followed by hourly patterns and independent hourly model evaluation.
 2. Inspect the generated CSVs and `outputs/metrics.json` for auditable numerical results.
-3. Open `reports/index.html` in a browser for the interactive, responsive executive view (GitHub's file viewer is not an HTML hosting service; publish through GitHub Pages only after approval).
+3. [Open the published interactive HTML report](https://eduardojr-pereira.github.io/data-science-portfolio/selected_projects/bike_sharing/reports/index.html) in your browser, or open `reports/index.html` locally. GitHub's source-file viewer does not render the report as a web application.
 4. Review the limitations before citing metrics or describing the work in a résumé.
 
 ### Practical Conclusions

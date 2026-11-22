@@ -12,7 +12,13 @@
 
 </div>
 
-[Portfolio home](../README.md) · [Learning Labs](../learning_labs/README.md)
+<p align="center">
+  <a href="../README.md">Portfolio home</a> &nbsp;·&nbsp; <a href="../learning_labs/README.md">Learning Labs</a> &nbsp;·&nbsp; <a href="https://eduardojr-pereira.github.io/data-science-portfolio/">Interactive showcase</a>
+</p>
+
+<p align="center">
+  <a href="https://eduardojr-pereira.github.io/data-science-portfolio/selected_projects/bike_sharing/reports/index.html"><strong>▶ Open Bike Sharing interactive HTML report</strong></a>
+</p>
 
 ---
 

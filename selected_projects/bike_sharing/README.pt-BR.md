@@ -12,7 +12,13 @@
 
 </div>
 
-[Voltar aos Projetos Selecionados](../README.pt-BR.md) · [Início do Portfólio](../../README.pt-BR.md)
+<p align="center">
+  <a href="../README.pt-BR.md">Voltar aos Projetos Selecionados</a> &nbsp;·&nbsp; <a href="../../README.pt-BR.md">Início do Portfólio</a> &nbsp;·&nbsp; <a href="https://eduardojr-pereira.github.io/data-science-portfolio/">Vitrine interativa</a>
+</p>
+
+<p align="center">
+  <a href="https://eduardojr-pereira.github.io/data-science-portfolio/selected_projects/bike_sharing/reports/index.html"><strong>▶ Abrir relatório HTML interativo no navegador</strong></a>
+</p>
 
 ---
 
@@ -33,7 +39,7 @@
 
 **Problema de negócio:** Como a demanda por bicicletas varia ao longo do dia, do calendário e entre segmentos de usuários, e como esses padrões podem orientar decisões operacionais? O estudo analisa o Capital Bikeshare (Washington, D.C., 2011–2012) com **731 observações diárias e 17.379 registros horários** provenientes da mesma base UCI.
 
-**Situação no portfólio:** Projeto selecionado; execução local anterior do notebook (57 células, sem erros), reconciliação dos dados e revisão visual inicial concluídas. Após a migração, será necessária nova execução completa. A promoção local permanece **pendente de publicação no Git e auditoria final**.
+**Situação no portfólio:** Publicado como Projeto Selecionado no repositório GitHub, com relatório HTML interativo na vitrine. As bases diária e horária foram conciliadas, e uma versão anterior do notebook de 57 células foi executada sem erros. A reexecução integral do notebook após a mudança na geração do relatório ainda precisa ser verificada; a publicação não significa que essa reexecução ocorreu.
 
 **Evidências dos modelos:** O modelo diário Polynomial ridge (degree 2) apresentou R² **-0.257** no teste cronológico, enquanto o modelo horário Random forest obteve R² **0.695**. Os erros RMSE/MAE têm unidades diferentes (aluguéis por dia versus por hora) e não podem ser comparados diretamente.
 
@@ -178,7 +184,7 @@ A execução controlada foi realizada com **Python 3.13.5, pandas 2.2.3, scikit-
 
 1. Percorra o notebook único: EDA e modelos diários, padrões horários e avaliação independente dos modelos horários.
 2. Consulte os CSVs gerados e `outputs/metrics.json` para verificar as métricas.
-3. Abra `reports/index.html` no navegador para visualizar o relatório executivo. O visualizador de arquivos do GitHub não é um hospedador de páginas HTML; o GitHub Pages será configurado somente após aprovação.
+3. [Abra o relatório HTML interativo publicado](https://eduardojr-pereira.github.io/data-science-portfolio/selected_projects/bike_sharing/reports/index.html) no navegador, ou abra `reports/index.html` localmente. O visualizador de código do GitHub não executa o relatório como uma aplicação web.
 4. Leia as limitações antes de divulgar métricas no portfólio ou currículo.
 
 ### Conclusões Práticas

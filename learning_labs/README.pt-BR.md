@@ -6,13 +6,19 @@
 
 # Learning Labs
 
-![Jupyter](https://img.shields.io/badge/Jupyter-F37626?logo=jupyter&logoColor=white&style=for-the-badge) ![Learning Labs](https://img.shields.io/badge/Learning-Labs-21618C?style=for-the-badge)
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white&style=for-the-badge) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black&style=for-the-badge) ![Learning Labs](https://img.shields.io/badge/Learning-Labs-21618C?style=for-the-badge)
 
-*Notebooks técnicos e experimentos autorais focados na exploração de métodos de Ciência de Dados.*
+*Laboratórios práticos e experimentos autorais de programação e Ciência de Dados.*
 
 </div>
 
-[Início do Portfólio](../README.pt-BR.md) · [Projetos Selecionados](../selected_projects/README.pt-BR.md)
+<p align="center">
+  <a href="../README.pt-BR.md">Início do Portfólio</a> &nbsp;·&nbsp; <a href="../selected_projects/README.pt-BR.md">Projetos Selecionados</a> &nbsp;·&nbsp; <a href="https://eduardojr-pereira.github.io/data-science-portfolio/">Vitrine interativa</a>
+</p>
+
+<p align="center">
+  <a href="https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python/jogo_da_forca/reports/index.html"><strong>▶ Jogar Jogo da Forca no navegador</strong></a>
+</p>
 
 ---
 
@@ -20,7 +26,7 @@
 
 <div align="center">
 
-[Visão Geral](#overview) • [Conteúdo](#contents) • [Tecnologias](#technologies) • [Instalação e Configuração](#setup) • [Testes e Validação](#validation) • [Instruções de Uso](#usage) • [Referências](#references) • [Licença](#license) • [Contato](#contact)
+[Visão Geral](#overview) • [Laboratórios Publicados](#labs) • [Tecnologias](#technologies) • [Como Executar](#setup) • [Testes e Validação](#validation) • [Organização](#organization) • [Referências](#references) • [Licença](#license) • [Contato](#contact)
 
 </div>
 
@@ -30,43 +36,23 @@
 
 ## Visão Geral
 
-Learning Labs é uma coleção destinada a experimentos autorais menores e explorações técnicas específicas. Diferentemente dos Projetos Selecionados, um laboratório pode estudar uma única técnica sem apresentar a solução completa de um problema operacional ou de negócio.
-
-Temas como regressão, classificação e NLP serão utilizados como categorias de navegação **quando houver conteúdo publicado**, e não como diretórios vazios.
+Esta coleção reúne projetos práticos de escopo reduzido, com foco em conceitos de programação, testes e experimentação. Os **Learning Labs** são separados dos **Projetos Selecionados**, que apresentam estudos de caso aplicados e análises mais abrangentes.
 
 <p align="right"><a href="#readme-top">↑ VOLTAR AO TOPO</a></p>
 
 ---
 
-<a id="contents"></a>
+<a id="labs"></a>
 
-## Conteúdo
+## Laboratórios Publicados
 
-### Índice dos laboratórios
+| Laboratório | Área | Recursos |
+|---|---|---|
+| **Jogo da Forca** | Python · JavaScript · Fundamentos de programação | [Documentação](./python/jogo_da_forca/README.pt-BR.md) · [Jogar online](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python/jogo_da_forca/reports/index.html) · [Python](./python/jogo_da_forca/forca.py) · [Testes](./python/jogo_da_forca/tests/test_forca.py) |
 
-Nenhum laboratório individual está listado nesta coleção no momento. As entradas serão adicionadas somente após a revisão de autoria, origem dos dados, reprodutibilidade e documentação.
+**Jogo da Forca** — Jogo de adivinhação com versão no terminal e no navegador, modos individual e duas pessoas, interface PT-BR/EN e oito testes automatizados em Python.
 
-### Coleções relacionadas
-
-| Coleção | Descrição |
-|---|---|
-| [Experimentos Independentes](./independent_experiments/README.pt-BR.md) | Índice reservado para investigações exploratórias autorais |
-| [Projetos Selecionados](../selected_projects/README.pt-BR.md) | Estudos de caso aplicados e revisados |
-
-### Navegação por tema
-
-A navegação por tema será criada conforme os experimentos forem documentados; notebooks ainda não publicados não serão anunciados como concluídos.
-
-### Estrutura de diretórios
-
-```text
-learning_labs/
-├── README.md
-├── README.pt-BR.md
-└── independent_experiments/
-    ├── README.md
-    └── README.pt-BR.md
-```
+[Explorar a vitrine interativa](https://eduardojr-pereira.github.io/data-science-portfolio/)
 
 <p align="right"><a href="#readme-top">↑ VOLTAR AO TOPO</a></p>
 
@@ -76,7 +62,12 @@ learning_labs/
 
 ## Tecnologias
 
-As tecnologias serão indicadas em cada experimento publicado. Esta coleção ainda não declara um conjunto comum de bibliotecas Python ou dependências fixas.
+| Tecnologia | Utilização |
+|---|---|
+| Python 3 | Lógica do jogo no terminal e testes com `unittest` |
+| HTML, CSS, JavaScript | Interface do jogo executada no navegador, sem backend |
+
+As dependências e os comandos devem ser consultados no README de cada laboratório; esta coleção não define um ambiente Python compartilhado.
 
 <p align="right"><a href="#readme-top">↑ VOLTAR AO TOPO</a></p>
 
@@ -84,16 +75,19 @@ As tecnologias serão indicadas em cada experimento publicado. Esta coleção ai
 
 <a id="setup"></a>
 
-## Instalação e Configuração
+## Como Executar
 
-Clone o repositório para consultar a estrutura:
+O jogo pode ser acessado diretamente no navegador: [Jogar agora](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python/jogo_da_forca/reports/index.html).
+
+Para executar a versão Python localmente:
 
 ```bash
 git clone https://github.com/eduardojr-pereira/data-science-portfolio.git
-cd data-science-portfolio/learning_labs
+cd data-science-portfolio/learning_labs/python/jogo_da_forca
+python forca.py
 ```
 
-Quando um laboratório for publicado, siga seu README e suas instruções de dependências. Não pressuponha um ambiente compartilhado nem instale bibliotecas não verificadas.
+Não é necessário instalar bibliotecas externas para executar o jogo Python.
 
 <p align="right"><a href="#readme-top">↑ VOLTAR AO TOPO</a></p>
 
@@ -103,17 +97,39 @@ Quando um laboratório for publicado, siga seu README e suas instruções de dep
 
 ## Testes e Validação
 
-Este índice não declara resultados de execução nem reprodutibilidade de laboratórios individuais. Cada futura entrada distinguirá execução verificada, limitações documentadas e verificações pendentes.
+Em 22/11/2026, a suíte Python do Jogo da Forca passou em **8 de 8 testes** na máquina Linux do autor. Isso valida os casos cobertos pela suíte, mas não substitui testes automatizados de interface no navegador.
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+Execute o comando dentro de `learning_labs/python/jogo_da_forca/`. Novos laboratórios terão sua validação documentada individualmente.
 
 <p align="right"><a href="#readme-top">↑ VOLTAR AO TOPO</a></p>
 
 ---
 
-<a id="usage"></a>
+<a id="organization"></a>
 
-## Instruções de Uso
+## Organização
 
-Consulte o índice quando os experimentos forem publicados. Comece pelo objetivo e pelo método, examine o notebook e a origem dos dados e leia as limitações. Para estudos aplicados completos, acesse [Projetos Selecionados](../selected_projects/README.pt-BR.md).
+```text
+learning_labs/
+├── README.md
+├── README.pt-BR.md
+├── python/
+│   └── jogo_da_forca/
+│       ├── README.md / README.pt-BR.md
+│       ├── forca.py
+│       ├── tests/
+│       ├── web/
+│       └── reports/index.html
+└── independent_experiments/
+    ├── README.md
+    └── README.pt-BR.md
+```
+
+[Experimentos Independentes](./independent_experiments/README.pt-BR.md) — categoria reservada, sem projetos individuais publicados até esta revisão.
 
 <p align="right"><a href="#readme-top">↑ VOLTAR AO TOPO</a></p>
 
@@ -125,10 +141,9 @@ Consulte o índice quando os experimentos forem publicados. Comece pelo objetivo
 
 | Recurso | Link |
 |---|---|
-| Base de Conhecimento em Ciência de Dados | [Teoria, notebooks e referências técnicas](https://github.com/eduardojr-pereira/data-science-knowledge-base) |
-| Visão geral do portfólio | [README principal](../README.pt-BR.md) |
-
-Fontes de dados e referências metodológicas específicas serão registradas no README de cada laboratório futuro.
+| Base de Conhecimento | [GitHub](https://github.com/eduardojr-pereira/data-science-knowledge-base) |
+| Portfólio principal | [README principal](../README.pt-BR.md) |
+| Jogo da Forca | [Documentação técnica](./python/jogo_da_forca/README.pt-BR.md) |
 
 <p align="right"><a href="#readme-top">↑ VOLTAR AO TOPO</a></p>
 
@@ -138,11 +153,12 @@ Fontes de dados e referências metodológicas específicas serão registradas no
 
 ## Licença
 
-Ainda não foi definida uma licença global para código e conteúdo autorais do portfólio. Os futuros laboratórios deverão identificar as condições de atribuição e licenciamento de dados, códigos e materiais de terceiros.
+O repositório `data-science-portfolio` não declara atualmente uma licença global para código e documentação autorais. Bibliotecas, dados e recursos de terceiros mantêm suas próprias condições de uso.
 
 <p align="right"><a href="#readme-top">↑ VOLTAR AO TOPO</a></p>
 
 ---
+
 <a id="contact"></a>
 
 ## Contato
@@ -151,7 +167,8 @@ Ainda não foi definida uma licença global para código e conteúdo autorais do
 
 <a href="https://eduardo-pereira.webflow.io/"><img src="https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/logos/logo_initials.png" alt="EP logo" height="90"></a>
 
-**Eduardo Junior Pereira**  
+**Eduardo Junior Pereira**
+
 *Economia • Ciência de Dados • Python*
 
 <a href="mailto:eduardojr.pereira@gmail.com"><img src="https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/icons/gmail_icon.svg" alt="Email" height="27"></a>&nbsp;&nbsp;<a href="https://www.linkedin.com/in/eduardo-jr-pereira/"><img src="https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/icons/linkedin_icon.svg" alt="LinkedIn" height="27"></a>&nbsp;&nbsp;<a href="https://github.com/eduardojr-pereira"><img src="https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/icons/github_icon.svg" alt="GitHub" height="27"></a>

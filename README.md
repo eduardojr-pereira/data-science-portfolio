@@ -32,9 +32,9 @@
 
 This repository is the practical project companion to the [Data Science Knowledge Base](https://github.com/eduardojr-pereira/data-science-knowledge-base). It distinguishes selected applied work from learning exercises, so visitors can explore projects according to their purpose and maturity.
 
-**Current status:** Bike Sharing has been promoted locally to the first Selected Project. Its daily and hourly datasets reconcile, the prior 57-cell notebook executed (a fresh post-migration run remains pending), and the interactive report is under final review. Publication of the new path is pending; the models are retrospective analyses, not production forecasts.
+**Current status:** Two projects are available in the portfolio: **Bike Sharing**, a selected applied data-analysis case study, and **Hangman Game**, an interactive Python and JavaScript Learning Lab. Both have project documentation and browser-based demonstrations. Bike Sharing presents retrospective analyses rather than production forecasts; notebook rerun limitations remain documented in its project README.
 
-**Languages:** this overview is available in English and Brazilian Portuguese. Future project material may use either language; its README will describe the actual content.
+**Languages:** the portfolio and both current projects provide English and Brazilian Portuguese documentation. The Hangman browser game also includes a bilingual interface.
 
 <p align="right"><a href="#readme-top">↑ BACK TO TOP</a></p>
 
@@ -52,15 +52,18 @@ This repository is the practical project companion to the [Data Science Knowledg
 | [Learning Labs](./learning_labs/README.md) | Smaller notebooks and technique-focused studies, regardless of academic origin |
 | [Independent Experiments](./learning_labs/independent_experiments/README.md) | Exploratory investigations not yet promoted to curated case studies |
 
-### Featured Selected Project
+### Published Projects
 
-| Project | Interactive Report (after publication) | Notebook |
-|---|---|---|
-| Bike Sharing — Demand & Operational Insights | [GitHub Pages](https://eduardojr-pereira.github.io/data-science-portfolio/selected_projects/bike_sharing/reports/) | [Open notebook](./selected_projects/bike_sharing/bike_sharing_analysis.ipynb) |
+| Project | Collection | Online experience | Source / documentation |
+|---|---|---|---|
+| **Bike Sharing — Demand & Operational Insights** | Selected Projects | [Interactive report](https://eduardojr-pereira.github.io/data-science-portfolio/selected_projects/bike_sharing/reports/) | [README](./selected_projects/bike_sharing/README.md) · [Notebook](./selected_projects/bike_sharing/bike_sharing_analysis.ipynb) |
+| **Hangman Game — Python Learning Lab** | Learning Labs | [Play Hangman](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python/jogo_da_forca/reports/index.html) | [README](./learning_labs/python/jogo_da_forca/README.md) · [Python game](./learning_labs/python/jogo_da_forca/forca.py) |
+
+[Explore the interactive portfolio showcase](https://eduardojr-pereira.github.io/data-science-portfolio/).
 
 ### Browse by Topic
 
-Topics such as regression, classification, NLP and demand analytics are navigational categories, not empty filesystem folders. More projects will be indexed here as they are validated.
+The published projects currently cover **demand analytics and regression/model evaluation** (Bike Sharing) and **Python programming fundamentals and browser interactivity** (Hangman). Other topics will appear only when relevant projects are published.
 
 ### Directory Organization
 
@@ -71,16 +74,19 @@ data-science-portfolio/
 │   ├── README.md / README.pt-BR.md
 │   └── bike_sharing/
 │       ├── bike_sharing_analysis.ipynb
-│       ├── report_builder.py
-│       ├── datasets/ (day.csv, hour.csv)
-│       ├── outputs/ (daily and hourly)
+│       ├── datasets/ and outputs/
 │       └── reports/index.html
-└── learning_labs/
-    ├── README.md / README.pt-BR.md
-    └── independent_experiments/
+├── learning_labs/
+│   ├── README.md / README.pt-BR.md
+│   ├── python/jogo_da_forca/
+│   │   ├── forca.py and tests/
+│   │   ├── web/
+│   │   └── reports/index.html
+│   └── independent_experiments/
+└── tools/
 ~~~
 
-Bike Sharing is now the first locally promoted Selected Project. Historic materials remain preserved separately; future Learning Labs entries will be added only after review.
+Bike Sharing and Hangman are the first published entries in their respective collections. Historical source materials remain preserved separately; new projects will be included only after review.
 
 <p align="right"><a href="#readme-top">↑ BACK TO TOP</a></p>
 
@@ -105,7 +111,7 @@ ls learning_labs
 ls learning_labs/independent_experiments
 ~~~
 
-There is **no repository-wide `requirements.txt`**. The Bike Sharing pilot has its own dependencies and execution instructions. Consult each project README rather than assuming all projects share one Python environment.
+There is **no repository-wide `requirements.txt`**. Bike Sharing documents its Python dependencies and execution requirements; Hangman uses the Python standard library for its CLI and HTML/CSS/JavaScript for its browser game. Follow each project README rather than assuming a shared environment.
 
 <p align="right"><a href="#readme-top">↑ BACK TO TOP</a></p>
 
@@ -115,7 +121,7 @@ There is **no repository-wide `requirements.txt`**. The Bike Sharing pilot has i
 
 ## How to Use
 
-Start with **Selected Projects** for applied problem-solving and conclusions. Use **Learning Labs** for smaller experiments and original academic exercises that illustrate individual techniques.
+Start with [Selected Projects](./selected_projects/README.md) for applied analysis, or [Learning Labs](./learning_labs/README.md) for smaller programming projects. The [interactive showcase](https://eduardojr-pereira.github.io/data-science-portfolio/) links directly to both browser experiences.
 
 Before publication, candidate work is reviewed for authorship, dataset provenance and redistribution rights, sensitive information, reproducibility, output integrity and documentation. Third-party teaching materials are not published as original work. The original historical collections remain preserved separately.
 
@@ -131,11 +137,11 @@ Future project entries will describe their purpose, source data, setup, methods,
 
 | Verification | Recorded status |
 |---|---|
-| Repository directories and placeholders | Published |
-| Bilingual repository overview | Available |
-| Selected applied projects | Bike Sharing promoted locally; publication pending |
-| Learning labs | Dedicated section retained for future studies |
-| Notebook execution or project-level reproducibility | Bike Sharing validation and limitations documented in its README |
+| Repository structure and bilingual index | Available on `main` |
+| Selected applied projects | Bike Sharing source and interactive report included |
+| Learning labs | Hangman source, interactive game and eight passing Python unit tests |
+| Bike Sharing reproducibility | Data validation, evaluation results and notebook execution caveats documented in the [project README](./selected_projects/bike_sharing/README.md) |
+| New projects | Reviewed individually before inclusion |
 
 **Publishing a pilot does not validate future projects.** Each project README documents its actual execution, reproducibility status and methodological limitations.
 

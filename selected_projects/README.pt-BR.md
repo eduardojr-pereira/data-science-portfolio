@@ -12,7 +12,13 @@
 
 </div>
 
-[Início do Portfólio](../README.pt-BR.md) · [Learning Labs](../learning_labs/README.pt-BR.md)
+<p align="center">
+  <a href="../README.pt-BR.md">Início do Portfólio</a> &nbsp;·&nbsp; <a href="../learning_labs/README.pt-BR.md">Learning Labs</a> &nbsp;·&nbsp; <a href="https://eduardojr-pereira.github.io/data-science-portfolio/">Vitrine interativa</a>
+</p>
+
+<p align="center">
+  <a href="https://eduardojr-pereira.github.io/data-science-portfolio/selected_projects/bike_sharing/reports/index.html"><strong>▶ Abrir relatório HTML interativo do Bike Sharing</strong></a>
+</p>
 
 ---
 

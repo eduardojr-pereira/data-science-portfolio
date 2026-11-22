@@ -6,13 +6,19 @@
 
 # Learning Labs
 
-![Jupyter](https://img.shields.io/badge/Jupyter-F37626?logo=jupyter&logoColor=white&style=for-the-badge) ![Learning Labs](https://img.shields.io/badge/Learning-Labs-21618C?style=for-the-badge)
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white&style=for-the-badge) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black&style=for-the-badge) ![Learning Labs](https://img.shields.io/badge/Learning-Labs-21618C?style=for-the-badge)
 
-*Focused technical notebooks and original experiments for exploring data-science methods.*
+*Hands-on programming and data-science experiments with documented scope and validation.*
 
 </div>
 
-[Portfolio home](../README.md) · [Selected Projects](../selected_projects/README.md)
+<p align="center">
+  <a href="../README.md">Portfolio home</a> &nbsp;·&nbsp; <a href="../selected_projects/README.md">Selected Projects</a> &nbsp;·&nbsp; <a href="https://eduardojr-pereira.github.io/data-science-portfolio/">Interactive showcase</a>
+</p>
+
+<p align="center">
+  <a href="https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python/jogo_da_forca/reports/index.html"><strong>▶ Play Hangman in your browser</strong></a>
+</p>
 
 ---
 
@@ -20,7 +26,7 @@
 
 <div align="center">
 
-[Overview](#overview) • [Contents](#contents) • [Technologies](#technologies) • [Setup and Installation](#setup) • [Testing and Validation](#validation) • [How to Use](#usage) • [References](#references) • [License](#license) • [Contact](#contact)
+[Overview](#overview) • [Published Labs](#labs) • [Technologies](#technologies) • [Getting Started](#setup) • [Testing and Validation](#validation) • [Organization](#organization) • [References](#references) • [License](#license) • [Contact](#contact)
 
 </div>
 
@@ -30,43 +36,23 @@
 
 ## Overview
 
-Learning Labs is reserved for smaller, original experiments and focused technical explorations. Unlike Selected Projects, a lab may investigate a single technique without claiming to solve a complete operational or business problem.
-
-Subjects such as regression, classification or NLP will be navigational topics **when matching material is published**, not empty folders.
+This collection contains smaller, focused projects for learning programming concepts, testing and experimentation. **Learning Labs** are distinct from **Selected Projects**, which present larger applied case studies and analyses.
 
 <p align="right"><a href="#readme-top">↑ BACK TO TOP</a></p>
 
 ---
 
-<a id="contents"></a>
+<a id="labs"></a>
 
-## Contents
+## Published Labs
 
-### Lab index
+| Lab | Area | Resources |
+|---|---|---|
+| **Hangman Game** | Python · JavaScript · Programming Fundamentals | [Documentation](./python/jogo_da_forca/README.md) · [Play online](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python/jogo_da_forca/reports/index.html) · [Python](./python/jogo_da_forca/forca.py) · [Tests](./python/jogo_da_forca/tests/test_forca.py) |
 
-No individual learning labs are currently listed in this collection. Entries will be added only after review of authorship, source data, reproducibility and documentation.
+**Hangman Game** — Word-guessing game with terminal and browser editions, single-player and two-player modes, PT-BR/EN interface and eight automated Python tests.
 
-### Related collection
-
-| Collection | Description |
-|---|---|
-| [Independent Experiments](./independent_experiments/README.md) | Index reserved for original exploratory investigations |
-| [Selected Projects](../selected_projects/README.md) | Curated applied case studies |
-
-### Browse by topic
-
-Topic navigation will be introduced as matching experiments are documented; no unpublished notebooks are presented as completed work.
-
-### Directory structure
-
-```text
-learning_labs/
-├── README.md
-├── README.pt-BR.md
-└── independent_experiments/
-    ├── README.md
-    └── README.pt-BR.md
-```
+[Explore the interactive showcase](https://eduardojr-pereira.github.io/data-science-portfolio/)
 
 <p align="right"><a href="#readme-top">↑ BACK TO TOP</a></p>
 
@@ -76,7 +62,12 @@ learning_labs/
 
 ## Technologies
 
-Technologies will be listed alongside each published experiment. This collection does not yet declare a common Python stack or a fixed set of dependencies.
+| Technology | Use |
+|---|---|
+| Python 3 | CLI game logic and `unittest` tests |
+| HTML, CSS, JavaScript | Browser game interface without a back end |
+
+Dependencies and commands are documented per lab; this collection does not define a shared Python environment.
 
 <p align="right"><a href="#readme-top">↑ BACK TO TOP</a></p>
 
@@ -84,16 +75,19 @@ Technologies will be listed alongside each published experiment. This collection
 
 <a id="setup"></a>
 
-## Setup and Installation
+## Getting Started
 
-Clone the repository to browse the structure:
+You can play directly in the browser: [Play now](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python/jogo_da_forca/reports/index.html).
+
+To run the Python version locally:
 
 ```bash
 git clone https://github.com/eduardojr-pereira/data-science-portfolio.git
-cd data-science-portfolio/learning_labs
+cd data-science-portfolio/learning_labs/python/jogo_da_forca
+python forca.py
 ```
 
-When a lab is published, use its own README and dependency instructions. Do not assume a shared environment or install unverified packages.
+No third-party Python packages are required to run the CLI game.
 
 <p align="right"><a href="#readme-top">↑ BACK TO TOP</a></p>
 
@@ -103,17 +97,39 @@ When a lab is published, use its own README and dependency instructions. Do not 
 
 ## Testing and Validation
 
-No lab-specific execution or reproducibility result is claimed in this collection index. Each future entry will distinguish verified execution, documented limitations and pending checks.
+On 22 November 2026, the Hangman Python suite passed **8 out of 8 tests** on the author’s Linux machine. This confirms the cases covered by the suite, not automated browser-interface testing.
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+Run this command inside `learning_labs/python/jogo_da_forca/`. Additional labs will document their own validation independently.
 
 <p align="right"><a href="#readme-top">↑ BACK TO TOP</a></p>
 
 ---
 
-<a id="usage"></a>
+<a id="organization"></a>
 
-## How to Use
+## Organization
 
-Browse the experiment index once entries are published. Start with the purpose and method, inspect the notebook and data provenance, and review limitations. For complete applied case studies, go to [Selected Projects](../selected_projects/README.md).
+```text
+learning_labs/
+├── README.md
+├── README.pt-BR.md
+├── python/
+│   └── jogo_da_forca/
+│       ├── README.md / README.pt-BR.md
+│       ├── forca.py
+│       ├── tests/
+│       ├── web/
+│       └── reports/index.html
+└── independent_experiments/
+    ├── README.md
+    └── README.pt-BR.md
+```
+
+[Independent Experiments](./independent_experiments/README.md) — reserved category with no individual projects published at this review.
 
 <p align="right"><a href="#readme-top">↑ BACK TO TOP</a></p>
 
@@ -125,10 +141,9 @@ Browse the experiment index once entries are published. Start with the purpose a
 
 | Resource | Link |
 |---|---|
-| Data Science Knowledge Base | [Theory, notebooks and technical references](https://github.com/eduardojr-pereira/data-science-knowledge-base) |
-| Portfolio overview | [Main README](../README.md) |
-
-Dataset citations and method-specific references belong in each future lab README.
+| Data Science Knowledge Base | [GitHub](https://github.com/eduardojr-pereira/data-science-knowledge-base) |
+| Portfolio home | [Main README](../README.md) |
+| Hangman Game | [Technical documentation](./python/jogo_da_forca/README.md) |
 
 <p align="right"><a href="#readme-top">↑ BACK TO TOP</a></p>
 
@@ -138,11 +153,12 @@ Dataset citations and method-specific references belong in each future lab READM
 
 ## License
 
-No repository-wide license for original portfolio code and content is currently declared. Future labs must identify relevant source-data, code and third-party attribution or licensing conditions.
+The `data-science-portfolio` repository currently does not declare a repository-wide license for original code and documentation. Third-party libraries, datasets and assets retain their respective terms.
 
 <p align="right"><a href="#readme-top">↑ BACK TO TOP</a></p>
 
 ---
+
 <a id="contact"></a>
 
 ## Contact
@@ -151,7 +167,8 @@ No repository-wide license for original portfolio code and content is currently 
 
 <a href="https://eduardo-pereira.webflow.io/"><img src="https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/logos/logo_initials.png" alt="EP logo" height="90"></a>
 
-**Eduardo Junior Pereira**  
+**Eduardo Junior Pereira**
+
 *Economics • Data Science • Python*
 
 <a href="mailto:eduardojr.pereira@gmail.com"><img src="https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/icons/gmail_icon.svg" alt="Email" height="27"></a>&nbsp;&nbsp;<a href="https://www.linkedin.com/in/eduardo-jr-pereira/"><img src="https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/icons/linkedin_icon.svg" alt="LinkedIn" height="27"></a>&nbsp;&nbsp;<a href="https://github.com/eduardojr-pereira"><img src="https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/icons/github_icon.svg" alt="GitHub" height="27"></a>
