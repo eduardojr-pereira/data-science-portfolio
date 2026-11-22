@@ -32,7 +32,7 @@
 
 Este repositório reúne trabalhos práticos e complementa a [Base de Conhecimento em Ciência de Dados](https://github.com/eduardojr-pereira/data-science-knowledge-base). Ele separa projetos aplicados selecionados de exercícios de aprendizagem, facilitando a navegação conforme a finalidade e a maturidade de cada trabalho.
 
-**Situação atual:** Bike Sharing Demand Analysis é o primeiro projeto-piloto publicado nos exercícios acadêmicos. O relatório interativo e o notebook estão disponíveis abaixo. O experimento de previsão é didático e documenta limitações metodológicas, incluindo R² negativo no teste final; não representa um preditor validado para produção. Os demais projetos seguem em revisão.
+**Situação atual:** Bike Sharing foi promovido localmente a primeiro Projeto Selecionado. Os dados diário e horário foram conciliados, o notebook único anterior, com 57 células, foi executado (nova validação após a migração pendente) e o relatório interativo segue em revisão final. A publicação do novo caminho está pendente; os modelos são análises retrospectivas, não preditores de produção.
 
 **Idiomas:** esta apresentação está disponível em inglês e português brasileiro. Os futuros projetos poderão utilizar qualquer um dos idiomas; seus READMEs indicarão o conteúdo efetivamente disponível.
 
@@ -46,50 +46,41 @@ Este repositório reúne trabalhos práticos e complementa a [Base de Conhecimen
 
 ### Coleções de Projetos
 
-| Coleção | Finalidade | Situação atual |
-|---|---|---|
-| [Projetos Selecionados](./selected_projects/) | Análises e soluções aplicadas com contexto, metodologia, resultados e limitações. | Placeholder; seleção pendente |
-| [Exercícios Acadêmicos](./learning_labs/academic_exercises/) | Exercícios práticos autorais, incluindo trabalhos desenvolvidos durante a formação acadêmica. | Piloto Bike Sharing publicado; demais pendentes |
-| [Experimentos Independentes](./learning_labs/independent_experiments/) | Notebooks exploratórios independentes e experimentos técnicos pontuais. | Placeholder; revisão pendente |
-
-### Projeto-Piloto Publicado
-
-| Projeto | Relatório Interativo | Notebook |
-|---|---|---|
-| Bike Sharing Demand Analysis | [Abrir no GitHub Pages](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/academic_exercises/regression/bike_sharing/reports/) | [Abrir notebook](./learning_labs/academic_exercises/regression/bike_sharing/bike_sharing_analysis.ipynb) |
-
-### Tópicos dos Exercícios Acadêmicos
-
-| Tema | Diretório |
+| Coleção | Finalidade |
 |---|---|
-| Regressão | [regression](./learning_labs/academic_exercises/regression/) |
-| Classificação | [classification](./learning_labs/academic_exercises/classification/) |
-| Clusterização | [clustering](./learning_labs/academic_exercises/clustering/) |
-| Aprendizado Profundo | [deep_learning](./learning_labs/academic_exercises/deep_learning/) |
-| Processamento de Linguagem Natural | [nlp](./learning_labs/academic_exercises/nlp/) |
+| [Projetos Selecionados](./selected_projects/README.pt-BR.md) | Projetos curados com problema de negócio, resultados, limitações e execução reproduzível |
+| [Learning Labs](./learning_labs/README.pt-BR.md) | Notebooks menores e estudos técnicos, independentemente da origem acadêmica |
+| [Experimentos Independentes](./learning_labs/independent_experiments/README.pt-BR.md) | Investigações exploratórias ainda não promovidas a estudos de caso selecionados |
+
+### Primeiro Projeto Selecionado
+
+| Projeto | Relatório Interativo (após publicação) | Notebook |
+|---|---|---|
+| Bike Sharing — Demanda e Insights Operacionais | [GitHub Pages](https://eduardojr-pereira.github.io/data-science-portfolio/selected_projects/bike_sharing/reports/) | [Abrir notebook](./selected_projects/bike_sharing/bike_sharing_analysis.ipynb) |
+
+### Navegação por Tema
+
+Regressão, classificação, NLP e análise de demanda serão categorias da vitrine, não pastas vazias. Novos projetos serão indexados após validação.
 
 ### Organização de Diretórios
 
 ~~~text
 data-science-portfolio/
-├── README.md
-├── README.pt-BR.md
-├── .gitignore
+├── README.md / README.pt-BR.md
 ├── selected_projects/
-│   └── .gitkeep
+│   ├── README.md / README.pt-BR.md
+│   └── bike_sharing/
+│       ├── bike_sharing_analysis.ipynb
+│       ├── report_builder.py
+│       ├── datasets/ (day.csv, hour.csv)
+│       ├── outputs/ (diário e horário)
+│       └── reports/index.html
 └── learning_labs/
-    ├── academic_exercises/
-    │   ├── regression/
-    │   │   └── bike_sharing/
-    │   ├── classification/
-    │   ├── clustering/
-    │   ├── deep_learning/
-    │   └── nlp/
+    ├── README.md / README.pt-BR.md
     └── independent_experiments/
-        └── .gitkeep
 ~~~
 
-A coleção de regressão agora contém o piloto Bike Sharing; as demais pastas temáticas ainda são majoritariamente placeholders. Os materiais acadêmicos e o acervo histórico de projetos permanecem separados deste repositório de publicação.
+Bike Sharing é o primeiro Projeto Selecionado promovido localmente. Os materiais históricos continuam preservados fora do portfólio; novos estudos serão incorporados aos Learning Labs após revisão.
 
 <p align="right"><a href="#readme-top">↑ VOLTAR AO TOPO</a></p>
 
@@ -110,7 +101,7 @@ cd data-science-portfolio
 
 ~~~bash
 ls selected_projects
-ls learning_labs/academic_exercises
+ls learning_labs
 ls learning_labs/independent_experiments
 ~~~
 
@@ -142,8 +133,8 @@ Os futuros projetos deverão documentar objetivo, fontes de dados, preparação 
 |---|---|
 | Estrutura de diretórios e placeholders | Publicada |
 | Apresentação bilíngue | Disponível |
-| Projetos aplicados selecionados | Ainda não publicados |
-| Notebooks acadêmicos | Piloto Bike Sharing publicado |
+| Projetos selecionados | Bike Sharing promovido localmente; publicação pendente |
+| Learning labs | Área reservada para futuros estudos |
 | Execução e reprodutibilidade dos projetos | Validação e limitações do Bike Sharing documentadas no README específico |
 
 **A publicação do piloto não valida os próximos projetos.** Cada README específico documentará a execução, a reprodutibilidade e as limitações metodológicas efetivamente verificadas.

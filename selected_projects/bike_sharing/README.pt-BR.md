@@ -8,9 +8,11 @@
 
 ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white&style=for-the-badge) ![pandas](https://img.shields.io/badge/pandas-150458?logo=pandas&logoColor=white&style=for-the-badge) ![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?logo=scikitlearn&logoColor=white&style=for-the-badge)
 
-*Análise de demanda diária, comparação de regressões sem vazamento de dados e relatório HTML interativo.*
+*Análise histórica da demanda diária e horária, comportamento dos usuários, validação temporal e insights operacionais interativos.*
 
 </div>
+
+[Voltar aos Projetos Selecionados](../README.pt-BR.md) · [Início do Portfólio](../../README.pt-BR.md)
 
 ---
 
@@ -18,7 +20,7 @@
 
 <div align="center">
 
-[Visão Geral](#overview) • [Conteúdo](#contents) • [Tecnologias Utilizadas](#technologies) • [Instalação e Configuração](#installation) • [Testes e Validação](#validation)  
+[Visão Geral](#overview) • [Contexto de Negócio](#business-context) • [Conteúdo](#contents) • [Tecnologias Utilizadas](#technologies) • [Instalação e Configuração](#installation) • [Testes e Validação](#validation)
 [Instruções de Uso](#usage) • [Referências](#references) • [Licença](#license) • [Contato](#contact)
 
 </div>
@@ -29,19 +31,32 @@
 
 ## Visão Geral
 
-Este exercício acadêmico de regressão analisa a contagem diária de aluguéis do sistema Capital Bikeshare, em Washington, D.C., entre **2011 e 2012**. A análise combina exploração ampliada dos dados e comparação cronológica de sete modelos de referência/regressão, além de uma demonstração separada de otimização restrita ao treinamento, evitando divisões aleatórias e ajustando o pré-processamento dentro dos conjuntos de treinamento.
+**Problema de negócio:** Como a demanda por bicicletas varia ao longo do dia, do calendário e entre segmentos de usuários, e como esses padrões podem orientar decisões operacionais? O estudo analisa o Capital Bikeshare (Washington, D.C., 2011–2012) com **731 observações diárias e 17.379 registros horários** provenientes da mesma base UCI.
 
-**Escopo importante:** as entradas incluem medições do clima observadas **no mesmo dia** dos aluguéis. Portanto, trata-se de *estimação condicional da demanda*, e **não** de previsão operacional para o dia seguinte. As associações observadas não demonstram causalidade.
+**Situação no portfólio:** Projeto selecionado; execução local anterior do notebook (57 células, sem erros), reconciliação dos dados e revisão visual inicial concluídas. Após a migração, será necessária nova execução completa. A promoção local permanece **pendente de publicação no Git e auditoria final**.
 
-**Situação:** **piloto em revisão — publicação ainda não aprovada.** O notebook revisado e o relatório foram executados em ambiente de validação independente, e você já executou a versão piloto v1 localmente sem erros. A versão ampliada v2 ainda aguarda teste local. O notebook histórico original permanece preservado.
+**Evidências dos modelos:** O modelo diário Polynomial ridge (degree 2) apresentou R² **-0.257** no teste cronológico, enquanto o modelo horário Random forest obteve R² **0.695**. Os erros RMSE/MAE têm unidades diferentes (aluguéis por dia versus por hora) e não podem ser comparados diretamente.
 
-**Resultado relevante:** Polynomial ridge (degree 2) foi selecionado pela validação temporal realizada apenas no treinamento, mas a avaliação final apresentou **R² = -0.257**, indicando generalização insatisfatória.
+**Limite do estudo:** Os modelos utilizam informações meteorológicas observadas no mesmo dia ou na mesma hora. Trata-se de **estimação retrospectiva condicional da demanda**, não de previsão operacional validada nem de inferência causal. A reutilização de um período de teste já inspecionado limita as alegações de generalização independente.
 
 **Knowledge Base:** [Machine Learning](https://github.com/eduardojr-pereira/data-science-knowledge-base/tree/main/05_machine_learning) · [Data Analysis & Visualization](https://github.com/eduardojr-pereira/data-science-knowledge-base/tree/main/02_data_analysis_visualization).
 
 <p align="right"><a href="#readme-top">↑ VOLTAR AO TOPO</a></p>
 
 ---
+
+<a id="business-context"></a>
+
+## Contexto de Negócio e Insights Operacionais
+
+| Pergunta de negócio | Evidência e aplicação possível |
+|---|---|
+| Em qual horário a demanda se concentra? | O maior número médio de aluguéis por hora registrada ocorre entre **17:00 e 18:00**, com média de **461.5** aluguéis nas observações daquele horário. Isso pode orientar hipóteses sobre janelas de redistribuição, exigindo validação por estação. |
+| Como a demanda mudou? | A média diária cresceu **64.4%** entre 2011 e 2012. Decisões de capacidade ancoradas só no primeiro ano podem subestimar volumes futuros; a comparação é descritiva, não causal. |
+| Os segmentos de usuários se comportam igualmente? | As análises diária e horária distinguem usuários ocasionais e registrados. Os padrões por horário e dia útil ajudam a investigar necessidades associadas a deslocamento e lazer. |
+| Os modelos podem ser usados em produção? | **Ainda não.** Diário: RMSE 2,101.4, MAE 1,968.9, R² -0.257. Horário: RMSE 121.8, MAE 84.9, R² 0.695. O clima observado no mesmo período e a reutilização do teste limitam essa aplicação. |
+
+**Limitações para decisões:** A base não identifica estações individuais, rupturas de estoque, custos de redistribuição ou tempos de espera. Recomendações de escala e distribuição são hipóteses, não impactos comprovados. Horas sem registro não foram automaticamente imputadas como demanda zero.
 
 <a id="contents"></a>
 
@@ -51,50 +66,41 @@ Este exercício acadêmico de regressão analisa a contagem diária de aluguéis
 
 | Recurso | Finalidade |
 |---|---|
-| [Notebook](./bike_sharing_analysis.ipynb) | Análise de regressão documentada e executada |
-| [Relatório HTML interativo](./reports/index.html) | Gráficos offline, métricas verificadas e limitações |
-| [Dataset](./datasets/day.csv) | Base diária UCI original (731 dias) |
-| [Dependências](./requirements.txt) | Intervalos de versões testados |
-| [Gerador do relatório](./report_builder.py) | Reconstrói o HTML a partir dos resultados validados |
-| [Comparação dos modelos](./outputs/tables/model_comparison.csv) | Escores de validação cruzada temporal |
-| [Previsões de teste](./outputs/tables/holdout_predictions.csv) | Estimativas no conjunto cronológico final |
-| [Métricas estruturadas](./outputs/metrics.json) | Fonte única das métricas do relatório |
-| [Figuras](./outputs/figures/) | Dez gráficos PNG reprodutíveis |
-| [Importância de variáveis](./outputs/tables/random_forest_feature_importance.csv) | Importância obtida exclusivamente com dados de treinamento |
+| [Notebook](./bike_sharing_analysis.ipynb) | Notebook único das análises diária e horária |
+| [Relatório HTML interativo](./reports/index.html) | Painel Plotly com gráficos diários e horários e ressalvas |
+| [Dados diários](./datasets/day.csv) | Arquivo UCI original (731 dias) |
+| [Dados horários](./datasets/hour.csv) | Arquivo UCI original (17.379 registros) |
+| [Dependências](./requirements.txt) | Bibliotecas Python utilizadas |
+| [Gerador do relatório](./report_builder.py) | Reconstrução do HTML a partir das exportações |
+| [Métricas diárias](./outputs/metrics.json) | Resultados e metodologia diária |
+| [Métricas horárias](./outputs/hourly/metrics.json) | Resultados e metodologia horária |
+| [Comparação horária](./outputs/hourly/tables/hourly_model_comparison.csv) | Validação cruzada cronológica |
+| [Comparação diária](./outputs/tables/model_comparison.csv) | Validação cruzada cronológica |
 
 ### Estrutura de Diretórios
 
 ```text
 bike_sharing/
-├── README.md
-├── README.pt-BR.md
-├── requirements.txt
+├── README.md / README.pt-BR.md
 ├── bike_sharing_analysis.ipynb
 ├── report_builder.py
+├── requirements.txt
 ├── datasets/
-│   └── day.csv
+│   ├── day.csv
+│   └── hour.csv
 ├── outputs/
 │   ├── metrics.json
-│   ├── figures/
-│   │   ├── correlation_matrix.png
-│   │   ├── cross_validation_comparison.png
-│   │   ├── demand_patterns.png
-│   │   ├── distributions.png
-│   │   ├── holdout_predictions.png
-│   │   ├── random_forest_importances.png
-│   │   ├── random_forest_tree_excerpt.png
-│   │   ├── rentals_by_weather.png
-│   │   ├── rider_type_mix.png
-│   │   └── weekday_and_season.png
-│   └── tables/
-│       ├── model_comparison.csv
-│       ├── holdout_predictions.csv
-│       └── random_forest_feature_importance.csv
+│   ├── figures/ and tables/
+│   └── hourly/
+│       ├── metrics.json
+│       ├── figures/
+│       └── tables/
 └── reports/
     └── index.html
+
 ```
 
-O checkpoint, o ZIP redundante e o arquivo horário `hour.csv` não foram copiados porque não participam desta análise. O HTML contém o JavaScript de gráficos para uso offline; a logo EP vinculada externamente ainda precisa de conexão para ser exibida.
+Os dois arquivos UCI são usados e foram reconciliados. Checkpoints do Jupyter, backups locais e arquivos redundantes não devem ser publicados. O Plotly está incorporado ao relatório; a identidade visual externa pode precisar de conexão.
 
 <p align="right"><a href="#readme-top">↑ VOLTAR AO TOPO</a></p>
 
@@ -145,17 +151,18 @@ A execução controlada foi realizada com **Python 3.13.5, pandas 2.2.3, scikit-
 
 | Verificação | Resultado registrado |
 |---|---|
-| Integridade do dataset | 731 registros diários; 01/01/2011 a 31/12/2012; sem dados ausentes |
+| Integridade dos dados | 731 registros diários + 17.379 horários (2011–2012); sem nulos ou duplicações data/hora; totais conciliados |
 | Identidade da variável-alvo | `casual + registered = cnt` em todas as linhas |
 | Hash do arquivo original | SHA-256 `a6bcf826782d3c0fbfdcbeead17cd0884185a0dafe8ff10cd48a874ee7ba18be` |
 | Divisão treino/teste | 584 dias para desenvolvimento / 147 para teste cronológico |
-| Seleção de modelos | `TimeSeriesSplit(n_splits=4)` apenas no desenvolvimento |
+| Seleção de modelos | `TimeSeriesSplit(n_splits=4)` em cada conjunto de desenvolvimento |
+| Validação horária | 13.891 registros de treino; 3.488 de teste cronológico; Random Forest R² 0,695 |
 | Pré-processamento | `Pipeline` com `ColumnTransformer` ajustado em cada fold |
 | Melhor validação | **Polynomial ridge (degree 2)**, RMSE médio **1,431.31** |
 | Teste final | RMSE **2,101.41**, MAE **1,968.90**, R² **-0.257** |
-| Execução do notebook | 43 células concluídas sem erros no ambiente de teste |
+| Execução do notebook | Versão anterior: 57 células, 25 de código sem erros. Nova execução necessária após reordenar a geração do HTML |
 | Relatório HTML | Gerado com base nos resultados exportados |
-| Validação local da v2 no Python 3.14 | Pendente (piloto v1 já executado localmente) |
+| Execução local | Concluída no `jupyter-env`; versão exata do Python a conferir separadamente |
 
 **Ressalva entre versões:** O mesmo conjunto cronológico de teste já havia sido examinado no piloto v1. Embora a seleção de modelos nesta versão use apenas a validação no desenvolvimento, esse período não constitui mais um teste completamente inédito entre revisões. É necessária validação externa futura.
 
@@ -169,14 +176,17 @@ A execução controlada foi realizada com **Python 3.13.5, pandas 2.2.3, scikit-
 
 ## Instruções de Uso
 
-1. Percorra o notebook para compreender dicionário de dados, validação, segmentação dos usuários, análises climáticas e sazonais, correlações, modelos de regressão, otimização, importância das variáveis e avaliação final.
+1. Percorra o notebook único: EDA e modelos diários, padrões horários e avaliação independente dos modelos horários.
 2. Consulte os CSVs gerados e `outputs/metrics.json` para verificar as métricas.
 3. Abra `reports/index.html` no navegador para visualizar o relatório executivo. O visualizador de arquivos do GitHub não é um hospedador de páginas HTML; o GitHub Pages será configurado somente após aprovação.
 4. Leia as limitações antes de divulgar métricas no portfólio ou currículo.
 
 ### Conclusões Práticas
 
-Os aluguéis anuais registrados passaram de 1.243.103 em 2011 para 2.049.576 em 2012. Essa diferença é descritiva, não causal. O modelo selecionado não generalizou bem para o teste no final de 2012. Uma próxima iteração científica deve investigar a disponibilidade das variáveis, mudanças temporais de distribuição e um protocolo de avaliação independente, em vez de otimizar repetidamente contra o mesmo teste.
+A demanda média diária cresceu **64.4%** em 2012 e apresenta variação relevante ao longo do dia. Os dados permitem **investigar** janelas de operação, distribuição de oferta e diferenças entre segmentos, mas não medem a qualidade do serviço em cada estação.
+
+O Random Forest horário (Random forest) alcançou R² **0.695** no teste histórico; o modelo diário atingiu **-0.257** e subestimou sistematicamente o final de 2012. Esses resultados não são previsões operacionais. Etapas futuras devem priorizar dados independentes, variáveis disponíveis no momento da previsão e validação prospectiva—sem otimizar repetidamente contra o mesmo teste.
+
 
 <p align="right"><a href="#readme-top">↑ VOLTAR AO TOPO</a></p>
 

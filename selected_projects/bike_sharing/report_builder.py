@@ -84,6 +84,40 @@ def build_html_report(project_root: Path | None = None, *, metrics_path: Path | 
     preds = pd.read_csv(predictions_path, parse_dates=["date"]).sort_values("date")
     imp = pd.read_csv(importances_path).sort_values("importance", ascending=False).head(12)
 
+    # EP_HOURLY_REPORT_EXTENSION_V1: validated hourly artifacts from the same notebook.
+    hour_path = project_root / "datasets" / "hour.csv"
+    hour_metrics_path = project_root / "outputs" / "hourly" / "metrics.json"
+    hour_models_path = project_root / "outputs" / "hourly" / "tables" / "hourly_model_comparison.csv"
+    hour_preds_path = project_root / "outputs" / "hourly" / "tables" / "hourly_holdout_predictions.csv"
+    for artifact in (hour_path, hour_metrics_path, hour_models_path, hour_preds_path):
+        if not artifact.is_file():
+            raise FileNotFoundError(f"Missing hourly notebook export: {artifact}")
+
+    hours = pd.read_csv(hour_path, parse_dates=["dteday"])
+    hour_metrics = json.loads(hour_metrics_path.read_text(encoding="utf-8"))
+    hour_models = pd.read_csv(hour_models_path).sort_values("cv_mean_rmse")
+    hour_preds = pd.read_csv(hour_preds_path, parse_dates=["date"])
+    needed = {"dteday", "hr", "weekday", "workingday", "cnt", "casual", "registered"}
+    if not needed.issubset(hours.columns):
+        raise ValueError("Hourly dataset schema mismatch")
+    if len(hours) != int(hour_metrics["hourly_rows"]):
+        raise ValueError("Hourly metrics record count does not match hour.csv")
+    if len(hour_preds) != int(hour_metrics["holdout_rows"]):
+        raise ValueError("Hourly predictions record count mismatch")
+    if not (hours["casual"] + hours["registered"]).eq(hours["cnt"]).all():
+        raise ValueError("Hourly rental component totals do not add up")
+    if int(hours["cnt"].sum()) != int(daily["cnt"].sum()):
+        raise ValueError("Daily and hourly rental totals do not match")
+    if hours.duplicated(subset=["dteday", "hr"]).any():
+        raise ValueError("Duplicate date-hour rows")
+    if hour_models.empty or hour_preds.empty:
+        raise ValueError("Hourly model results are empty")
+    if not {"date", "hour", "observed_rentals", "estimated_rentals"}.issubset(hour_preds.columns):
+        raise ValueError("Unexpected hourly prediction columns")
+    if hour_metrics["model"] not in set(hour_models["model"]):
+        raise ValueError("Selected hourly model is absent from CV comparison")
+
+
     if daily.empty or preds.empty or models.empty or imp.empty:
         raise ValueError("An input data export is empty")
     if not (daily["casual"] + daily["registered"] == daily["cnt"]).all():
@@ -209,7 +243,91 @@ def build_html_report(project_root: Path | None = None, *, metrics_path: Path | 
     rf.update_xaxes(title="Impurity-based importance")
     rf.update_layout(margin=dict(l=170, r=20, t=75, b=50))
 
+    # EP_HOURLY_REPORT_CHARTS: six interactive views, populated from notebook outputs.
+    hourly_segments = hours.groupby("hr")[["cnt", "registered", "casual"]].mean().reindex(range(24))
+    hourly_profile = go.Figure()
+    for label, field, color in (("All riders", "cnt", COLORS["aqua"]),
+                                ("Registered", "registered", COLORS["blue"]),
+                                ("Casual", "casual", COLORS["orange"])):
+        hourly_profile.add_trace(go.Scatter(
+            x=list(range(24)), y=hourly_segments[field], mode="lines+markers",
+            name=label, line=dict(color=color, width=2.6)))
+    _layout(hourly_profile, "Mean recorded rentals by hour and rider type", "Mean rentals per recorded hour", height=400)
+    hourly_profile.update_xaxes(title="Hour of day", dtick=2, range=[0, 23])
+
+    hour_weekdays = hours.groupby(["weekday", "hr"])["cnt"].mean().unstack("hr")
+    hour_weekdays = hour_weekdays.reindex(index=range(7), columns=range(24))
+    weekday_names = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+    hourly_heatmap = go.Figure(go.Heatmap(
+        x=list(range(24)), y=weekday_names, z=hour_weekdays.to_numpy(),
+        colorscale="YlOrBr", colorbar=dict(title="Mean rentals"),
+        hovertemplate="%{y}, %{x}:00 — %{z:.1f} mean rentals<extra></extra>"))
+    _layout(hourly_heatmap, "Hour × weekday: mean recorded demand", height=450)
+    hourly_heatmap.update_xaxes(title="Hour of day", dtick=2)
+    hourly_heatmap.update_yaxes(autorange="reversed", title="Day of week")
+
+    workday_hours = hours.groupby(["workingday", "hr"])["cnt"].mean().unstack(0).reindex(range(24))
+    hourly_workday = go.Figure()
+    for flag, label, color in ((1, "Working day", COLORS["aqua"]),
+                                (0, "Non-working day", COLORS["orange"])):
+        hourly_workday.add_trace(go.Scatter(
+            x=list(range(24)), y=workday_hours[flag], name=label,
+            mode="lines+markers", line=dict(color=color, width=2.5)))
+    _layout(hourly_workday, "Working vs non-working day hourly patterns", "Mean recorded rentals", height=400)
+    hourly_workday.update_xaxes(title="Hour of day", dtick=2)
+
+    hour_cv_chart = go.Figure(go.Bar(
+        x=hour_models["cv_mean_rmse"], y=hour_models["model"], orientation="h",
+        marker_color=COLORS["aqua"],
+        error_x=dict(type="data", array=hour_models["cv_std_rmse"], visible=True),
+        hovertemplate="%{y}: mean CV RMSE %{x:.1f} rentals/hour<extra></extra>"))
+    _layout(hour_cv_chart, "Hourly models: expanding-window CV RMSE", "", height=350)
+    hour_cv_chart.update_xaxes(title="RMSE · rentals per recorded hour")
+    hour_cv_chart.update_yaxes(autorange="reversed")
+    hour_cv_chart.update_layout(margin=dict(l=205, r=30, t=80, b=62))
+
+    hour_preds = hour_preds.sort_values(["date", "hour"]).copy()
+    hour_preds["timestamp"] = hour_preds["date"] + pd.to_timedelta(hour_preds["hour"], unit="h")
+    hour_holdout_chart = go.Figure()
+    for label, field, color in (("Observed", "observed_rentals", COLORS["aqua"]),
+                                ("Estimated", "estimated_rentals", COLORS["orange"])):
+        hour_holdout_chart.add_trace(go.Scatter(
+            x=hour_preds["timestamp"], y=hour_preds[field], name=label,
+            mode="lines", line=dict(color=color, width=1.3)))
+    _layout(hour_holdout_chart, "Hourly chronological holdout: observed vs estimated", "Rentals per hour", height=440)
+    hour_holdout_chart.update_layout(
+        margin=dict(l=65, r=25, t=125, b=85),
+        title=dict(
+            x=0.02,
+            xanchor="left",
+            y=0.98,
+            yanchor="top"
+        ),
+        legend=dict(
+            orientation="h",
+            x=0,
+            y=1.04,
+            yanchor="bottom",
+            xanchor="left"
+        )
+    )
+    hour_holdout_chart.update_xaxes(rangeslider_visible=True)
+
+    hour_errors = hour_preds.assign(abs_error=(hour_preds["observed_rentals"] - hour_preds["estimated_rentals"]).abs())
+    hour_errors = hour_errors.groupby("hour", as_index=False)["abs_error"].mean()
+    hour_error_chart = go.Figure(go.Bar(
+        x=hour_errors["hour"], y=hour_errors["abs_error"], marker_color=COLORS["orange"],
+        hovertemplate="%{x}:00 — MAE %{y:.1f}<extra></extra>"))
+    _layout(hour_error_chart, "Hourly holdout: mean absolute error by hour", "MAE · rentals/hour", height=350)
+    hour_error_chart.update_xaxes(title="Hour of day", dtick=2)
+
     plots = {
+        "plot-hourly-profile": hourly_profile,
+        "plot-hourly-heatmap": hourly_heatmap,
+        "plot-hourly-workday": hourly_workday,
+        "plot-hourly-cv": hour_cv_chart,
+        "plot-hourly-holdout": hour_holdout_chart,
+        "plot-hourly-errors": hour_error_chart,
         "plot-demand": demand,
         "plot-seasonality": seasonality,
         "plot-composition": composition,
@@ -233,6 +351,19 @@ def build_html_report(project_root: Path | None = None, *, metrics_path: Path | 
         "A nonnegative holdout R² does not establish out-of-time generalization in new conditions."
     )
     # Report embeds Plotly.js only once and references existing static notebook outputs.
+    # Business notes are calculated from validated raw hourly records, never hard-coded.
+    business_hour_path = project_root / "datasets" / "hour.csv"
+    business_hourly_metrics_path = project_root / "outputs" / "hourly" / "metrics.json"
+    if not business_hour_path.is_file() or not business_hourly_metrics_path.is_file():
+        raise FileNotFoundError("Both hourly raw data and validated metrics are required")
+    business_hourly_data = pd.read_csv(business_hour_path)
+    business_hourly_metrics = json.loads(business_hourly_metrics_path.read_text(encoding="utf-8"))
+    business_hourly_avg = business_hourly_data.groupby("hr")["cnt"].mean()
+    business_peak_hour = int(business_hourly_avg.idxmax())
+    business_year1 = int(metrics["data"]["annual_totals"]["2011"])
+    business_year2 = int(metrics["data"]["annual_totals"]["2012"])
+    # Use annual per-day averages (365 days in 2011, 366 days in 2012).
+    business_growth = 100 * ((business_year2 / 366) / (business_year1 / 365) - 1)
     plotly_js = get_plotlyjs()
     data = {
         "project_title": "Bike Sharing Demand Analysis",
@@ -251,6 +382,21 @@ def build_html_report(project_root: Path | None = None, *, metrics_path: Path | 
         "holdout_start": preds["date"].iloc[0].strftime("%Y-%m-%d"),
         "holdout_end": preds["date"].iloc[-1].strftime("%Y-%m-%d"),
         "plotly_js": plotly_js,
+        "business_peak": f"{business_peak_hour:02d}:00–{(business_peak_hour+1) % 24:02d}:00",
+        "business_peak_mean": f"{float(business_hourly_avg.loc[business_peak_hour]):,.1f}",
+        "business_growth": f"{business_growth:.1f}",
+        "business_hour_r2": f"{float(business_hourly_metrics['holdout_r2']):.3f}",
+        "business_daily_r2": f"{float(test['r2']):.3f}",
+        "hourly_rows": f"{len(hours):,}",
+        "hourly_model": escape(str(hour_metrics["model"])),
+        "hourly_cv_rmse": _safe_float(hour_metrics["cv_mean_rmse"]),
+        "hourly_rmse": _safe_float(hour_metrics["holdout_rmse"]),
+        "hourly_mae": _safe_float(hour_metrics["holdout_mae"]),
+        "hourly_r2": f"{float(hour_metrics['holdout_r2']):.3f}",
+        "hourly_incomplete_days": str(int(hour_metrics["incomplete_days"])),
+        "hourly_missing_hours": str(int(hour_metrics["missing_recorded_clock_hours"])),
+        "hourly_holdout_start": hour_preds["date"].min().strftime("%Y-%m-%d"),
+        "hourly_holdout_end": hour_preds["date"].max().strftime("%Y-%m-%d"),
         **{key.replace("-", "_"): val for key, val in chart_divs.items()},
     }
 
@@ -307,21 +453,30 @@ def build_html_report(project_root: Path | None = None, *, metrics_path: Path | 
   <script>$plotly_js</script>
 </head>
 <body>
-  <nav class="nav" aria-label="Main navigation"><div class="container nav-inner"><a class="brand" href="#top">EP / DATA SCIENCE</a>
-    <div class="nav-links"><a href="#overview">Overview</a><a href="#exploration">Exploration</a><a href="#models">Models</a><a href="#findings">Conclusions</a><a href="#outputs">Outputs</a></div>
+  <nav class="nav" aria-label="Main navigation"><div class="container nav-inner"><a class="brand" href="https://github.com/eduardojr-pereira/data-science-portfolio">EP / DATA SCIENCE</a>
+    <div class="nav-links"><a href="#overview">Overview</a><a href="#business">Business</a><a href="#exploration">Exploration</a><a href="#hourly">Hourly</a><a href="#models">Models</a><a href="#findings">Conclusions</a><a href="#outputs">Outputs</a></div>
   </div></nav>
   <div id="top" class="hero"><div class="container">
     <div class="eyebrow">Interactive technical report · Academic regression exercise</div>
     <h1>Bike Sharing Demand Analysis</h1>
-    <p class="lead">Explore demand patterns from Washington, D.C. (2011–2012), compare regression models through chronological validation, and examine the limitations of retrospective demand estimation.</p>
+    <p class="lead">Explore daily and hourly demand patterns from Washington, D.C. (2011–2012), compare regression models through chronological validation, and examine the limitations of retrospective demand estimation.</p>
     <div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">scikit-learn</span><span class="tag">Plotly</span><span class="tag">Time-series CV</span></div>
   </div></div>
   <main class="container">
     <section id="overview"><h2 class="section-heading">Dataset overview</h2>
-      <p class="hint">The UCI dataset contains daily bike rental totals and weather-related variables. These figures are historical observations, not forecasts.</p>
+      <p class="hint">The UCI dataset contains daily and hourly bike rental totals and weather-related variables. These figures are historical observations, not forecasts.</p>
       <div class="cards"><div class="stat"><small>Daily observations</small><strong>$rows</strong></div><div class="stat"><small>Total rentals</small><strong>$rentals</strong></div><div class="stat"><small>Development days</small><strong>$development</strong></div><div class="stat"><small>Holdout days</small><strong>$holdout_days</strong></div></div>
       <div class="grid" style="margin-top:15px"><div class="card"><h3>2011</h3><span class="metric">$year1</span><p>Total recorded rentals</p></div>
       <div class="card"><h3>2012</h3><span class="metric">$year2</span><p>Total recorded rentals</p></div></div>
+    </section>
+    <section id="business"><h2 class="section-heading">Business questions & operational insights</h2>
+      <p class="hint">A historical system-level demand study: where might the operator investigate staffing, bicycle availability or rebalancing windows? These are planning hypotheses, not measured cost savings or station-level prescriptions.</p>
+      <div class="grid">
+        <div class="card"><h3>Most active clock hour</h3><div class="metric">$business_peak</div><p>Average <strong>$business_peak_mean rentals</strong> per recorded observation at this hour, over 2011–2012. Missing clock-hour records are not imputed as zero.</p></div>
+        <div class="card"><h3>Demand growth</h3><div class="metric">+$business_growth%</div><p>Change in mean daily rentals from 2011 to 2012. It does not establish the causes of growth or a future growth rate.</p></div>
+        <div class="card"><h3>Operational questions</h3><p>Compare registered and casual hourly patterns, workdays and non-workdays, and peak windows before planning inventory coverage. Station-level supply data are required to design actual rebalancing routes.</p></div>
+        <div class="card"><h3>Evidence, not a production forecast</h3><p>Historical hourly holdout R²: <strong>$business_hour_r2</strong>; daily holdout R²: <strong>$business_daily_r2</strong>. These models use observed contemporaneous weather; deployment requires available-at-prediction-time inputs and independent evaluation.</p></div>
+      </div>
     </section>
     <section id="exploration"><h2 class="section-heading">Exploratory analysis</h2>
       <p class="hint">Hover to inspect values; use the modebar to zoom, pan or download chart images. In the first chart, switch rider groups and use the range slider to focus on a period.</p>
@@ -335,7 +490,37 @@ def build_html_report(project_root: Path | None = None, *, metrics_path: Path | 
       </div>
       <p class="hint" style="margin-top:16px">Weather comparisons are observational. Group sizes differ, and no causal effect should be inferred from these summaries.</p>
     </section>
-    <section id="models"><h2 class="section-heading">Model evaluation</h2>
+    <!-- EP_HOURLY_SECTION_START -->
+    <section id="hourly"><h2 class="section-heading">Hourly patterns &amp; validation</h2>
+      <p class="hint">The hourly UCI records cover the same 2011–2012 Capital Bikeshare rentals as the daily dataset, shown at a finer aggregation level. These are not additional rentals.</p>
+      <div class="cards">
+        <div class="stat"><small>Recorded hourly observations</small><strong>$hourly_rows</strong></div>
+        <div class="stat"><small>Selected hourly candidate</small><strong style="font-size:1.2rem">$hourly_model</strong></div>
+        <div class="stat"><small>Hourly CV RMSE</small><strong>$hourly_cv_rmse</strong></div>
+        <div class="stat"><small>Hourly holdout R²</small><strong>$hourly_r2</strong></div>
+      </div>
+      <div class="grid" style="margin-top:18px">
+        <div class="chart full">$plot_hourly_profile</div>
+        <div class="chart full">$plot_hourly_heatmap</div>
+        <div class="chart full">$plot_hourly_workday</div>
+        <div class="chart full">$plot_hourly_cv</div>
+        <div class="card"><h3>Hourly chronological holdout</h3><div class="metric">RMSE $hourly_rmse</div>
+          <p>MAE <strong>$hourly_mae</strong> rentals/hour · R² <strong>$hourly_r2</strong></p>
+          <p>$hourly_holdout_start to $hourly_holdout_end</p></div>
+        <div class="card"><h3>Data completeness</h3><div class="metric">$hourly_incomplete_days days</div>
+          <p>The source has <strong>$hourly_missing_hours</strong> unrecorded clock hours across those days. The absent hours were not artificially imputed.</p></div>
+        <div class="chart full">$plot_hourly_holdout</div>
+        <div class="chart full">$plot_hourly_errors</div>
+      </div>
+      <div class="callout" style="margin-top:16px"><strong>How to interpret:</strong>
+        Hourly and daily RMSE/MAE are measured in different units and should not be compared numerically.
+        Both models are retrospective conditional estimates using observed weather at the target date/hour,
+        not proven advance forecasts. The daily model's negative holdout R² is reported transparently.
+        An earlier iteration already examined the holdout; this evaluation is not an untouched external benchmark.</div>
+      <p class="hint" style="margin-top:14px">Operational questions: How do commute peaks differ from leisure use? Which hours would be important to examine for bicycle rebalancing and staffing? These associations are descriptive and do not prove that a specific intervention would increase demand.</p>
+    </section>
+    <!-- EP_HOURLY_SECTION_END -->
+    <section id="models"><h2 class="section-heading">Daily model evaluation</h2>
       <p class="hint">Candidate models are evaluated using expanding-window cross-validation on the development period. The final chronological holdout was examined in earlier pilot revisions, so it must not be presented as an untouched independent benchmark.</p>
       <div class="grid">
         <div class="chart full">$plot_cv</div>
@@ -358,7 +543,10 @@ def build_html_report(project_root: Path | None = None, *, metrics_path: Path | 
     <section id="outputs"><h2 class="section-heading">Validated outputs & additional figures</h2>
       <p class="hint">The HTML is built from the notebook's exported metrics and tables. Use these source artifacts to inspect exact numbers. Additional PNG figures remain available without reproducing them in new storage formats.</p>
       <div class="downloads">
-        <a class="download" href="../outputs/metrics.json">Metrics JSON</a>
+        <a class="download" href="../outputs/metrics.json">Daily metrics JSON</a>
+        <a class="download" href="../outputs/hourly/metrics.json">Hourly metrics JSON</a>
+        <a class="download" href="../outputs/hourly/tables/hourly_model_comparison.csv">Hourly model comparison CSV</a>
+        <a class="download" href="../outputs/hourly/tables/hourly_holdout_predictions.csv">Hourly holdout predictions CSV</a>
         <a class="download" href="../outputs/tables/model_comparison.csv">Model comparison CSV</a>
         <a class="download" href="../outputs/tables/holdout_predictions.csv">Holdout predictions CSV</a>
         <a class="download" href="../outputs/tables/random_forest_feature_importance.csv">Feature importance CSV</a>

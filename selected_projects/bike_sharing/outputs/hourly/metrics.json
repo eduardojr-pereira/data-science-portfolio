@@ -1,0 +1,14 @@
+{
+  "model": "Random forest",
+  "cv_mean_rmse": 102.65318015508893,
+  "holdout_rmse": 121.8317423175351,
+  "holdout_mae": 84.94894691042572,
+  "holdout_r2": 0.6946961551242019,
+  "hourly_rows": 17379,
+  "train_rows": 13891,
+  "holdout_rows": 3488,
+  "holdout_start_date": "2012-08-07",
+  "incomplete_days": 76,
+  "missing_recorded_clock_hours": 165,
+  "scope": "Retrospective conditional demand estimation using observed same-hour weather"
+}

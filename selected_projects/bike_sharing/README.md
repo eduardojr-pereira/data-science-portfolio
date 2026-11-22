@@ -8,9 +8,11 @@
 
 ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white&style=for-the-badge) ![pandas](https://img.shields.io/badge/pandas-150458?logo=pandas&logoColor=white&style=for-the-badge) ![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?logo=scikitlearn&logoColor=white&style=for-the-badge)
 
-*Daily rental analysis, leakage-aware regression benchmarks, and a standalone interactive report.*
+*Historical daily and hourly demand, rider behavior, chronological model validation, and interactive operational insights.*
 
 </div>
+
+[Back to Selected Projects](../README.md) · [Portfolio home](../../README.md)
 
 ---
 
@@ -18,7 +20,7 @@
 
 <div align="center">
 
-[Overview](#overview) • [Contents](#contents) • [Technologies](#technologies) • [Setup and Installation](#installation) • [Testing and Validation](#validation)  
+[Overview](#overview) • [Business Context](#business-context) • [Contents](#contents) • [Technologies](#technologies) • [Setup and Installation](#installation) • [Testing and Validation](#validation)
 [How to Use](#usage) • [References](#references) • [License](#license) • [Contact](#contact)
 
 </div>
@@ -29,19 +31,32 @@
 
 ## Overview
 
-This academic regression exercise analyzes daily Capital Bikeshare rental counts for Washington, D.C., during **2011–2012**. It combines an extended exploratory study with chronological comparison of seven predefined baselines/regressors and a separate training-only tuning demonstration. It deliberately avoids random train/test splits and fits preprocessing inside training folds.
+**Business problem:** How do bike rentals vary across the day, calendar and rider segments, and which patterns could inform fleet operations? This case study examines the Capital Bikeshare system (Washington, D.C., 2011–2012) using **731 daily observations and 17,379 hourly records** from the same UCI source.
 
-**Important scope:** Same-day observed weather is used as input. This experiment evaluates *conditional demand estimation*, **not** operational day-ahead forecasting. It does not demonstrate causal effects of temperature or weather.
+**Portfolio status:** Selected project; previous local notebook execution (57 cells, no errors), source reconciliation and initial report review completed. A fresh run after this migration is required. This local promotion remains **pending Git publication and final audit**.
 
-**Portfolio status:** **Pilot under review — not approved for public release.** The revised notebook and generated report were executed successfully in a separate validation environment, and the user's earlier v1 pilot was executed locally without errors. Local execution of this expanded v2 remains pending. The source notebook was preserved in the historical archive.
+**Model evidence:** The daily Polynomial ridge (degree 2) model has a chronological holdout R² of **-0.257**. The hourly Random forest reaches R² **0.695** on its historical holdout. Their RMSE/MAE values have different units (rentals per day versus rentals per hour) and should not be compared directly.
 
-**Key finding:** Polynomial ridge (degree 2) was selected by training-only time-series CV, but the final holdout yielded **R² = -0.257**, warning against promoting this model as a reliable forecast.
+**Scope:** Models use observed same-day or same-hour weather. This is **retrospective conditional demand estimation**, not verified day-ahead/hour-ahead forecasting or a causal model. Reuse of a previously inspected holdout across revisions limits independent generalization claims.
 
 **Knowledge Base:** [Machine Learning](https://github.com/eduardojr-pereira/data-science-knowledge-base/tree/main/05_machine_learning) · [Data Analysis & Visualization](https://github.com/eduardojr-pereira/data-science-knowledge-base/tree/main/02_data_analysis_visualization).
 
 <p align="right"><a href="#readme-top">↑ BACK TO TOP</a></p>
 
 ---
+
+<a id="business-context"></a>
+
+## Business Context and Operational Insights
+
+| Business question | Evidence and potential decision support |
+|---|---|
+| When is system-wide activity concentrated? | The largest average rental count per recorded hour occurs at **17:00–18:00**, averaging **461.5** rentals over recorded observations at that clock hour. Examine peak windows when planning *when* to rebalance fleets, subject to station-level validation. |
+| Is demand changing over time? | Average daily rentals increased **64.4%** from 2011 to 2012. Capacity planning based only on early-period volume may undershoot later needs; this difference is descriptive, not causal. |
+| Do rider segments matter? | Daily and hourly breakdowns distinguish casual and registered activity. Compare time-of-day and workday patterns before deciding whether commuting-oriented service or recreational availability deserves attention. |
+| Can predictive models be deployed? | **Not on this evidence alone.** Daily RMSE 2,101.4, MAE 1,968.9, R² -0.257; hourly RMSE 121.8, MAE 84.9, R² 0.695. Weather is contemporaneously observed, and holdout reuse is acknowledged. |
+
+**Decision boundaries:** Data describe system-level activity and do **not** identify individual stations, operational stockouts, actual rebalancing costs or customer wait times. Proposed staffing and redistribution actions are hypotheses to validate—not measured business impacts. Missing recorded clock hours are not automatically imputed as zero-demand observations.
 
 <a id="contents"></a>
 
@@ -51,50 +66,41 @@ This academic regression exercise analyzes daily Capital Bikeshare rental counts
 
 | Resource | Description |
 |---|---|
-| [Notebook](./bike_sharing_analysis.ipynb) | Fully documented, executed regression analysis |
-| [Interactive HTML report](./reports/index.html) | Offline plots, verified metrics and explicit limitations |
-| [Data source](./datasets/day.csv) | Unmodified UCI daily records (731 days) |
-| [Environment](./requirements.txt) | Tested dependency ranges |
-| [Report generator](./report_builder.py) | Rebuilds the HTML from validated data and model outputs |
-| [Model comparison](./outputs/tables/model_comparison.csv) | Training-only cross-validation scores |
-| [Holdout predictions](./outputs/tables/holdout_predictions.csv) | Final chronological test estimates |
-| [Machine-readable metrics](./outputs/metrics.json) | Single source for report metrics |
-| [Figures](./outputs/figures/) | Ten reproducible PNG charts |
-| [Random forest importance](./outputs/tables/random_forest_feature_importance.csv) | Training-period feature importance (descriptive only) |
+| [Notebook](./bike_sharing_analysis.ipynb) | One notebook for daily and hourly analyses |
+| [Interactive HTML report](./reports/index.html) | Daily and hourly Plotly dashboard with limitations |
+| [Daily dataset](./datasets/day.csv) | Original UCI daily records (731 days) |
+| [Hourly dataset](./datasets/hour.csv) | Original UCI hourly records (17,379 hours) |
+| [Dependencies](./requirements.txt) | Python dependencies |
+| [Report generator](./report_builder.py) | Build the HTML from validated exports |
+| [Daily model metrics](./outputs/metrics.json) | Daily model and method details |
+| [Hourly model metrics](./outputs/hourly/metrics.json) | Hourly model and method details |
+| [Hourly comparisons](./outputs/hourly/tables/hourly_model_comparison.csv) | Chronological cross-validation scores |
+| [Daily comparison](./outputs/tables/model_comparison.csv) | Chronological cross-validation scores |
 
 ### Directory Structure
 
 ```text
 bike_sharing/
-├── README.md
-├── README.pt-BR.md
-├── requirements.txt
+├── README.md / README.pt-BR.md
 ├── bike_sharing_analysis.ipynb
 ├── report_builder.py
+├── requirements.txt
 ├── datasets/
-│   └── day.csv
+│   ├── day.csv
+│   └── hour.csv
 ├── outputs/
 │   ├── metrics.json
-│   ├── figures/
-│   │   ├── correlation_matrix.png
-│   │   ├── cross_validation_comparison.png
-│   │   ├── demand_patterns.png
-│   │   ├── distributions.png
-│   │   ├── holdout_predictions.png
-│   │   ├── random_forest_importances.png
-│   │   ├── random_forest_tree_excerpt.png
-│   │   ├── rentals_by_weather.png
-│   │   ├── rider_type_mix.png
-│   │   └── weekday_and_season.png
-│   └── tables/
-│       ├── model_comparison.csv
-│       ├── holdout_predictions.csv
-│       └── random_forest_feature_importance.csv
+│   ├── figures/ and tables/
+│   └── hourly/
+│       ├── metrics.json
+│       ├── figures/
+│       └── tables/
 └── reports/
     └── index.html
+
 ```
 
-The historical checkpoint, duplicate ZIP, and unused `hour.csv` are intentionally not copied. We include only data needed to reproduce the present analysis. The HTML contains the Plotly library offline; the linked EP logo still requires network access.
+Both UCI aggregation files are included and verified against each other. Jupyter checkpoints, local backups and duplicate archives are excluded from publication. Plotly is bundled offline in the report; externally linked brand artwork may require network access.
 
 <p align="right"><a href="#readme-top">↑ BACK TO TOP</a></p>
 
@@ -145,17 +151,18 @@ The last controlled execution used **Python 3.13.5, pandas 2.2.3, scikit-learn 1
 
 | Check | Recorded result |
 |---|---|
-| Source data integrity | 731 daily records; 2011-01-01 to 2012-12-31; no missing values |
+| Source data integrity | 731 daily + 17,379 hourly records (2011–2012); no missing values or duplicate date-hour pairs; sums agree |
 | Target consistency | `casual + registered = cnt` for all rows |
 | Source dataset hash | SHA-256 `a6bcf826782d3c0fbfdcbeead17cd0884185a0dafe8ff10cd48a874ee7ba18be` |
 | Train/test method | Chronological 584-day development / 147-day holdout |
-| Model selection | `TimeSeriesSplit(n_splits=4)` on development data only |
+| Model selection | `TimeSeriesSplit(n_splits=4)` on each development period only |
+| Hourly validation | 13,891 training rows; 3,488 chronological holdout rows; Random Forest R² 0.695 |
 | Preprocessing | `Pipeline` and fold-local `ColumnTransformer` |
 | Best development CV | **Polynomial ridge (degree 2)**, mean RMSE **1,431.31** |
 | Final holdout | RMSE **2,101.41**, MAE **1,968.90**, R² **-0.257** |
-| Notebook execution | 43 cells completed without errors in the test environment |
+| Notebook execution | Previous version: 57 cells, 25 code cells executed without errors. Fresh rerun required after moving HTML build |
 | HTML report | Generated from the notebook outputs |
-| Local Python 3.14 verification for expanded v2 | Pending (pilot v1 already executed locally) |
+| Local execution | Completed in the existing `jupyter-env`; exact Python version should be checked separately |
 
 **Cross-version caution:** The same chronological holdout was inspected in the earlier v1 pilot. Thus, while this notebook keeps model selection inside development CV, this period is no longer an entirely unseen independent test across revisions. Future external validation is necessary.
 
@@ -169,14 +176,17 @@ The last controlled execution used **Python 3.13.5, pandas 2.2.3, scikit-learn 1
 
 ## How to Use
 
-1. Read the notebook top-to-bottom for data dictionary, data-quality checks, rider segmentation, calendar/weather analysis, correlations, regression comparison, tuning exercise, feature importance and final holdout.
+1. Read the single notebook top-to-bottom: daily EDA and models, followed by hourly patterns and independent hourly model evaluation.
 2. Inspect the generated CSVs and `outputs/metrics.json` for auditable numerical results.
 3. Open `reports/index.html` in a browser for the interactive, responsive executive view (GitHub's file viewer is not an HTML hosting service; publish through GitHub Pages only after approval).
 4. Review the limitations before citing metrics or describing the work in a résumé.
 
 ### Practical Conclusions
 
-Annual rental totals rose from 1,243,103 in 2011 to 2,049,576 in 2012. This is descriptive, not proof of a causal mechanism. The selected model failed to generalize well to the later 2012 holdout. The next scientific iteration should treat feature availability, data drift, and a new independent evaluation design as first-class concerns rather than optimizing against this test period.
+Demand rose strongly in 2012 (**64.4%** increase in mean daily rentals) and shows pronounced intraday variation. This supports **investigating** operating-hour coverage, supply distribution and segment-specific demand, but provides no direct measurement of station-level service quality.
+
+The hourly Random Forest (Random forest) attained historical holdout R² **0.695**; the daily model attained **-0.257** and systematically underestimated late-2012 volume. These are not operational forecasts. Future work should prioritize independent data, feature availability at prediction time and prospective validation—not tuning to the same previously examined holdout.
+
 
 <p align="right"><a href="#readme-top">↑ BACK TO TOP</a></p>
 

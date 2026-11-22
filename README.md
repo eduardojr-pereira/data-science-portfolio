@@ -32,7 +32,7 @@
 
 This repository is the practical project companion to the [Data Science Knowledge Base](https://github.com/eduardojr-pereira/data-science-knowledge-base). It distinguishes selected applied work from learning exercises, so visitors can explore projects according to their purpose and maturity.
 
-**Current status:** Bike Sharing Demand Analysis is the first published learning-lab pilot. Its interactive report and source notebook are available below. This educational forecasting experiment documents methodological limitations, including negative holdout R²; it is not a validated production predictor. Other projects remain under review.
+**Current status:** Bike Sharing has been promoted locally to the first Selected Project. Its daily and hourly datasets reconcile, the prior 57-cell notebook executed (a fresh post-migration run remains pending), and the interactive report is under final review. Publication of the new path is pending; the models are retrospective analyses, not production forecasts.
 
 **Languages:** this overview is available in English and Brazilian Portuguese. Future project material may use either language; its README will describe the actual content.
 
@@ -46,50 +46,41 @@ This repository is the practical project companion to the [Data Science Knowledg
 
 ### Project Collections
 
-| Collection | Purpose | Current status |
-|---|---|---|
-| [Selected Projects](./selected_projects/) | Curated end-to-end analyses and applied solutions, with context, methodology, results and limitations. | Placeholder; selection pending |
-| [Academic Exercises](./learning_labs/academic_exercises/) | Author-created practical exercises, including material developed during academic studies. | Bike Sharing pilot published; others pending |
-| [Independent Experiments](./learning_labs/independent_experiments/) | Independent exploratory notebooks and focused technical experiments. | Placeholder; review pending |
-
-### Published Pilot
-
-| Project | Interactive Report | Notebook |
-|---|---|---|
-| Bike Sharing Demand Analysis | [View on GitHub Pages](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/academic_exercises/regression/bike_sharing/reports/) | [Open notebook](./learning_labs/academic_exercises/regression/bike_sharing/bike_sharing_analysis.ipynb) |
-
-### Academic Exercise Topics
-
-| Topic | Directory |
+| Collection | Purpose |
 |---|---|
-| Regression | [regression](./learning_labs/academic_exercises/regression/) |
-| Classification | [classification](./learning_labs/academic_exercises/classification/) |
-| Clustering | [clustering](./learning_labs/academic_exercises/clustering/) |
-| Deep Learning | [deep_learning](./learning_labs/academic_exercises/deep_learning/) |
-| Natural Language Processing | [nlp](./learning_labs/academic_exercises/nlp/) |
+| [Selected Projects](./selected_projects/README.md) | Curated projects with a business question, evidence, limitations and reproducible outputs |
+| [Learning Labs](./learning_labs/README.md) | Smaller notebooks and technique-focused studies, regardless of academic origin |
+| [Independent Experiments](./learning_labs/independent_experiments/README.md) | Exploratory investigations not yet promoted to curated case studies |
+
+### Featured Selected Project
+
+| Project | Interactive Report (after publication) | Notebook |
+|---|---|---|
+| Bike Sharing — Demand & Operational Insights | [GitHub Pages](https://eduardojr-pereira.github.io/data-science-portfolio/selected_projects/bike_sharing/reports/) | [Open notebook](./selected_projects/bike_sharing/bike_sharing_analysis.ipynb) |
+
+### Browse by Topic
+
+Topics such as regression, classification, NLP and demand analytics are navigational categories, not empty filesystem folders. More projects will be indexed here as they are validated.
 
 ### Directory Organization
 
 ~~~text
 data-science-portfolio/
-├── README.md
-├── README.pt-BR.md
-├── .gitignore
+├── README.md / README.pt-BR.md
 ├── selected_projects/
-│   └── .gitkeep
+│   ├── README.md / README.pt-BR.md
+│   └── bike_sharing/
+│       ├── bike_sharing_analysis.ipynb
+│       ├── report_builder.py
+│       ├── datasets/ (day.csv, hour.csv)
+│       ├── outputs/ (daily and hourly)
+│       └── reports/index.html
 └── learning_labs/
-    ├── academic_exercises/
-    │   ├── regression/
-    │   │   └── bike_sharing/
-    │   ├── classification/
-    │   ├── clustering/
-    │   ├── deep_learning/
-    │   └── nlp/
+    ├── README.md / README.pt-BR.md
     └── independent_experiments/
-        └── .gitkeep
 ~~~
 
-The regression collection now contains the Bike Sharing pilot; most other topic directories still contain placeholders. The academic materials archived locally and the historical project archive remain separate from this publication repository.
+Bike Sharing is now the first locally promoted Selected Project. Historic materials remain preserved separately; future Learning Labs entries will be added only after review.
 
 <p align="right"><a href="#readme-top">↑ BACK TO TOP</a></p>
 
@@ -110,7 +101,7 @@ cd data-science-portfolio
 
 ~~~bash
 ls selected_projects
-ls learning_labs/academic_exercises
+ls learning_labs
 ls learning_labs/independent_experiments
 ~~~
 
@@ -142,8 +133,8 @@ Future project entries will describe their purpose, source data, setup, methods,
 |---|---|
 | Repository directories and placeholders | Published |
 | Bilingual repository overview | Available |
-| Selected applied projects | Not yet published |
-| Academic notebooks | Bike Sharing pilot published |
+| Selected applied projects | Bike Sharing promoted locally; publication pending |
+| Learning labs | Dedicated section retained for future studies |
 | Notebook execution or project-level reproducibility | Bike Sharing validation and limitations documented in its README |
 
 **Publishing a pilot does not validate future projects.** Each project README documents its actual execution, reproducibility status and methodological limitations.
