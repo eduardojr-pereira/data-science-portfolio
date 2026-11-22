@@ -162,7 +162,7 @@ This portfolio does **not currently declare a repository-wide license** for orig
 
 <a id="contact"></a>
 
-## Contato
+## Contact
 
 <div align="center">
 
@@ -176,12 +176,12 @@ This portfolio does **not currently declare a repository-wide license** for orig
 <a href="https://www.linkedin.com/in/eduardo-jr-pereira/"><img src="https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/icons/linkedin_icon.svg" alt="LinkedIn" height="27"></a>&nbsp;&nbsp;
 <a href="https://github.com/eduardojr-pereira"><img src="https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/icons/github_icon.svg" alt="GitHub" height="27"></a>
 
-[Vamos nos conectar no LinkedIn para trocar ideias e oportunidades.](https://www.linkedin.com/in/eduardo-jr-pereira/)
+[Let's connect on LinkedIn to exchange ideas and opportunities.](https://www.linkedin.com/in/eduardo-jr-pereira/)
 
-[**Base de Conhecimento**](https://github.com/eduardojr-pereira/data-science-knowledge-base) &nbsp;•&nbsp; [**Site Pessoal**](https://eduardo-pereira.webflow.io/)
+[**Knowledge Base**](https://github.com/eduardojr-pereira/data-science-knowledge-base) &nbsp;•&nbsp; [**Personal Website**](https://eduardo-pereira.webflow.io/)
 
 </div>
 
-<p align="right"><a href="#readme-top">↑ VOLTAR AO TOPO</a></p>
+<p align="right"><a href="#readme-top">↑ BACK TO TOP</a></p>
 
 ---
