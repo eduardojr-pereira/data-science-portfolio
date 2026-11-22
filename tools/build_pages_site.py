@@ -28,7 +28,7 @@ LOGO = "https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main
 # Add an entry after reviewing and approving each project; discovered reports
 # without metadata are listed conservatively (no invented tools or findings).
 PROJECT_METADATA = {
-    "learning_labs/python/jogo_da_forca": {
+    "learning_labs/python_hangman_game": {
         "name": "Hangman Game — Python Fundamentals",
         "description": "Play an interactive bilingual Hangman game. Explore a tested Python implementation with single-player and two-player modes, input validation, and unit tests.",
         "topics": ("Python Programming",),
@@ -356,6 +356,16 @@ def main() -> None:
         print(f"Prepared: {name}/reports/index.html")
     published.sort(key=lambda p: (not p["featured"], p["name"]))
     (output / "index.html").write_text(make_homepage(published), encoding="utf-8")
+    # Compatibilidade com o endereço histórico, sem manter a pasta antiga no Git.
+    legacy = output / "learning_labs/python/jogo_da_forca/reports/index.html"
+    legacy.parent.mkdir(parents=True, exist_ok=True)
+    legacy.write_text(
+        '<!doctype html><html lang="en"><head><meta charset="utf-8">'
+        '<meta http-equiv="refresh" content="0;url=../../../python_hangman_game/reports/index.html">'
+        '<title>Hangman — moved</title></head><body>'
+        '<p><a href="../../../python_hangman_game/reports/index.html">Continue to Hangman</a></p>'
+        '</body></html>', encoding="utf-8"
+    )
     (output / ".nojekyll").touch()
     print(f"Ready for Pages: {len(published)} report(s), {output}")
 

@@ -50,14 +50,14 @@ This repository is the practical project companion to the [Data Science Knowledg
 |---|---|
 | [Selected Projects](./selected_projects/README.md) | Curated projects with a business question, evidence, limitations and reproducible outputs |
 | [Learning Labs](./learning_labs/README.md) | Smaller notebooks and technique-focused studies, regardless of academic origin |
-| [Independent Experiments](./learning_labs/independent_experiments/README.md) | Exploratory investigations not yet promoted to curated case studies |
+| [Independent Experiments](./independent_experiments/README.md) | Exploratory investigations not yet promoted to curated case studies |
 
 ### Published Projects
 
 | Project | Collection | Online experience | Source / documentation |
 |---|---|---|---|
 | **Bike Sharing — Demand & Operational Insights** | Selected Projects | [Interactive report](https://eduardojr-pereira.github.io/data-science-portfolio/selected_projects/bike_sharing/reports/) | [README](./selected_projects/bike_sharing/README.md) · [Notebook](./selected_projects/bike_sharing/bike_sharing_analysis.ipynb) |
-| **Hangman Game — Python Learning Lab** | Learning Labs | [Play Hangman](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python/jogo_da_forca/reports/index.html) | [README](./learning_labs/python/jogo_da_forca/README.md) · [Python game](./learning_labs/python/jogo_da_forca/forca.py) |
+| **Hangman Game — Python Learning Lab** | Learning Labs | [Play Hangman](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python_hangman_game/reports/index.html) | [README](./learning_labs/python_hangman_game/README.md) · [Python game](./learning_labs/python_hangman_game/forca.py) |
 
 [Explore the interactive portfolio showcase](https://eduardojr-pereira.github.io/data-science-portfolio/).
 
@@ -78,11 +78,11 @@ data-science-portfolio/
 │       └── reports/index.html
 ├── learning_labs/
 │   ├── README.md / README.pt-BR.md
-│   ├── python/jogo_da_forca/
-│   │   ├── forca.py and tests/
-│   │   ├── web/
-│   │   └── reports/index.html
-│   └── independent_experiments/
+│   └── python_hangman_game/
+│       ├── forca.py and tests/
+│       ├── web/
+│       └── reports/index.html
+├── independent_experiments/
 └── tools/
 ~~~
 
@@ -108,7 +108,7 @@ cd data-science-portfolio
 ~~~bash
 ls selected_projects
 ls learning_labs
-ls learning_labs/independent_experiments
+ls independent_experiments
 ~~~
 
 There is **no repository-wide `requirements.txt`**. Bike Sharing documents its Python dependencies and execution requirements; Hangman uses the Python standard library for its CLI and HTML/CSS/JavaScript for its browser game. Follow each project README rather than assuming a shared environment.

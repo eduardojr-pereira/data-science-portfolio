@@ -17,7 +17,7 @@
 </p>
 
 <p align="center">
-  <a href="https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python/jogo_da_forca/reports/index.html"><strong>▶ Play Hangman in your browser</strong></a>
+  <a href="https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python_hangman_game/reports/index.html"><strong>▶ Play Hangman in your browser</strong></a>
 </p>
 
 ---
@@ -48,7 +48,7 @@ This collection contains smaller, focused projects for learning programming conc
 
 | Lab | Area | Resources |
 |---|---|---|
-| **Hangman Game** | Python · JavaScript · Programming Fundamentals | [Documentation](./python/jogo_da_forca/README.md) · [Play online](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python/jogo_da_forca/reports/index.html) · [Python](./python/jogo_da_forca/forca.py) · [Tests](./python/jogo_da_forca/tests/test_forca.py) |
+| **Hangman Game** | Python · JavaScript · Programming Fundamentals | [Documentation](./python_hangman_game/README.md) · [Play online](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python_hangman_game/reports/index.html) · [Python](./python_hangman_game/forca.py) · [Tests](./python_hangman_game/tests/test_forca.py) |
 
 **Hangman Game** — Word-guessing game with terminal and browser editions, single-player and two-player modes, PT-BR/EN interface and eight automated Python tests.
 
@@ -77,13 +77,13 @@ Dependencies and commands are documented per lab; this collection does not defin
 
 ## Getting Started
 
-You can play directly in the browser: [Play now](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python/jogo_da_forca/reports/index.html).
+You can play directly in the browser: [Play now](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python_hangman_game/reports/index.html).
 
 To run the Python version locally:
 
 ```bash
 git clone https://github.com/eduardojr-pereira/data-science-portfolio.git
-cd data-science-portfolio/learning_labs/python/jogo_da_forca
+cd data-science-portfolio/learning_labs/python_hangman_game
 python forca.py
 ```
 
@@ -103,7 +103,7 @@ On 22 November 2026, the Hangman Python suite passed **8 out of 8 tests** on the
 python -m unittest discover -s tests -v
 ```
 
-Run this command inside `learning_labs/python/jogo_da_forca/`. Additional labs will document their own validation independently.
+Run this command inside `learning_labs/python_hangman_game/`. Additional labs will document their own validation independently.
 
 <p align="right"><a href="#readme-top">↑ BACK TO TOP</a></p>
 
@@ -117,19 +117,15 @@ Run this command inside `learning_labs/python/jogo_da_forca/`. Additional labs w
 learning_labs/
 ├── README.md
 ├── README.pt-BR.md
-├── python/
-│   └── jogo_da_forca/
-│       ├── README.md / README.pt-BR.md
-│       ├── forca.py
-│       ├── tests/
-│       ├── web/
-│       └── reports/index.html
-└── independent_experiments/
-    ├── README.md
-    └── README.pt-BR.md
+└── python_hangman_game/
+    ├── README.md / README.pt-BR.md
+    ├── forca.py
+    ├── tests/
+    ├── web/
+    └── reports/index.html
 ```
 
-[Independent Experiments](./independent_experiments/README.md) — reserved category with no individual projects published at this review.
+[Independent Experiments](../independent_experiments/README.md) — reserved category with no individual projects published at this review.
 
 <p align="right"><a href="#readme-top">↑ BACK TO TOP</a></p>
 
@@ -143,7 +139,7 @@ learning_labs/
 |---|---|
 | Data Science Knowledge Base | [GitHub](https://github.com/eduardojr-pereira/data-science-knowledge-base) |
 | Portfolio home | [Main README](../README.md) |
-| Hangman Game | [Technical documentation](./python/jogo_da_forca/README.md) |
+| Hangman Game | [Technical documentation](./python_hangman_game/README.md) |
 
 <p align="right"><a href="#readme-top">↑ BACK TO TOP</a></p>
 

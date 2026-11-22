@@ -13,11 +13,11 @@
 </div>
 
 <p align="center">
-  <a href="../../README.md">Back to Learning Labs</a> &nbsp;·&nbsp; <a href="../../../README.md">Portfolio home</a> &nbsp;·&nbsp; <a href="https://eduardojr-pereira.github.io/data-science-portfolio/">Interactive showcase</a>
+  <a href="../README.md">Back to Learning Labs</a> &nbsp;·&nbsp; <a href="../../README.md">Portfolio home</a> &nbsp;·&nbsp; <a href="https://eduardojr-pereira.github.io/data-science-portfolio/">Interactive showcase</a>
 </p>
 
 <p align="center">
-  <a href="https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python/jogo_da_forca/reports/index.html"><strong>▶ Play the interactive game in your browser</strong></a>
+  <a href="https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python_hangman_game/reports/index.html"><strong>▶ Play the interactive game in your browser</strong></a>
 </p>
 
 ---
@@ -41,7 +41,7 @@ Hangman is an educational **Learning Lab**, not a machine-learning or data-analy
 
 | Resource | Purpose |
 |---|---|
-| [Play online](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python/jogo_da_forca/reports/index.html) | Interactive browser version |
+| [Play online](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python_hangman_game/reports/index.html) | Interactive browser version |
 | [`forca.py`](./forca.py) | Python command-line implementation |
 | [`tests/test_forca.py`](./tests/test_forca.py) | Automated unit tests |
 | [`web/game.js`](./web/game.js) | Browser game logic |
@@ -62,7 +62,7 @@ Run from this project's directory:
 python forca.py
 ```
 
-Alternatively, use **[Play online](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python/jogo_da_forca/reports/index.html)** to play in the browser without installing anything.
+Alternatively, use **[Play online](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python_hangman_game/reports/index.html)** to play in the browser without installing anything.
 
 ## Testing and Validation
 

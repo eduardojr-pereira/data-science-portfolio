@@ -10,7 +10,7 @@
 
 *A space for independent exploratory work that has not been promoted to a curated case study.*
 
-[Learning Labs](../README.md) · [Portfolio home](../../README.md) · [Interactive showcase](https://eduardojr-pereira.github.io/data-science-portfolio/)
+[Learning Labs](../learning_labs/README.md) · [Portfolio home](../README.md) · [Interactive showcase](https://eduardojr-pereira.github.io/data-science-portfolio/)
 
 </div>
 
@@ -22,7 +22,7 @@ This collection is reserved for future original experiments. No individual exper
 
 ## Where to explore now
 
-Explore the published [Hangman Game](../python/jogo_da_forca/README.md) in Learning Labs, or the [Bike Sharing case study](../../selected_projects/bike_sharing/README.md) in Selected Projects.
+Explore the published [Hangman Game](../learning_labs/python_hangman_game/README.md) in Learning Labs, or the [Bike Sharing case study](../selected_projects/bike_sharing/README.md) in Selected Projects.
 
 ---
 

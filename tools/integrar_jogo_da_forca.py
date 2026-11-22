@@ -18,9 +18,9 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 GENERATOR = ROOT / 'tools/build_pages_site.py'
-PROJECT = ROOT / 'learning_labs/python/jogo_da_forca'
+PROJECT = ROOT / 'learning_labs/python_hangman_game'
 REPORT = PROJECT / 'reports/index.html'
-ENTRY = '''    "learning_labs/python/jogo_da_forca": {
+ENTRY = '''    "learning_labs/python_hangman_game": {
         "name": "Hangman Game — Python Fundamentals",
         "description": "Play an interactive bilingual Hangman game. Explore a tested Python implementation with single-player and two-player modes, input validation, and unit tests.",
         "topics": ("Python Programming",),
@@ -48,10 +48,10 @@ def build_html() -> str:
         source=source.replace(key,val)
     if re.search(r'__[A-Z_]+__',source):raise RuntimeError('Unresolved template placeholder')
     if '<footer class="ep-footer"' not in source:raise RuntimeError('Shared EP footer not found')
-    return source
+    return source.replace("../../../../index.html", "../../../index.html")
 
 def patch_generator(raw: str) -> tuple[str,bool]:
-    key='"learning_labs/python/jogo_da_forca"'
+    key='"learning_labs/python_hangman_game"'
     if key in raw:return raw,False
     anchor='PROJECT_METADATA = {\n'
     if raw.count(anchor)!=1:raise RuntimeError('Unexpected PROJECT_METADATA layout. No changes made.')

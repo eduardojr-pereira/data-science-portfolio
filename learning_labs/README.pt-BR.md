@@ -17,7 +17,7 @@
 </p>
 
 <p align="center">
-  <a href="https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python/jogo_da_forca/reports/index.html"><strong>▶ Jogar Jogo da Forca no navegador</strong></a>
+  <a href="https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python_hangman_game/reports/index.html"><strong>▶ Jogar Jogo da Forca no navegador</strong></a>
 </p>
 
 ---
@@ -48,7 +48,7 @@ Esta coleção reúne projetos práticos de escopo reduzido, com foco em conceit
 
 | Laboratório | Área | Recursos |
 |---|---|---|
-| **Jogo da Forca** | Python · JavaScript · Fundamentos de programação | [Documentação](./python/jogo_da_forca/README.pt-BR.md) · [Jogar online](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python/jogo_da_forca/reports/index.html) · [Python](./python/jogo_da_forca/forca.py) · [Testes](./python/jogo_da_forca/tests/test_forca.py) |
+| **Jogo da Forca** | Python · JavaScript · Fundamentos de programação | [Documentação](./python_hangman_game/README.pt-BR.md) · [Jogar online](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python_hangman_game/reports/index.html) · [Python](./python_hangman_game/forca.py) · [Testes](./python_hangman_game/tests/test_forca.py) |
 
 **Jogo da Forca** — Jogo de adivinhação com versão no terminal e no navegador, modos individual e duas pessoas, interface PT-BR/EN e oito testes automatizados em Python.
 
@@ -77,13 +77,13 @@ As dependências e os comandos devem ser consultados no README de cada laborató
 
 ## Como Executar
 
-O jogo pode ser acessado diretamente no navegador: [Jogar agora](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python/jogo_da_forca/reports/index.html).
+O jogo pode ser acessado diretamente no navegador: [Jogar agora](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python_hangman_game/reports/index.html).
 
 Para executar a versão Python localmente:
 
 ```bash
 git clone https://github.com/eduardojr-pereira/data-science-portfolio.git
-cd data-science-portfolio/learning_labs/python/jogo_da_forca
+cd data-science-portfolio/learning_labs/python_hangman_game
 python forca.py
 ```
 
@@ -103,7 +103,7 @@ Em 22/11/2026, a suíte Python do Jogo da Forca passou em **8 de 8 testes** na m
 python -m unittest discover -s tests -v
 ```
 
-Execute o comando dentro de `learning_labs/python/jogo_da_forca/`. Novos laboratórios terão sua validação documentada individualmente.
+Execute o comando dentro de `learning_labs/python_hangman_game/`. Novos laboratórios terão sua validação documentada individualmente.
 
 <p align="right"><a href="#readme-top">↑ VOLTAR AO TOPO</a></p>
 
@@ -117,19 +117,15 @@ Execute o comando dentro de `learning_labs/python/jogo_da_forca/`. Novos laborat
 learning_labs/
 ├── README.md
 ├── README.pt-BR.md
-├── python/
-│   └── jogo_da_forca/
-│       ├── README.md / README.pt-BR.md
-│       ├── forca.py
-│       ├── tests/
-│       ├── web/
-│       └── reports/index.html
-└── independent_experiments/
-    ├── README.md
-    └── README.pt-BR.md
+└── python_hangman_game/
+    ├── README.md / README.pt-BR.md
+    ├── forca.py
+    ├── tests/
+    ├── web/
+    └── reports/index.html
 ```
 
-[Experimentos Independentes](./independent_experiments/README.pt-BR.md) — categoria reservada, sem projetos individuais publicados até esta revisão.
+[Experimentos Independentes](../independent_experiments/README.pt-BR.md) — categoria reservada, sem projetos individuais publicados até esta revisão.
 
 <p align="right"><a href="#readme-top">↑ VOLTAR AO TOPO</a></p>
 
@@ -143,7 +139,7 @@ learning_labs/
 |---|---|
 | Base de Conhecimento | [GitHub](https://github.com/eduardojr-pereira/data-science-knowledge-base) |
 | Portfólio principal | [README principal](../README.pt-BR.md) |
-| Jogo da Forca | [Documentação técnica](./python/jogo_da_forca/README.pt-BR.md) |
+| Jogo da Forca | [Documentação técnica](./python_hangman_game/README.pt-BR.md) |
 
 <p align="right"><a href="#readme-top">↑ VOLTAR AO TOPO</a></p>
 

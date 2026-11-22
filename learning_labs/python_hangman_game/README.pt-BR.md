@@ -13,11 +13,11 @@
 </div>
 
 <p align="center">
-  <a href="../../README.pt-BR.md">Voltar aos Learning Labs</a> &nbsp;·&nbsp; <a href="../../../README.pt-BR.md">Início do Portfólio</a> &nbsp;·&nbsp; <a href="https://eduardojr-pereira.github.io/data-science-portfolio/">Vitrine interativa</a>
+  <a href="../README.pt-BR.md">Voltar aos Learning Labs</a> &nbsp;·&nbsp; <a href="../../README.pt-BR.md">Início do Portfólio</a> &nbsp;·&nbsp; <a href="https://eduardojr-pereira.github.io/data-science-portfolio/">Vitrine interativa</a>
 </p>
 
 <p align="center">
-  <a href="https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python/jogo_da_forca/reports/index.html"><strong>▶ Jogar Jogo da Forca no navegador</strong></a>
+  <a href="https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python_hangman_game/reports/index.html"><strong>▶ Jogar Jogo da Forca no navegador</strong></a>
 </p>
 
 ---
@@ -41,7 +41,7 @@ O Jogo da Forca é um **Learning Lab** educacional, não um projeto de aprendiza
 
 | Recurso | Finalidade |
 |---|---|
-| [Jogar no navegador](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python/jogo_da_forca/reports/index.html) | Versão web interativa |
+| [Jogar no navegador](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python_hangman_game/reports/index.html) | Versão web interativa |
 | [`forca.py`](./forca.py) | Implementação em Python para terminal |
 | [`tests/test_forca.py`](./tests/test_forca.py) | Testes automatizados |
 | [`web/game.js`](./web/game.js) | Lógica do jogo no navegador |
@@ -62,7 +62,7 @@ Execute a partir da pasta do projeto:
 python forca.py
 ```
 
-Ou utilize **[Jogar agora](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python/jogo_da_forca/reports/index.html)** para jogar no navegador sem instalar nada.
+Ou utilize **[Jogar agora](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python_hangman_game/reports/index.html)** para jogar no navegador sem instalar nada.
 
 ## Testes e Validação
 

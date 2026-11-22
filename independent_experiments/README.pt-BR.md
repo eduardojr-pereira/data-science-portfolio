@@ -10,7 +10,7 @@
 
 *Espaço para investigações exploratórias independentes ainda não promovidas a estudos de caso selecionados.*
 
-[Learning Labs](../README.pt-BR.md) · [Início do Portfólio](../../README.pt-BR.md) · [Vitrine interativa](https://eduardojr-pereira.github.io/data-science-portfolio/)
+[Learning Labs](../learning_labs/README.pt-BR.md) · [Início do Portfólio](../README.pt-BR.md) · [Vitrine interativa](https://eduardojr-pereira.github.io/data-science-portfolio/)
 
 </div>
 
@@ -22,7 +22,7 @@ Esta coleção está reservada a futuros experimentos autorais. Ainda não há e
 
 ## O que explorar agora
 
-Conheça o [Jogo da Forca](../python/jogo_da_forca/README.pt-BR.md) publicado em Learning Labs ou o [estudo Bike Sharing](../../selected_projects/bike_sharing/README.pt-BR.md) em Projetos Selecionados.
+Conheça o [Jogo da Forca](../learning_labs/python_hangman_game/README.pt-BR.md) publicado em Learning Labs ou o [estudo Bike Sharing](../selected_projects/bike_sharing/README.pt-BR.md) em Projetos Selecionados.
 
 ---
 
