@@ -32,7 +32,7 @@
 
 This repository is the practical project companion to the [Data Science Knowledge Base](https://github.com/eduardojr-pereira/data-science-knowledge-base). It distinguishes selected applied work from learning exercises, so visitors can explore projects according to their purpose and maturity.
 
-**Current status:** the repository structure and placeholders have been published, but **no individual project or notebook has been selected, validated or released here yet**. Content will be added after reviewing historical work, authorship, data rights, dependencies, reproducibility and suitability for public release.
+**Current status:** Bike Sharing Demand Analysis is the first published learning-lab pilot. Its interactive report and source notebook are available below. This educational forecasting experiment documents methodological limitations, including negative holdout R²; it is not a validated production predictor. Other projects remain under review.
 
 **Languages:** this overview is available in English and Brazilian Portuguese. Future project material may use either language; its README will describe the actual content.
 
@@ -49,8 +49,14 @@ This repository is the practical project companion to the [Data Science Knowledg
 | Collection | Purpose | Current status |
 |---|---|---|
 | [Selected Projects](./selected_projects/) | Curated end-to-end analyses and applied solutions, with context, methodology, results and limitations. | Placeholder; selection pending |
-| [Academic Exercises](./learning_labs/academic_exercises/) | Author-created practical exercises, including material developed during academic studies. | Placeholder; review pending |
+| [Academic Exercises](./learning_labs/academic_exercises/) | Author-created practical exercises, including material developed during academic studies. | Bike Sharing pilot published; others pending |
 | [Independent Experiments](./learning_labs/independent_experiments/) | Independent exploratory notebooks and focused technical experiments. | Placeholder; review pending |
+
+### Published Pilot
+
+| Project | Interactive Report | Notebook |
+|---|---|---|
+| Bike Sharing Demand Analysis | [View on GitHub Pages](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/academic_exercises/regression/bike_sharing/reports/) | [Open notebook](./learning_labs/academic_exercises/regression/bike_sharing/bike_sharing_analysis.ipynb) |
 
 ### Academic Exercise Topics
 
@@ -74,6 +80,7 @@ data-science-portfolio/
 └── learning_labs/
     ├── academic_exercises/
     │   ├── regression/
+    │   │   └── bike_sharing/
     │   ├── classification/
     │   ├── clustering/
     │   ├── deep_learning/
@@ -82,7 +89,7 @@ data-science-portfolio/
         └── .gitkeep
 ~~~
 
-The topic directories contain `.gitkeep` placeholders only. The academic materials archived locally and the historical project archive remain separate from this publication repository.
+The regression collection now contains the Bike Sharing pilot; most other topic directories still contain placeholders. The academic materials archived locally and the historical project archive remain separate from this publication repository.
 
 <p align="right"><a href="#readme-top">↑ BACK TO TOP</a></p>
 
@@ -107,7 +114,7 @@ ls learning_labs/academic_exercises
 ls learning_labs/independent_experiments
 ~~~
 
-At this stage, there is **no repository-wide `requirements.txt` or runnable project**. Once projects are added, consult the corresponding project README for its environment, data access, dependencies and execution instructions. Do not assume that all future projects share one Python environment.
+There is **no repository-wide `requirements.txt`**. The Bike Sharing pilot has its own dependencies and execution instructions. Consult each project README rather than assuming all projects share one Python environment.
 
 <p align="right"><a href="#readme-top">↑ BACK TO TOP</a></p>
 
@@ -136,10 +143,10 @@ Future project entries will describe their purpose, source data, setup, methods,
 | Repository directories and placeholders | Published |
 | Bilingual repository overview | Available |
 | Selected applied projects | Not yet published |
-| Academic notebooks | Not yet published |
-| Notebook execution or project-level reproducibility | Not yet assessed |
+| Academic notebooks | Bike Sharing pilot published |
+| Notebook execution or project-level reproducibility | Bike Sharing validation and limitations documented in its README |
 
-**Publishing this README does not imply that any future notebook has been tested.** Validation status will be documented individually when projects are added.
+**Publishing a pilot does not validate future projects.** Each project README documents its actual execution, reproducibility status and methodological limitations.
 
 <p align="right"><a href="#readme-top">↑ BACK TO TOP</a></p>
 

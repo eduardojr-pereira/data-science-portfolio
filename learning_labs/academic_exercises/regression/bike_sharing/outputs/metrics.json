@@ -1,0 +1,137 @@
+{
+  "data": {
+    "records": 731,
+    "date_start": "2011-01-01",
+    "date_end": "2012-12-31",
+    "total_rentals": 3292679,
+    "annual_totals": {
+      "2011": 1243103,
+      "2012": 2049576
+    },
+    "rider_totals": {
+      "casual": 620017,
+      "registered": 2672662
+    },
+    "weather_daily_means": {
+      "1": 4876.7861771058315,
+      "2": 4035.862348178138,
+      "3": 1803.2857142857142
+    }
+  },
+  "methodology": {
+    "task": "retrospective conditional demand estimation using same-day weather",
+    "train_size": 584,
+    "holdout_size": 147,
+    "train_end_date": "2012-08-06",
+    "holdout_start_date": "2012-08-07",
+    "cv": "TimeSeriesSplit(n_splits=4)",
+    "features": [
+      "temp",
+      "hum",
+      "windspeed",
+      "mnth",
+      "weekday",
+      "weathersit",
+      "holiday",
+      "workingday"
+    ],
+    "excluded_target_components": [
+      "casual",
+      "registered"
+    ],
+    "tuning_note": "Separate training-only GridSearch demonstration; tuned estimators not evaluated on holdout"
+  },
+  "validation": {
+    "selected_model": "Polynomial ridge (degree 2)",
+    "candidate_cv": [
+      {
+        "model": "Polynomial ridge (degree 2)",
+        "cv_mean_rmse": 1431.306667889472,
+        "cv_std_rmse": 559.3722343585985,
+        "fold_rmse": [
+          1111.389102880621,
+          838.4869379650784,
+          1702.7905886422027,
+          2072.5600420699857
+        ]
+      },
+      {
+        "model": "Ridge regression",
+        "cv_mean_rmse": 1516.7544439542537,
+        "cv_std_rmse": 545.6364999467085,
+        "fold_rmse": [
+          1083.7347546131145,
+          1012.9876167278617,
+          1904.2588468867518,
+          2066.0365575892865
+        ]
+      },
+      {
+        "model": "Decision tree",
+        "cv_mean_rmse": 1532.971826665443,
+        "cv_std_rmse": 569.4427995763907,
+        "fold_rmse": [
+          932.1203504589574,
+          1182.8608728688298,
+          1872.3825490875827,
+          2144.523534246402
+        ]
+      },
+      {
+        "model": "Random forest",
+        "cv_mean_rmse": 1574.8128045012668,
+        "cv_std_rmse": 454.4305944912401,
+        "fold_rmse": [
+          1187.0820816693663,
+          1193.2387141781498,
+          1841.837306176101,
+          2077.09311598145
+        ]
+      },
+      {
+        "model": "SVR",
+        "cv_mean_rmse": 1584.9689681278378,
+        "cv_std_rmse": 548.3414199642984,
+        "fold_rmse": [
+          1485.588676141731,
+          852.032354770261,
+          1935.6037554198006,
+          2066.651086179558
+        ]
+      },
+      {
+        "model": "Linear regression",
+        "cv_mean_rmse": 1596.9366999172191,
+        "cv_std_rmse": 672.9061182771333,
+        "fold_rmse": [
+          1045.2321685483805,
+          985.9054448738997,
+          2226.748338694442,
+          2129.860847552155
+        ]
+      },
+      {
+        "model": "Median baseline",
+        "cv_mean_rmse": 2054.654143575984,
+        "cv_std_rmse": 906.4666348804576,
+        "fold_rmse": [
+          2786.2742689340794,
+          1026.255081049205,
+          1559.5633202919335,
+          2846.5239040287183
+        ]
+      }
+    ],
+    "holdout": {
+      "rmse": 2101.4066959063475,
+      "mae": 1968.8964649426603,
+      "r2": -0.256590172601149
+    }
+  },
+  "source": {
+    "name": "UCI Machine Learning Repository — Bike Sharing",
+    "url": "https://archive.ics.uci.edu/dataset/275/bike+sharing+dataset",
+    "doi": "10.24432/C5W894",
+    "license": "CC BY 4.0"
+  }
+}

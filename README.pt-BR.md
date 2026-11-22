@@ -32,7 +32,7 @@
 
 Este repositório reúne trabalhos práticos e complementa a [Base de Conhecimento em Ciência de Dados](https://github.com/eduardojr-pereira/data-science-knowledge-base). Ele separa projetos aplicados selecionados de exercícios de aprendizagem, facilitando a navegação conforme a finalidade e a maturidade de cada trabalho.
 
-**Situação atual:** a estrutura e os placeholders estão publicados, mas **nenhum projeto ou notebook individual foi selecionado, validado ou publicado aqui ainda**. O conteúdo será incorporado após revisão do acervo histórico, autoria, direitos sobre dados, dependências, reprodutibilidade e adequação à publicação.
+**Situação atual:** Bike Sharing Demand Analysis é o primeiro projeto-piloto publicado nos exercícios acadêmicos. O relatório interativo e o notebook estão disponíveis abaixo. O experimento de previsão é didático e documenta limitações metodológicas, incluindo R² negativo no teste final; não representa um preditor validado para produção. Os demais projetos seguem em revisão.
 
 **Idiomas:** esta apresentação está disponível em inglês e português brasileiro. Os futuros projetos poderão utilizar qualquer um dos idiomas; seus READMEs indicarão o conteúdo efetivamente disponível.
 
@@ -49,8 +49,14 @@ Este repositório reúne trabalhos práticos e complementa a [Base de Conhecimen
 | Coleção | Finalidade | Situação atual |
 |---|---|---|
 | [Projetos Selecionados](./selected_projects/) | Análises e soluções aplicadas com contexto, metodologia, resultados e limitações. | Placeholder; seleção pendente |
-| [Exercícios Acadêmicos](./learning_labs/academic_exercises/) | Exercícios práticos autorais, incluindo trabalhos desenvolvidos durante a formação acadêmica. | Placeholder; revisão pendente |
+| [Exercícios Acadêmicos](./learning_labs/academic_exercises/) | Exercícios práticos autorais, incluindo trabalhos desenvolvidos durante a formação acadêmica. | Piloto Bike Sharing publicado; demais pendentes |
 | [Experimentos Independentes](./learning_labs/independent_experiments/) | Notebooks exploratórios independentes e experimentos técnicos pontuais. | Placeholder; revisão pendente |
+
+### Projeto-Piloto Publicado
+
+| Projeto | Relatório Interativo | Notebook |
+|---|---|---|
+| Bike Sharing Demand Analysis | [Abrir no GitHub Pages](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/academic_exercises/regression/bike_sharing/reports/) | [Abrir notebook](./learning_labs/academic_exercises/regression/bike_sharing/bike_sharing_analysis.ipynb) |
 
 ### Tópicos dos Exercícios Acadêmicos
 
@@ -74,6 +80,7 @@ data-science-portfolio/
 └── learning_labs/
     ├── academic_exercises/
     │   ├── regression/
+    │   │   └── bike_sharing/
     │   ├── classification/
     │   ├── clustering/
     │   ├── deep_learning/
@@ -82,7 +89,7 @@ data-science-portfolio/
         └── .gitkeep
 ~~~
 
-As pastas temáticas contêm apenas placeholders `.gitkeep`. Os materiais acadêmicos e o acervo histórico de projetos permanecem separados deste repositório de publicação.
+A coleção de regressão agora contém o piloto Bike Sharing; as demais pastas temáticas ainda são majoritariamente placeholders. Os materiais acadêmicos e o acervo histórico de projetos permanecem separados deste repositório de publicação.
 
 <p align="right"><a href="#readme-top">↑ VOLTAR AO TOPO</a></p>
 
@@ -107,7 +114,7 @@ ls learning_labs/academic_exercises
 ls learning_labs/independent_experiments
 ~~~
 
-Nesta etapa, **não existe `requirements.txt` global nem projeto executável**. Quando os projetos forem publicados, consulte o README correspondente para verificar ambiente, acesso aos dados, dependências e comandos de execução. Não pressuponha que todos os futuros projetos utilizem o mesmo ambiente Python.
+Não existe **`requirements.txt` global**. O piloto Bike Sharing possui dependências e instruções próprias. Consulte o README de cada projeto para verificar ambiente, acesso aos dados e comandos de execução. Não pressuponha que todos os futuros projetos utilizem o mesmo ambiente Python.
 
 <p align="right"><a href="#readme-top">↑ VOLTAR AO TOPO</a></p>
 
@@ -136,10 +143,10 @@ Os futuros projetos deverão documentar objetivo, fontes de dados, preparação 
 | Estrutura de diretórios e placeholders | Publicada |
 | Apresentação bilíngue | Disponível |
 | Projetos aplicados selecionados | Ainda não publicados |
-| Notebooks acadêmicos | Ainda não publicados |
-| Execução e reprodutibilidade dos projetos | Ainda não avaliadas |
+| Notebooks acadêmicos | Piloto Bike Sharing publicado |
+| Execução e reprodutibilidade dos projetos | Validação e limitações do Bike Sharing documentadas no README específico |
 
-**A publicação deste README não significa que os futuros notebooks foram testados.** O estado de validação será informado individualmente à medida que os projetos forem adicionados.
+**A publicação do piloto não valida os próximos projetos.** Cada README específico documentará a execução, a reprodutibilidade e as limitações metodológicas efetivamente verificadas.
 
 <p align="right"><a href="#readme-top">↑ VOLTAR AO TOPO</a></p>
 
