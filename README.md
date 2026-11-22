@@ -8,7 +8,7 @@
 
 ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white&style=for-the-badge) ![Jupyter](https://img.shields.io/badge/Jupyter-F37626?logo=jupyter&logoColor=white&style=for-the-badge) ![Data Science](https://img.shields.io/badge/Data-Science-21618C?style=for-the-badge)
 
-*A bilingual collection of selected applied projects, learning experiments and original academic exercises in Data Science.*
+*Selected applied projects, learning experiments and original academic exercises in Data Science.*
 
 </div>
 
@@ -180,7 +180,7 @@ External datasets, images, libraries and brand assets retain their respective ri
 
 <a id="contact"></a>
 
-## Contact
+## Contato
 
 <div align="center">
 
@@ -194,12 +194,12 @@ External datasets, images, libraries and brand assets retain their respective ri
 <a href="https://www.linkedin.com/in/eduardo-jr-pereira/"><img src="https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/icons/linkedin_icon.svg" alt="LinkedIn" height="27"></a>&nbsp;&nbsp;
 <a href="https://github.com/eduardojr-pereira"><img src="https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/icons/github_icon.svg" alt="GitHub" height="27"></a>
 
-[Let's connect on LinkedIn to exchange ideas and opportunities.](https://www.linkedin.com/in/eduardo-jr-pereira/)
+[Vamos nos conectar no LinkedIn para trocar ideias e oportunidades.](https://www.linkedin.com/in/eduardo-jr-pereira/)
 
-[**Knowledge Base**](https://github.com/eduardojr-pereira/data-science-knowledge-base) &nbsp;•&nbsp; [**Personal Website**](https://eduardo-pereira.webflow.io/)
+[**Base de Conhecimento**](https://github.com/eduardojr-pereira/data-science-knowledge-base) &nbsp;•&nbsp; [**Site Pessoal**](https://eduardo-pereira.webflow.io/)
 
 </div>
 
-<p align="right"><a href="#readme-top">↑ BACK TO TOP</a></p>
+<p align="right"><a href="#readme-top">↑ VOLTAR AO TOPO</a></p>
 
 ---

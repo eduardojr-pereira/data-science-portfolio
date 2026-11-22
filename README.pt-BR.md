@@ -8,7 +8,7 @@
 
 ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white&style=for-the-badge) ![Jupyter](https://img.shields.io/badge/Jupyter-F37626?logo=jupyter&logoColor=white&style=for-the-badge) ![Data Science](https://img.shields.io/badge/Data-Science-21618C?style=for-the-badge)
 
-*Uma coleção bilíngue de projetos aplicados selecionados, experimentos de aprendizado e exercícios acadêmicos autorais em Ciência de Dados.*
+*Projetos aplicados selecionados, experimentos de aprendizado e exercícios acadêmicos autorais em Ciência de Dados.*
 
 </div>
 
