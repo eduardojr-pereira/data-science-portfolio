@@ -304,6 +304,32 @@ document.querySelectorAll('button[data-topic]').forEach(button=>button.addEventL
 </script></body></html>'''
 
 
+
+# EP-REPORT-STYLE-SYNC-V1: replace the historical embedded EP footer CSS
+# in *published copies* of reports only; original reports are never rewritten.
+_EP_LEGACY_FOOTER_START = '/* Scoped EP footer. Include once in the page <head>. */'
+_EP_LEGACY_FOOTER_END = (
+    '@media(prefers-reduced-motion:reduce){.ep-footer__contact{transition:none}'
+    '.ep-footer__contact:hover,.ep-footer__contact:focus-visible{transform:none}}'
+)
+
+
+def synchronize_report_footer_css(report_path: Path, shared_css: str) -> None:
+    """Fail closed if the historical footer block is absent or ambiguous."""
+    html = report_path.read_text(encoding='utf-8')
+    if html.count(_EP_LEGACY_FOOTER_START) != 1 or html.count(_EP_LEGACY_FOOTER_END) != 1:
+        raise RuntimeError(f'Expected one legacy footer CSS block: {report_path}')
+    start = html.index(_EP_LEGACY_FOOTER_START)
+    finish = html.index(_EP_LEGACY_FOOTER_END) + len(_EP_LEGACY_FOOTER_END)
+    if not (start < finish and html.rfind('<style', 0, start) > html.rfind('</style', 0, start)):
+        raise RuntimeError(f'Footer CSS outside style block: {report_path}')
+    refreshed = html[:start] + shared_css.rstrip() + html[finish:]
+    if refreshed.count('--ep-color-footer-bg:') != 1:
+        raise RuntimeError(f'Consolidated design tokens missing/duplicated: {report_path}')
+    if 'background:var(--ep-color-footer-bg, #142031)' not in refreshed:
+        raise RuntimeError(f'Footer background is not driven by EP tokens: {report_path}')
+    report_path.write_text(refreshed, encoding='utf-8')
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True, help="Destination for static Pages artifacts")
@@ -336,6 +362,11 @@ def main() -> None:
                 raise RuntimeError(f"Symlinks are not allowed in published assets: {asset_root}")
         destination = output / relative
         shutil.copytree(project / "reports", destination / "reports", ignore=shutil.ignore_patterns("*.bak", ".ipynb_checkpoints", "__pycache__", "*.pyc"))
+        # Keep historical reports unchanged in Git; apply canonical EP styles
+        # only to the generated GitHub Pages artifact.
+        if name in {"selected_projects/bike_sharing", "learning_labs/python_hangman_game"}:
+            shared_css = render_footer()[1]
+            synchronize_report_footer_css(destination / "reports/index.html", shared_css)
         if (project / "outputs").is_dir():
             shutil.copytree(project / "outputs", destination / "outputs")
         meta = PROJECT_METADATA.get(name, {})
