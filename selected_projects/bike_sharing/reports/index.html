@@ -47,6 +47,17 @@
   .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
   @media(max-width:850px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
   @media(max-width:670px){.grid{grid-template-columns:1fr}.chart.full{grid-column:auto}.nav-links{gap:5px}.nav-links a{font-size:.78rem;padding:7px 8px}.gallery{grid-template-columns:1fr}.hero{padding:35px 0}.stat strong{font-size:1.4rem}}
+
+  /* Shared visual navigation convention: light-blue links, white on hover. */
+  a{color:#bdeeff;text-decoration-color:var(--aqua)}
+  a:hover,a:focus-visible{color:#fff}
+  .nav-links a::after,.nav-links a.is-active::after{background:var(--aqua)}
+  .nav-links a:focus-visible{outline-color:var(--aqua)}
+  .nav-links .back-showcase{margin-left:auto;border:1px solid #42647e;background:#17344b;color:#bdeeff;white-space:nowrap}
+  .nav-links .back-showcase:hover,.nav-links .back-showcase:focus-visible{color:#fff;border-color:var(--aqua);background:#25516a}
+  .nav-links .back-showcase::after{display:none}
+  footer a{color:#bdeeff;text-decoration-color:var(--aqua)}
+  footer a:hover,footer a:focus-visible{color:#fff}
   </style>
   <script>/**
 * plotly.js v4.1.1
@@ -3671,7 +3682,7 @@ return Plotly;
 </head>
 <body>
   <nav class="nav" aria-label="Main navigation"><div class="container nav-inner"><a class="brand" href="https://github.com/eduardojr-pereira/data-science-portfolio">EP / DATA SCIENCE</a>
-    <div class="nav-links"><a href="#overview">Overview</a><a href="#business">Business</a><a href="#exploration">Exploration</a><a href="#hourly">Hourly</a><a href="#models">Models</a><a href="#findings">Conclusions</a><a href="#outputs">Outputs</a></div>
+    <div class="nav-links"><a href="#overview">Overview</a><a href="#business">Business</a><a href="#exploration">Exploration</a><a href="#hourly">Hourly</a><a href="#models">Models</a><a href="#findings">Conclusions</a><a href="#outputs">Outputs</a><a class="back-showcase" href="https://eduardojr-pereira.github.io/data-science-portfolio/" aria-label="Back to portfolio showcase">← Portfolio showcase</a></div>
   </div></nav>
   <div id="top" class="hero"><div class="container">
     <div class="eyebrow">Interactive technical report · Academic regression exercise</div>

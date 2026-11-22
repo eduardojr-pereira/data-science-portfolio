@@ -119,24 +119,35 @@ def make_homepage(reports: list[dict[str, object]]) -> str:
 .container{{max-width:1120px;margin:auto;padding-left:24px;padding-right:24px}}
 .site-header{{border-bottom:1px solid #263b51;background:#0c1525e8}}.header-inner{{display:flex;align-items:center;justify-content:space-between;gap:22px;min-height:86px}}
 .brand{{display:inline-flex;align-items:center;gap:12px;text-decoration:none;min-width:0}}.brand img{{width:48px;height:48px;object-fit:contain}}.brand-name{{font-weight:760;letter-spacing:.055em;font-size:13px;line-height:1.35}}.brand-name small{{display:block;font-size:10px;color:var(--aqua);letter-spacing:.1em}}
-.top-nav{{display:flex;align-items:center;gap:22px;flex-wrap:wrap}}.top-nav a{{font-size:13px;color:#d8e4f2;text-decoration:none}}.top-nav a:hover{{color:var(--aqua)}}
+.top-nav{{display:flex;align-items:center;gap:22px;flex-wrap:wrap}}.top-nav a{{font-size:13px;color:#d8e4f2;text-decoration:none}}.top-nav a:hover,.top-nav a:focus-visible{{color:#fff}}
 .hero{{padding-top:62px;padding-bottom:40px}}.intro-label,.eyebrow{{text-transform:uppercase;color:var(--aqua);font-size:12px;letter-spacing:.09em;font-weight:700}}h1{{font-size:clamp(36px,6vw,64px);letter-spacing:-.045em;margin:12px 0 14px}}.lead{{font-size:17px;max-width:750px;line-height:1.75;color:var(--muted)}}
 .section{{margin-bottom:48px}}h2{{font-size:25px;letter-spacing:-.025em;margin:0 0 12px}}.section-subtitle{{font-size:14px;color:var(--muted);line-height:1.7;margin:0 0 20px}}.filters,.collection-filters,.tag-row{{display:flex;gap:9px;flex-wrap:wrap}}.filter{{border:1px solid #38546d;background:#182b40;color:var(--ink);border-radius:999px;padding:9px 15px;font:inherit;font-size:13px;cursor:pointer}}.filter:hover,.filter.is-active{{border-color:var(--aqua);background:#23445a;color:#e9fcff}}.collection-filters{{margin-top:12px}}
-.projects{{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:20px}}.project-card{{display:flex;flex-direction:column;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:26px}}.project-card:hover{{border-color:#507593}}.project-card h3{{font-size:23px;line-height:1.3;letter-spacing:-.025em;margin:0}}.project-card p{{color:#bbccdd;line-height:1.65;font-size:14px;margin:0;flex:1}}.pill,.tech{{font-size:11px;padding:5px 9px;border-radius:6px;background:#233e56;color:#b6edff}}.tech{{background:#273345;color:#e2ebf5}}.technologies{{padding-bottom:6px}}.card-links{{display:flex;gap:12px 18px;flex-wrap:wrap;border-top:1px solid #34516a;padding-top:18px}}.card-links a{{font-size:13px;color:#bdeeff;text-decoration-color:#e4a35d;text-underline-offset:5px;font-weight:650}}.card-links a:hover{{color:#fff}}
+
+.collection-fieldset{{display:flex;flex-wrap:wrap;align-items:center;gap:13px 28px;border:0;padding:0 0 20px;margin:0 0 18px;border-bottom:1px solid var(--line)}}
+.collection-fieldset legend{{font-size:13px;font-weight:700;margin-bottom:13px;color:#bdeeff}}
+.collection-option{{display:inline-flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;color:#d8e4f2}}
+.collection-option input{{accent-color:var(--aqua);width:16px;height:16px;cursor:pointer}}
+.collection-option:hover{{color:#fff}}.area-filters h3{{font-size:13px;color:#bdeeff;margin:0 0 12px}}
+.projects{{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}}.project-card{{display:flex;flex-direction:column;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:26px}}.project-card:hover{{border-color:#507593}}.project-card h3{{font-size:23px;line-height:1.3;letter-spacing:-.025em;margin:0}}.project-card p{{color:#bbccdd;line-height:1.65;font-size:14px;margin:0;flex:1}}.pill,.tech{{font-size:11px;padding:5px 9px;border-radius:6px;background:#233e56;color:#b6edff}}.tech{{background:#273345;color:#e2ebf5}}.technologies{{padding-bottom:6px}}.card-links{{display:flex;gap:12px 18px;flex-wrap:wrap;border-top:1px solid #34516a;padding-top:18px}}.card-links a{{font-size:13px;color:#bdeeff;text-decoration-color:var(--aqua);text-underline-offset:5px;font-weight:650}}.card-links a:hover{{color:#fff}}
 .empty{{color:var(--muted);border:1px dashed #3c5368;border-radius:12px;padding:22px}}[hidden]{{display:none!important}}
-.site-footer{{border-top:1px solid #263b51;text-align:center;padding:34px 16px 48px;color:var(--muted);font-size:13px}}.site-footer img{{width:72px;height:auto}}.site-footer p{{line-height:1.7}}.site-footer a{{text-decoration-color:var(--orange);text-underline-offset:3px}}
-@media(max-width:700px){{.header-inner{{align-items:flex-start;flex-direction:column;padding-top:16px;padding-bottom:18px;gap:15px}}.top-nav{{gap:10px 18px}}.top-nav a{{font-size:12px}}.brand img{{width:43px;height:43px}}.hero{{padding-top:35px}}.project-card{{padding:21px}}}}
+.site-footer{{border-top:1px solid #263b51;text-align:center;padding:34px 16px 48px;color:var(--muted);font-size:13px}}.site-footer img{{width:72px;height:auto}}.site-footer p{{line-height:1.7}}.site-footer a{{color:#bdeeff;text-decoration-color:var(--aqua);text-underline-offset:3px}}.site-footer a:hover,.site-footer a:focus-visible{{color:#fff}}
+@media(max-width:960px){{.projects{{grid-template-columns:repeat(2,minmax(0,1fr))}}}}
+@media(max-width:700px){{.projects{{grid-template-columns:1fr}}.header-inner{{align-items:flex-start;flex-direction:column;padding-top:16px;padding-bottom:18px;gap:15px}}.top-nav{{gap:10px 18px}}.top-nav a{{font-size:12px}}.brand img{{width:43px;height:43px}}.hero{{padding-top:35px}}.project-card{{padding:21px}}}}
 @media(prefers-reduced-motion:reduce){{html{{scroll-behavior:auto}}}}
 </style></head><body>
 <header class="site-header"><div class="container header-inner">
-<a class="brand" href="./" aria-label="Data Science Portfolio home"><img src="{LOGO}" alt="EP logo"><span class="brand-name">EDUARDO PEREIRA<small>DATA SCIENCE</small></span></a>
-<nav class="top-nav" aria-label="Main navigation"><a href="./" aria-current="page">Portfolio</a><a href="{KNOWLEDGE}">Knowledge Base</a><a href="{WEBSITE}">Website</a><a href="{REPO}">GitHub</a></nav>
+<a class="brand" href="https://eduardojr-pereira.github.io/data-science-portfolio/" aria-label="Data Science Portfolio home"><img src="{LOGO}" alt="EP logo"><span class="brand-name">EDUARDO PEREIRA<small>DATA SCIENCE</small></span></a>
+<nav class="top-nav" aria-label="Main navigation"><a href="{KNOWLEDGE}">Knowledge Base</a><a href="{WEBSITE}">Website</a><a href="{REPO}">GitHub</a></nav>
 </div></header>
 <main class="container">
 <section class="hero" id="home"><div class="intro-label">Data Science · Analytics · Applied Projects</div><h1>Data Science Portfolio</h1><p class="lead">Explore applied analyses, interactive reports and reproducible methods. Each project connects a practical question to evidence, results and limitations, with source code and documentation available on GitHub.</p></section>
 <section class="section" aria-labelledby="explore-title"><h2 id="explore-title">Explore by category</h2><p class="section-subtitle">Filter projects by area or collection. Only published reports are shown.</p>
-<div class="filters" role="group" aria-label="Project topics">{''.join(filters)}</div>
-<div class="collection-filters" role="group" aria-label="Project collection"><button class="filter is-active" type="button" data-collection="all" aria-pressed="true">All collections</button><button class="filter" type="button" data-collection="selected_projects" aria-pressed="false">Selected Projects</button><button class="filter" type="button" data-collection="learning_labs" aria-pressed="false">Learning Labs</button></div>
+<fieldset class="collection-fieldset"><legend>Collection</legend>
+<label class="collection-option"><input type="radio" name="collection" value="all" checked> All Projects</label>
+<label class="collection-option"><input type="radio" name="collection" value="selected_projects"> Selected Projects</label>
+<label class="collection-option"><input type="radio" name="collection" value="learning_labs"> Learning Labs</label>
+</fieldset>
+<div class="area-filters"><h3>Area</h3><div class="filters" role="group" aria-label="Project areas">{''.join(filters)}</div></div>
 </section>
 <section class="section" aria-labelledby="projects-title"><h2 id="projects-title">Projects &amp; reports</h2><p class="section-subtitle" id="result-count" aria-live="polite"></p><div class="projects" id="projects">{markup}</div><p class="empty" id="empty" hidden>No published projects match these filters. Choose another category or collection.</p></section>
 </main>
@@ -146,7 +157,7 @@ def make_homepage(reports: list[dict[str, object]]) -> str:
 let topic='all',collection='all';
 const cards=Array.from(document.querySelectorAll('.project-card'));
 function apply() {{let visible=0;cards.forEach(card=>{{const topics=card.dataset.topics.split('|');const show=(topic==='all'||topics.includes(topic))&&(collection==='all'||card.dataset.collection===collection);card.hidden=!show;if(show)visible++;}});document.getElementById('empty').hidden=visible!==0;document.getElementById('result-count').textContent=visible+' published '+(visible===1?'project':'projects')+' shown';}}
-document.querySelectorAll('button[data-topic],button[data-collection]').forEach(button=>button.addEventListener('click',()=>{{let key=button.hasAttribute('data-topic')?'topic':'collection';if(key==='topic')topic=button.dataset.topic;else collection=button.dataset.collection;document.querySelectorAll('button[data-'+key+']').forEach(b=>{{let selected=b===button;b.classList.toggle('is-active',selected);b.setAttribute('aria-pressed',String(selected));}});apply();}}));apply();
+document.querySelectorAll('button[data-topic]').forEach(button=>button.addEventListener('click',()=>{{topic=button.dataset.topic;document.querySelectorAll('button[data-topic]').forEach(b=>{{let selected=b===button;b.classList.toggle('is-active',selected);b.setAttribute('aria-pressed',String(selected));}});apply();}}));document.querySelectorAll('input[name="collection"]').forEach(input=>input.addEventListener('change',()=>{{if(input.checked){{collection=input.value;apply();}}}}));apply();
 }})();
 </script></body></html>'''
 
