@@ -28,6 +28,13 @@ LOGO = "https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main
 # Add an entry after reviewing and approving each project; discovered reports
 # without metadata are listed conservatively (no invented tools or findings).
 PROJECT_METADATA = {
+    "learning_labs/python/jogo_da_forca": {
+        "name": "Hangman Game — Python Fundamentals",
+        "description": "Play an interactive bilingual Hangman game. Explore a tested Python implementation with single-player and two-player modes, input validation, and unit tests.",
+        "topics": ("Python Programming",),
+        "technologies": ("Python", "JavaScript", "HTML", "CSS"),
+        "featured": False,
+    },
     "selected_projects/bike_sharing": {
         "name": "Bike Sharing — Demand & Operational Insights",
         "description": "Explore historical daily and hourly bicycle rental demand, rider segments, seasonal patterns, and time-aware model validation. Results are retrospective, not production forecasts.",
@@ -72,7 +79,7 @@ def discover_reports() -> list[Path]:
 
 def ensure_valid_local_links(source_html: Path, parser: PageLinks) -> None:
     for url in parser.urls:
-        if url == "../../../index.html":
+        if url in {"../../../index.html", "../../../../index.html"}:
             continue  # Homepage created by the Pages builder
         parsed = urlsplit(url)
         if parsed.scheme or parsed.netloc or not parsed.path or parsed.path.startswith("/"):
