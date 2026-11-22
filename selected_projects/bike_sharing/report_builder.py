@@ -452,7 +452,7 @@ def build_html_report(project_root: Path | None = None, *, metrics_path: Path | 
   .download{display:inline-flex;align-items:center;border:1px solid #547d94;text-decoration:none;padding:9px 14px;border-radius:9px;background:#1a3348;font-weight:650;font-size:.86rem}
   .gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.gallery a{text-decoration:none;border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--card)}
   .gallery img{width:100%;height:170px;object-fit:cover;background:white;display:block}.gallery span{display:block;padding:9px 12px;font-size:.85rem;color:#dfedf9}
-  footer{border-top:1px solid var(--border);text-align:center;padding:34px 16px 48px;color:var(--muted);font-size:.85rem}footer img{width:72px;height:auto}
+  footer:not(.ep-footer){border-top:1px solid var(--border);text-align:center;padding:34px 16px 48px;color:var(--muted);font-size:.85rem}footer:not(.ep-footer) img{width:72px;height:auto}
   .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
   @media(max-width:850px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
   @media(max-width:670px){.grid{grid-template-columns:1fr}.chart.full{grid-column:auto}.nav-links{gap:5px}.nav-links a{font-size:.78rem;padding:7px 8px}.gallery{grid-template-columns:1fr}.hero{padding:35px 0}.stat strong{font-size:1.4rem}}
@@ -472,8 +472,8 @@ def build_html_report(project_root: Path | None = None, *, metrics_path: Path | 
   .nav-links .back-showcase{margin-left:auto;border:1px solid #42647e;background:#17344b;color:#bdeeff;white-space:nowrap}
   .nav-links .back-showcase:hover,.nav-links .back-showcase:focus-visible{color:#fff;border-color:var(--aqua);background:#25516a}
   .nav-links .back-showcase::after{display:none}
-  footer a{color:#bdeeff;text-decoration-color:var(--aqua)}
-  footer a:hover,footer a:focus-visible{color:#fff}
+  footer:not(.ep-footer) a{color:#bdeeff;text-decoration-color:var(--aqua)}
+  footer:not(.ep-footer) a:hover,footer:not(.ep-footer) a:focus-visible{color:#fff}
 
 /* EP link interaction: CodePen-style traveling underline and selected aqua section */
 .nav-links a:not(.back-showcase)::after{transform-origin:right center;transform:scaleX(0);background:#fff;transition:transform .30s ease-in-out,background-color .18s ease}
