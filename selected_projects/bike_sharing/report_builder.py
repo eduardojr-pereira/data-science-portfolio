@@ -4,6 +4,9 @@ import argparse
 import json
 from html import escape
 from pathlib import Path
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "tools"))
+from ep_brand import render_footer, logo_data_uri
 from string import Template
 
 import pandas as pd
@@ -400,6 +403,9 @@ def build_html_report(project_root: Path | None = None, *, metrics_path: Path | 
         **{key.replace("-", "_"): val for key, val in chart_divs.items()},
     }
 
+    ep_footer_html, ep_footer_css = render_footer()
+    ep_logo_src = logo_data_uri()
+    data.update(ep_footer_html=ep_footer_html, ep_footer_css=ep_footer_css, ep_logo_src=ep_logo_src)
     template = Template(r'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -408,6 +414,7 @@ def build_html_report(project_root: Path | None = None, *, metrics_path: Path | 
   <meta name="description" content="Interactive reproducible analysis of bike sharing demand, descriptive trends and time-series model validation.">
   <title>Bike Sharing Demand Analysis · EP Data Science</title>
   <style>
+  $ep_footer_css
   :root{--bg:#0c1525;--card:#14243a;--border:#28445e;--text:#e7eef9;--muted:#a7bfd3;--aqua:#67d8e9;--orange:#ffc07a;--nav-orange:#ff9f43;--warn:#ffd19b}
   *{box-sizing:border-box} html{scroll-behavior:smooth;scroll-padding-top:88px}
   body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
@@ -421,7 +428,7 @@ def build_html_report(project_root: Path | None = None, *, metrics_path: Path | 
   .nav-links a::after{content:"";position:absolute;left:9px;right:9px;bottom:3px;height:3px;background:var(--nav-orange);transform:scaleX(0);transform-origin:left;transition:transform .25s ease;border-radius:999px}
   .nav-links a:hover,.nav-links a:focus-visible,.nav-links a.is-active{color:#ffffff}
   .nav-links a:hover::after,.nav-links a:focus-visible::after,.nav-links a.is-active::after{transform:scaleX(1)}
-  .nav-links a.is-active::after{background:var(--orange)}
+  .nav-links a.is-active::after{background:var(--aqua)}
   .nav-links a:focus-visible{outline:2px solid var(--nav-orange);outline-offset:3px}
   a:focus-visible{outline:2px solid var(--aqua);outline-offset:3px}
   @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.nav-links a,.nav-links a::after{transition:none}}
@@ -455,17 +462,107 @@ def build_html_report(project_root: Path | None = None, *, metrics_path: Path | 
   a:hover,a:focus-visible{color:#fff}
   .nav-links a::after,.nav-links a.is-active::after{background:var(--aqua)}
   .nav-links a:focus-visible{outline-color:var(--aqua)}
+  .nav-links a.is-active,.nav-links a.is-active:hover,.nav-links a.is-active:focus-visible{color:var(--aqua)}
+  .brand{display:inline-flex;align-items:center;gap:10px;white-space:nowrap}
+  .brand img{width:42px;height:42px;object-fit:contain}
+  .brand span{font-size:.79rem;letter-spacing:.07em;line-height:1.2}
+  .brand small{display:block;font-size:.64rem;color:var(--aqua);margin-top:3px}
+  .nav-links a:hover::after,.nav-links a:focus-visible::after{background:#fff}
+  .nav-links a.is-active:hover::after,.nav-links a.is-active:focus-visible::after{background:var(--aqua)}
   .nav-links .back-showcase{margin-left:auto;border:1px solid #42647e;background:#17344b;color:#bdeeff;white-space:nowrap}
   .nav-links .back-showcase:hover,.nav-links .back-showcase:focus-visible{color:#fff;border-color:var(--aqua);background:#25516a}
   .nav-links .back-showcase::after{display:none}
   footer a{color:#bdeeff;text-decoration-color:var(--aqua)}
   footer a:hover,footer a:focus-visible{color:#fff}
+
+/* EP link interaction: CodePen-style traveling underline and selected aqua section */
+.nav-links a:not(.back-showcase)::after{transform-origin:right center;transform:scaleX(0);background:#fff;transition:transform .30s ease-in-out,background-color .18s ease}
+.nav-links a:not(.back-showcase):hover::after,.nav-links a:not(.back-showcase):focus-visible::after{transform-origin:left center;transform:scaleX(1);background:#fff}
+.nav-links a:not(.back-showcase).is-active::after,
+.nav-links a:not(.back-showcase).is-active:hover::after{transform-origin:left center;transform:scaleX(1);background:var(--aqua)}
+.nav-links a:not(.back-showcase).is-active,
+.nav-links a:not(.back-showcase).is-active:hover,
+.nav-links a:not(.back-showcase).is-active:focus-visible{color:var(--aqua)}
+/* Dedicated sliding-label effect for Back to Showcase */
+.nav-links a.back-showcase{overflow:hidden;position:relative;display:inline-block;padding:8px 9px 10px;margin-left:auto;border:0;background:transparent;border-radius:0;color:#cad8e8;white-space:nowrap;text-decoration:none;font-weight:700;vertical-align:top}
+.nav-links a.back-showcase::before,.nav-links a.back-showcase::after{content:"";position:absolute;width:calc(100% - 18px);left:9px}
+.nav-links a.back-showcase::before{background:var(--aqua);height:2px;bottom:3px;right:auto;transform-origin:100% 50%;transform:scaleX(0);transition:transform .3s cubic-bezier(.76,0,.24,1);display:block}
+.nav-links a.back-showcase::after{content:attr(data-replace);left:9px;right:auto;width:calc(100% - 18px);height:100%;top:8px;bottom:auto;color:var(--aqua);background:none;transform-origin:100% 50%;transform:translate3d(200%,0,0);transition:transform .3s cubic-bezier(.76,0,.24,1);display:block;border:0;text-align:left}
+.nav-links a.back-showcase:hover::before,.nav-links a.back-showcase:focus-visible::before{transform-origin:0% 50%;transform:scaleX(1)}
+.nav-links a.back-showcase:hover::after,.nav-links a.back-showcase:focus-visible::after{transform:translate3d(0,0,0)}
+.nav-links a.back-showcase span{display:inline-block;transition:transform .3s cubic-bezier(.76,0,.24,1)}
+.nav-links a.back-showcase:hover span,.nav-links a.back-showcase:focus-visible span{transform:translate3d(-200%,0,0)}
+.nav-links a.back-showcase:hover,.nav-links a.back-showcase:focus-visible{background:transparent;border:0;color:#cad8e8}
+@media(prefers-reduced-motion:reduce){.nav-links a:not(.back-showcase)::after,.nav-links a.back-showcase::before,.nav-links a.back-showcase::after,.nav-links a.back-showcase span{transition:none}.nav-links a.back-showcase:hover span,.nav-links a.back-showcase:focus-visible span{transform:none}.nav-links a.back-showcase:hover::after,.nav-links a.back-showcase:focus-visible::after{display:none}}
+
+
+/* EP-REPORT-ANIMATION-V2 — original Webflow-inspired hover and selected aqua */
+.nav-links a:not(.back-showcase) {position:relative;display:inline-flex;text-decoration:none !important;color:#c7d5e5;transition:color .22s ease;}
+.nav-links a:not(.back-showcase)::after {content:"" !important;position:absolute;bottom:3px;left:9px;right:9px;width:auto;height:2px;border:0;background:white !important;display:block;transform:scaleX(0) !important;transform-origin:right center !important;transition:transform .55s cubic-bezier(.76,0,.24,1),background-color .2s ease !important;pointer-events:none;}
+.nav-links a:not(.back-showcase):hover,.nav-links a:not(.back-showcase):focus-visible {color:white;}
+.nav-links a:not(.back-showcase):hover::after,.nav-links a:not(.back-showcase):focus-visible::after {transform-origin:left center !important;transform:scaleX(1) !important;}
+.nav-links a:not(.back-showcase).is-active,.nav-links a:not(.back-showcase).is-active:hover,.nav-links a:not(.back-showcase).is-active:focus-visible {color:#67d8e9 !important;}
+.nav-links a:not(.back-showcase).is-active::after,.nav-links a:not(.back-showcase).is-active:hover::after,.nav-links a:not(.back-showcase).is-active:focus-visible::after {transform-origin:left center !important;transform:scaleX(1) !important;background:#67d8e9 !important;}
+/* Back to Showcase: sliding text on hover + aqua traveling underline */
+.nav-links a.back-showcase {position:relative !important;display:inline-block !important;overflow:hidden !important;border:0 !important;background:transparent !important;border-radius:0 !important;text-decoration:none !important;color:#c7d5e5 !important;padding:8px 9px 10px !important;white-space:nowrap;}
+.nav-links a.back-showcase::before {content:"" !important;position:absolute !important;left:9px !important;bottom:3px !important;width:calc(100% - 18px) !important;height:2px !important;background:#67d8e9 !important;display:block !important;transform:scaleX(0) !important;transform-origin:right center !important;transition:transform .55s cubic-bezier(.76,0,.24,1) !important;pointer-events:none;}
+.nav-links a.back-showcase::after {content:attr(data-replace) !important;position:absolute !important;top:8px !important;left:9px !important;bottom:auto !important;right:auto !important;width:calc(100% - 18px) !important;height:auto !important;border:0 !important;background:transparent !important;color:#67d8e9 !important;display:block !important;opacity:1 !important;transform:translate3d(200%,0,0) !important;transition:transform .55s cubic-bezier(.76,0,.24,1) !important;pointer-events:none;}
+.nav-links a.back-showcase span {display:inline-block;transition:transform .55s cubic-bezier(.76,0,.24,1) !important;}
+.nav-links a.back-showcase:hover::before,.nav-links a.back-showcase:focus-visible::before {transform-origin:left center !important;transform:scaleX(1) !important;}
+.nav-links a.back-showcase:hover::after,.nav-links a.back-showcase:focus-visible::after {transform:translate3d(0,0,0) !important;}
+.nav-links a.back-showcase:hover span,.nav-links a.back-showcase:focus-visible span {transform:translate3d(-200%,0,0) !important;}
+@media (prefers-reduced-motion:reduce){.nav-links a:not(.back-showcase)::after,.nav-links a.back-showcase::before,.nav-links a.back-showcase::after,.nav-links a.back-showcase span{transition:none !important}.nav-links a.back-showcase:hover::after,.nav-links a.back-showcase:focus-visible::after{transform:none !important}.nav-links a.back-showcase:hover span,.nav-links a.back-showcase:focus-visible span{visibility:hidden}}
+
+
+/* EP-FOOTER-MOTION-V1: standardized website link; contact cards unchanged. */
+.ep-footer .ep-footer__website {
+  position:relative !important;
+  display:inline-block !important;
+  color:#67d8e9 !important;
+  text-decoration:none !important;
+  padding-bottom:5px;
+  transition:color .3s ease;
+}
+.ep-footer .ep-footer__website:hover,
+.ep-footer .ep-footer__website:focus-visible { color:#ffffff !important; }
+.ep-footer .ep-footer__website::before,
+.ep-footer .ep-footer__website::after {
+  content:"";position:absolute;left:0;bottom:0;width:100%;height:2px;
+  pointer-events:none;border-radius:2px;
+}
+.ep-footer .ep-footer__website::before {background:#67d8e9;}
+.ep-footer .ep-footer__website::after {
+  background:#ffffff;transform:scaleX(0);transform-origin:right center;
+  transition:transform .45s cubic-bezier(.76,0,.24,1);
+}
+.ep-footer .ep-footer__website:hover::after,
+.ep-footer .ep-footer__website:focus-visible::after {
+  transform-origin:left center;transform:scaleX(1);
+}
+.ep-footer .ep-footer__website:focus-visible {
+  outline:2px solid #67d8e9;outline-offset:4px;
+}
+@media (prefers-reduced-motion:reduce) {
+  .ep-footer .ep-footer__website,
+  .ep-footer .ep-footer__website::after {transition:none !important;}
+}
+@media (hover:hover) and (pointer:fine) {
+  .ep-footer__contact {transition:transform .32s cubic-bezier(.22,1,.36,1),
+    box-shadow .32s ease,border-color .2s ease;}
+  .ep-footer__contact:hover {transform:translateY(-3px);
+    box-shadow:0 11px 24px rgba(0,0,0,.20);}
+}
+@media (prefers-reduced-motion:reduce) {
+  .ep-footer__website::after,.ep-footer__contact {transition:none !important;}
+  .ep-footer__contact:hover {transform:none !important;}
+}
+
   </style>
   <script>$plotly_js</script>
 </head>
 <body>
-  <nav class="nav" aria-label="Main navigation"><div class="container nav-inner"><a class="brand" href="https://github.com/eduardojr-pereira/data-science-portfolio">EP / DATA SCIENCE</a>
-    <div class="nav-links"><a href="#overview">Overview</a><a href="#business">Business</a><a href="#exploration">Exploration</a><a href="#hourly">Hourly</a><a href="#models">Models</a><a href="#findings">Conclusions</a><a href="#outputs">Outputs</a><a class="back-showcase" href="https://eduardojr-pereira.github.io/data-science-portfolio/" aria-label="Back to portfolio showcase">← Portfolio showcase</a></div>
+  <nav class="nav" aria-label="Main navigation"><div class="container nav-inner"><a class="brand" href="https://eduardo-pereira.webflow.io/" aria-label="Eduardo Pereira personal website"><img src="$ep_logo_src" alt="EP logo" width="42" height="42"><span>EDUARDO PEREIRA<small>DATA SCIENCE</small></span></a>
+    <div class="nav-links"><a href="#overview">Overview</a><a href="#business">Business</a><a href="#exploration">Exploration</a><a href="#hourly">Hourly</a><a href="#models">Models</a><a href="#findings">Conclusions</a><a href="#outputs">Outputs</a><a class="back-showcase" href="../../../index.html" aria-label="Back to Showcase" data-replace="Back to Showcase"><span>Back to Showcase</span></a></div>
   </div></nav>
   <div id="top" class="hero"><div class="container">
     <div class="eyebrow">Interactive technical report · Academic regression exercise</div>
@@ -574,30 +671,63 @@ def build_html_report(project_root: Path | None = None, *, metrics_path: Path | 
       <p><strong>Implementation:</strong> execute <code>bike_sharing_analysis.ipynb</code> to regenerate data exports, then run <code>python report_builder.py</code> from the project directory to rebuild this HTML. The HTML requires no Python server and includes Plotly.js offline; GitHub Pages hosting is supported.</p></div>
     </section>
   </main>
-  <footer><a href="https://eduardo-pereira.webflow.io/"><img src="https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/logos/logo_initials.png" alt="EP logo"></a>
-    <p><strong>Eduardo Junior Pereira</strong><br>Economics · Data Science · Python</p>
-    <p><a href="mailto:eduardojr.pereira@gmail.com">Email</a> · <a href="https://www.linkedin.com/in/eduardo-jr-pereira/">LinkedIn</a> · <a href="https://github.com/eduardojr-pereira">GitHub</a> · <a href="https://eduardo-pereira.webflow.io/">Personal Website</a></p>
-  </footer>
+  $ep_footer_html
   <script>
   (() => {
+    // EP-NAV-CLICK-LOCK-V1: one active section during smooth scrolling.
     const links = [...document.querySelectorAll('.nav-links a[href^="#"]')];
     const sections = links.map(link => document.getElementById(link.hash.slice(1)));
-    function updateActiveSection() {
-      const threshold = 125;
-      let current = null;
-      sections.forEach(section => {
-        if (section && section.getBoundingClientRect().top <= threshold) current = section.id;
-      });
+    let lockedTarget = null;
+    let unlockTimer = null;
+
+    function markActive(id) {
       links.forEach(link => {
-        const active = Boolean(current && link.hash === '#' + current);
+        const active = Boolean(id && link.hash === '#' + id);
         link.classList.toggle('is-active', active);
         if (active) link.setAttribute('aria-current', 'location');
         else link.removeAttribute('aria-current');
       });
     }
+
+    function updateActiveSection() {
+      if (lockedTarget) return;
+      const threshold = 125;
+      let current = null;
+      sections.forEach(section => {
+        if (section && section.getBoundingClientRect().top <= threshold) current = section.id;
+      });
+      // At document top, prefer the first section rather than leaving no selection.
+      if (!current && sections[0]) current = sections[0].id;
+      markActive(current);
+    }
+
+    function releaseNavigationLock() {
+      if (!lockedTarget) return;
+      lockedTarget = null;
+      if (unlockTimer !== null) window.clearTimeout(unlockTimer);
+      unlockTimer = null;
+      updateActiveSection();
+    }
+
+    links.forEach(link => link.addEventListener('click', () => {
+      // Keep native anchor navigation and smooth scrolling intact.
+      const target = link.hash.slice(1);
+      if (!document.getElementById(target)) return;
+      lockedTarget = target;
+      markActive(target);
+      if (unlockTimer !== null) window.clearTimeout(unlockTimer);
+      // Fallback for browsers without scrollend; no persistent stale selection.
+      unlockTimer = window.setTimeout(releaseNavigationLock, 1800);
+    }));
+
     window.addEventListener('scroll', updateActiveSection, {passive: true});
     window.addEventListener('resize', updateActiveSection);
     window.addEventListener('hashchange', updateActiveSection);
+    // Supported in current Chrome; ends the click lock when the scroll finishes.
+    window.addEventListener('scrollend', releaseNavigationLock, {passive: true});
+    // A new manual scroll interrupts programmatic navigation.
+    window.addEventListener('wheel', releaseNavigationLock, {passive: true});
+    window.addEventListener('touchstart', releaseNavigationLock, {passive: true});
     updateActiveSection();
   })();
   </script>
