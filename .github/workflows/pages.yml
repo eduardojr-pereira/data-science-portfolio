@@ -9,6 +9,8 @@ on:
       - 'tools/build_pages_site.py'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
+  repository_dispatch:
+    types: [ep_brand_updated]
 
 permissions:
   contents: read
@@ -29,7 +31,16 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@v4
 
+      - name: Check out canonical EP Design System
+        uses: actions/checkout@v4
+        with:
+          repository: eduardojr-pereira/ep-brand-assets
+          ref: main
+          path: .ep-brand-assets-build
+
       - name: Prepare the static site
+        env:
+          EP_BRAND_ASSETS_ROOT: ${{ github.workspace }}/.ep-brand-assets-build
         run: python3 tools/build_pages_site.py --output "$RUNNER_TEMP/portfolio-pages"
 
       - name: Configure GitHub Pages
