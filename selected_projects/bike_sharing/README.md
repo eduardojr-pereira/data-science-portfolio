@@ -77,7 +77,7 @@
 | [Daily dataset](./datasets/day.csv) | Original UCI daily records (731 days) |
 | [Hourly dataset](./datasets/hour.csv) | Original UCI hourly records (17,379 hours) |
 | [Dependencies](./requirements.txt) | Python dependencies |
-| [Report generator](./report_builder.py) | Build the HTML from validated exports |
+| [Report generator](./build_bike_report.py) | Build the HTML from validated exports |
 | [Daily model metrics](./outputs/metrics.json) | Daily model and method details |
 | [Hourly model metrics](./outputs/hourly/metrics.json) | Hourly model and method details |
 | [Hourly comparisons](./outputs/hourly/tables/hourly_model_comparison.csv) | Chronological cross-validation scores |
@@ -89,7 +89,7 @@
 bike_sharing/
 ├── README.md / README.pt-BR.md
 ├── bike_sharing_analysis.ipynb
-├── report_builder.py
+├── build_bike_report.py
 ├── requirements.txt
 ├── datasets/
 │   ├── day.csv

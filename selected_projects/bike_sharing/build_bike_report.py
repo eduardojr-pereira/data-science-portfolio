@@ -668,7 +668,7 @@ def build_html_report(project_root: Path | None = None, *, metrics_path: Path | 
     <section id="references"><h2 class="section-heading">References and reproducibility</h2>
       <div class="card"><p><strong>Original dataset:</strong> <a href="https://archive.ics.uci.edu/dataset/275/bike+sharing+dataset">UCI Bike Sharing Dataset</a>, Fanaee-T & Gama, DOI 10.24432/C5W894, distributed under CC BY 4.0 with attribution.</p>
       <p><strong>Knowledge Base:</strong> <a href="https://github.com/eduardojr-pereira/data-science-knowledge-base/tree/main/05_machine_learning">Machine Learning</a> and <a href="https://github.com/eduardojr-pereira/data-science-knowledge-base/tree/main/02_data_analysis_visualization">Data Analysis & Visualization</a>.</p>
-      <p><strong>Implementation:</strong> execute <code>bike_sharing_analysis.ipynb</code> to regenerate data exports, then run <code>python report_builder.py</code> from the project directory to rebuild this HTML. The HTML requires no Python server and includes Plotly.js offline; GitHub Pages hosting is supported.</p></div>
+      <p><strong>Implementation:</strong> execute <code>bike_sharing_analysis.ipynb</code> to regenerate data exports, then run <code>python build_bike_report.py</code> from the project directory to rebuild this HTML. The HTML requires no Python server and includes Plotly.js offline; GitHub Pages hosting is supported.</p></div>
     </section>
   </main>
   $ep_footer_html

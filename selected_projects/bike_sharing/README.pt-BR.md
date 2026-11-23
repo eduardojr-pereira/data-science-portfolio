@@ -77,7 +77,7 @@
 | [Dados diários](./datasets/day.csv) | Arquivo UCI original (731 dias) |
 | [Dados horários](./datasets/hour.csv) | Arquivo UCI original (17.379 registros) |
 | [Dependências](./requirements.txt) | Bibliotecas Python utilizadas |
-| [Gerador do relatório](./report_builder.py) | Reconstrução do HTML a partir das exportações |
+| [Gerador do relatório](./build_bike_report.py) | Reconstrução do HTML a partir das exportações |
 | [Métricas diárias](./outputs/metrics.json) | Resultados e metodologia diária |
 | [Métricas horárias](./outputs/hourly/metrics.json) | Resultados e metodologia horária |
 | [Comparação horária](./outputs/hourly/tables/hourly_model_comparison.csv) | Validação cruzada cronológica |
@@ -89,7 +89,7 @@
 bike_sharing/
 ├── README.md / README.pt-BR.md
 ├── bike_sharing_analysis.ipynb
-├── report_builder.py
+├── build_bike_report.py
 ├── requirements.txt
 ├── datasets/
 │   ├── day.csv
