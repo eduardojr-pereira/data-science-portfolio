@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "projects": {
+    "learning_labs/python_hangman_game": {
+      "name": {
+        "en": "Hangman Game — Python Fundamentals",
+        "pt-BR": "Jogo da Forca — Fundamentos de Python"
+      },
+      "description": {
+        "en": "Play an interactive bilingual Hangman game. Explore a tested Python implementation with single-player and two-player modes, input validation, and unit tests.",
+        "pt-BR": "Jogue uma versão interativa e bilíngue do Jogo da Forca. Explore uma implementação em Python com modos para um ou dois jogadores, validação de entradas e testes unitários."
+      },
+      "topics": [
+        "Python Programming"
+      ],
+      "technologies": [
+        "Python",
+        "JavaScript",
+        "HTML",
+        "CSS"
+      ],
+      "featured": false
+    },
+    "selected_projects/bike_sharing": {
+      "name": {
+        "en": "Bike Sharing — Demand & Operational Insights",
+        "pt-BR": "Bike Sharing — Demanda e Análise Operacional"
+      },
+      "description": {
+        "en": "Explore historical daily and hourly bicycle rental demand, rider segments, seasonal patterns, and time-aware model validation. Results are retrospective, not production forecasts.",
+        "pt-BR": "Explore a demanda histórica diária e horária por aluguel de bicicletas, os segmentos de usuários, os padrões sazonais e a validação de modelos com respeito à ordem temporal. Os resultados são retrospectivos, não previsões em produção."
+      },
+      "topics": [
+        "Data Analytics",
+        "Machine Learning"
+      ],
+      "technologies": [
+        "Python",
+        "pandas",
+        "scikit-learn",
+        "Plotly"
+      ],
+      "notebook": "bike_sharing_analysis.ipynb",
+      "featured": true
+    }
+  }
+}
