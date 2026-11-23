@@ -42,11 +42,11 @@ O Jogo da Forca é um **Learning Lab** educacional, não um projeto de aprendiza
 | Recurso | Finalidade |
 |---|---|
 | [Jogar no navegador](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python_hangman_game/reports/index.html) | Versão web interativa |
-| [`forca.py`](./forca.py) | Implementação em Python para terminal |
-| [`tests/test_forca.py`](./tests/test_forca.py) | Testes automatizados |
-| [`web/game.js`](./web/game.js) | Lógica do jogo no navegador |
-| [`web/game.css`](./web/game.css) | Layout e interações visuais |
-| [`web/game.template.html`](./web/game.template.html) | Modelo-fonte da interface web |
+| [`hangman.py`](./hangman.py) | Implementação em Python para terminal |
+| [`tests/test_hangman.py`](./tests/test_hangman.py) | Testes automatizados |
+| [`web/report.js`](./web/report.js) | Lógica do jogo no navegador |
+| [`web/report.css`](./web/report.css) | Layout e interações visuais |
+| [`web/report.template.html`](./web/report.template.html) | Modelo-fonte da interface web |
 | [`web/ep_footer_motion.css`](./web/ep_footer_motion.css) | Animações do rodapé EP |
 | [`reports/index.html`](./reports/index.html) | Página web autônoma gerada |
 
@@ -59,7 +59,7 @@ Python 3 (biblioteca padrão, `unittest`) · HTML5 · CSS3 · JavaScript puro. N
 Execute a partir da pasta do projeto:
 
 ```bash
-python forca.py
+python hangman.py
 ```
 
 Ou utilize **[Jogar agora](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python_hangman_game/reports/index.html)** para jogar no navegador sem instalar nada.

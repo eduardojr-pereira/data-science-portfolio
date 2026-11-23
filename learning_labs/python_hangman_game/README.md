@@ -42,11 +42,11 @@ Hangman is an educational **Learning Lab**, not a machine-learning or data-analy
 | Resource | Purpose |
 |---|---|
 | [Play online](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python_hangman_game/reports/index.html) | Interactive browser version |
-| [`forca.py`](./forca.py) | Python command-line implementation |
-| [`tests/test_forca.py`](./tests/test_forca.py) | Automated unit tests |
-| [`web/game.js`](./web/game.js) | Browser game logic |
-| [`web/game.css`](./web/game.css) | Web layout and interactions |
-| [`web/game.template.html`](./web/game.template.html) | Source template for the web interface |
+| [`hangman.py`](./hangman.py) | Python command-line implementation |
+| [`tests/test_hangman.py`](./tests/test_hangman.py) | Automated unit tests |
+| [`web/report.js`](./web/report.js) | Browser game logic |
+| [`web/report.css`](./web/report.css) | Web layout and interactions |
+| [`web/report.template.html`](./web/report.template.html) | Source template for the web interface |
 | [`web/ep_footer_motion.css`](./web/ep_footer_motion.css) | Shared EP footer motion styling |
 | [`reports/index.html`](./reports/index.html) | Generated standalone web page |
 
@@ -59,7 +59,7 @@ Python 3 (standard library, `unittest`) · HTML5 · CSS3 · JavaScript (vanilla)
 Run from this project's directory:
 
 ```bash
-python forca.py
+python hangman.py
 ```
 
 Alternatively, use **[Play online](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python_hangman_game/reports/index.html)** to play in the browser without installing anything.

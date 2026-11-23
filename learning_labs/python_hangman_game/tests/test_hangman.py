@@ -4,7 +4,7 @@ import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from forca import Game, MAX_ERRORS, WORDS, choose_secret, normalize_word, valid_word
+from hangman import Game, MAX_ERRORS, WORDS, choose_secret, normalize_word, valid_word
 
 
 class GameTests(unittest.TestCase):
