@@ -6,7 +6,7 @@
 
 # Hangman Game — Python Learning Lab
 
-![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white&style=for-the-badge) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black&style=for-the-badge) ![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white&style=for-the-badge)
+![Python](https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/badges/technologies/python.svg) ![JavaScript](https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/badges/technologies/javascript.svg) ![HTML5](https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/badges/technologies/html5.svg) ![CSS](https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/badges/technologies/css.svg)
 
 *An interactive word-guessing game built to demonstrate programming fundamentals in Python and the browser.*
 
@@ -47,7 +47,6 @@ Hangman is an educational **Learning Lab**, not a machine-learning or data-analy
 | [`web/report.js`](./web/report.js) | Browser game logic |
 | [`web/report.css`](./web/report.css) | Web layout and interactions |
 | [`web/report.template.html`](./web/report.template.html) | Source template for the web interface |
-| [`web/ep_footer_motion.css`](./web/ep_footer_motion.css) | Shared EP footer motion styling |
 | [`reports/index.html`](./reports/index.html) | Generated standalone web page |
 
 ## Technologies
@@ -84,7 +83,7 @@ This is an original learning exercise based on the traditional Hangman word game
 
 ## License
 
-The `data-science-portfolio` repository has **no declared repository-wide license** for its original code or documentation at the time of this review. Do not assume that another repository's license applies. Third-party icons and brand assets retain their respective terms.
+Original code is subject to the [MIT License](../../LICENSE-CODE.txt) and original editorial and analytical content to [CC BY-NC 4.0](../../LICENSE-CONTENT.md), only where the author holds the necessary rights. Third-party data, libraries, trademarks and other assets retain their respective terms.
 
 ---
 

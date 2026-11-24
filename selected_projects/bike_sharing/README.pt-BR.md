@@ -6,7 +6,7 @@
 
 # Análise da Demanda por Bicicletas Compartilhadas
 
-![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white&style=for-the-badge) ![pandas](https://img.shields.io/badge/pandas-150458?logo=pandas&logoColor=white&style=for-the-badge) ![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?logo=scikitlearn&logoColor=white&style=for-the-badge)
+![Python](https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/badges/technologies/python.svg) ![pandas](https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/badges/technologies/pandas.svg) ![scikit-learn](https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/badges/technologies/scikit_learn.svg)
 
 *Análise histórica da demanda diária e horária, comportamento dos usuários, validação temporal e insights operacionais interativos.*
 
@@ -223,7 +223,7 @@ O Random Forest horário (Random forest) alcançou R² **0.695** no teste histó
 
 O **dataset** está atribuído a Fanaee-T e Gama pela UCI e atualmente é apresentado com licença **CC BY 4.0** ([detalhes da licença](https://creativecommons.org/licenses/by/4.0/)). A atribuição e o link de origem devem ser mantidos caso `day.csv` seja redistribuído.
 
-O repositório `data-science-portfolio` **ainda não possui licença global definida para código e conteúdo**. As licenças MIT e CC BY-NC da Knowledge Base não são automaticamente aplicáveis a este projeto. A definição de licença para código e documentação depende de aprovação do proprietário. Bibliotecas, marcas e dados de terceiros mantêm seus próprios direitos.
+O código autoral está sujeito à [licença MIT](../../LICENSE-CODE.txt) e o conteúdo editorial e analítico autoral à [CC BY-NC 4.0](../../LICENSE-CONTENT.md), somente quando o autor detém os direitos necessários. Dados, bibliotecas, marcas e demais ativos de terceiros mantêm seus respectivos termos.
 
 <p align="right"><a href="#readme-top">↑ VOLTAR AO TOPO</a></p>
 

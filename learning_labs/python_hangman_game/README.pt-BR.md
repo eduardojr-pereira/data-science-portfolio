@@ -6,7 +6,7 @@
 
 # Jogo da Forca — Laboratório de Python
 
-![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white&style=for-the-badge) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black&style=for-the-badge) ![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white&style=for-the-badge)
+![Python](https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/badges/technologies/python.svg) ![JavaScript](https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/badges/technologies/javascript.svg) ![HTML5](https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/badges/technologies/html5.svg) ![CSS](https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/badges/technologies/css.svg)
 
 *Um jogo interativo de adivinhação de palavras desenvolvido para demonstrar fundamentos de programação em Python e no navegador.*
 
@@ -47,7 +47,6 @@ O Jogo da Forca é um **Learning Lab** educacional, não um projeto de aprendiza
 | [`web/report.js`](./web/report.js) | Lógica do jogo no navegador |
 | [`web/report.css`](./web/report.css) | Layout e interações visuais |
 | [`web/report.template.html`](./web/report.template.html) | Modelo-fonte da interface web |
-| [`web/ep_footer_motion.css`](./web/ep_footer_motion.css) | Animações do rodapé EP |
 | [`reports/index.html`](./reports/index.html) | Página web autônoma gerada |
 
 ## Tecnologias
@@ -84,7 +83,7 @@ Este é um exercício autoral baseado no tradicional Jogo da Forca. Para materia
 
 ## Licença
 
-O repositório `data-science-portfolio` **não possui licença geral declarada** para seus códigos e documentação autorais até esta revisão. Não se deve presumir que a licença de outro repositório se aplique. Ícones e recursos de identidade visual de terceiros mantêm suas condições específicas.
+O código autoral está sujeito à [licença MIT](../../LICENSE-CODE.txt) e o conteúdo editorial e analítico autoral à [CC BY-NC 4.0](../../LICENSE-CONTENT.md), somente quando o autor detém os direitos necessários. Dados, bibliotecas, marcas e demais ativos de terceiros mantêm seus respectivos termos.
 
 ---
 

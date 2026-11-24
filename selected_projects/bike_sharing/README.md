@@ -6,7 +6,7 @@
 
 # Bike Sharing Demand Analysis
 
-![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white&style=for-the-badge) ![pandas](https://img.shields.io/badge/pandas-150458?logo=pandas&logoColor=white&style=for-the-badge) ![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?logo=scikitlearn&logoColor=white&style=for-the-badge)
+![Python](https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/badges/technologies/python.svg) ![pandas](https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/badges/technologies/pandas.svg) ![scikit-learn](https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/badges/technologies/scikit_learn.svg)
 
 *Historical daily and hourly demand, rider behavior, chronological model validation, and interactive operational insights.*
 
@@ -223,7 +223,7 @@ The hourly Random Forest (Random forest) attained historical holdout R² **0.695
 
 The **dataset** is attributed to Fanaee-T and Gama via UCI and is currently listed as **CC BY 4.0** ([license details](https://creativecommons.org/licenses/by/4.0/)). Retain the attribution and the source link when redistributing `day.csv`.
 
-The separate `data-science-portfolio` repository does **not currently declare a repository-wide code/content license**. Do not assume the Knowledge Base's MIT or CC BY-NC licenses automatically apply. Source-code and documentation licensing is awaiting the owner's decision. Third-party logos, libraries and source data retain their respective rights.
+Original code is subject to the [MIT License](../../LICENSE-CODE.txt) and original editorial and analytical content to [CC BY-NC 4.0](../../LICENSE-CONTENT.md), only where the author holds the necessary rights. Third-party data, libraries, trademarks and other assets retain their respective terms.
 
 <p align="right"><a href="#readme-top">↑ BACK TO TOP</a></p>
 
