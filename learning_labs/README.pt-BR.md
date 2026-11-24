@@ -48,7 +48,7 @@ Esta coleção reúne projetos práticos de escopo reduzido, com foco em conceit
 
 | Laboratório | Área | Recursos |
 |---|---|---|
-| **Jogo da Forca** | Python · JavaScript · Fundamentos de programação | [Documentação](./python_hangman_game/README.pt-BR.md) · [Jogar online](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python_hangman_game/reports/index.html) · [Python](./python_hangman_game/forca.py) · [Testes](./python_hangman_game/tests/test_forca.py) |
+| **Jogo da Forca** | Python · JavaScript · Fundamentos de programação | [Documentação](./python_hangman_game/README.pt-BR.md) · [Jogar online](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python_hangman_game/reports/index.html) · [Python](./python_hangman_game/hangman.py) · [Testes](./python_hangman_game/tests/test_hangman.py) |
 
 **Jogo da Forca** — Jogo de adivinhação com versão no terminal e no navegador, modos individual e duas pessoas, interface PT-BR/EN e oito testes automatizados em Python.
 
@@ -84,7 +84,7 @@ Para executar a versão Python localmente:
 ```bash
 git clone https://github.com/eduardojr-pereira/data-science-portfolio.git
 cd data-science-portfolio/learning_labs/python_hangman_game
-python forca.py
+python hangman.py
 ```
 
 Não é necessário instalar bibliotecas externas para executar o jogo Python.
@@ -119,7 +119,7 @@ learning_labs/
 ├── README.pt-BR.md
 └── python_hangman_game/
     ├── README.md / README.pt-BR.md
-    ├── forca.py
+    ├── hangman.py
     ├── tests/
     ├── web/
     └── reports/index.html

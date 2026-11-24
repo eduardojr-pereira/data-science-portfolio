@@ -57,7 +57,7 @@ Este repositório reúne trabalhos práticos e complementa a [Base de Conhecimen
 | Projeto | Coleção | Experiência online | Código / documentação |
 |---|---|---|---|
 | **Bike Sharing — Demanda e Insights Operacionais** | Projetos Selecionados | [Relatório interativo](https://eduardojr-pereira.github.io/data-science-portfolio/selected_projects/bike_sharing/reports/) | [README](./selected_projects/bike_sharing/README.pt-BR.md) · [Notebook](./selected_projects/bike_sharing/bike_sharing_analysis.ipynb) |
-| **Jogo da Forca — Laboratório de Python** | Learning Labs | [Jogar agora](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python_hangman_game/reports/index.html) | [README](./learning_labs/python_hangman_game/README.pt-BR.md) · [Código Python](./learning_labs/python_hangman_game/forca.py) |
+| **Jogo da Forca — Laboratório de Python** | Learning Labs | [Jogar agora](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python_hangman_game/reports/index.html) | [README](./learning_labs/python_hangman_game/README.pt-BR.md) · [Código Python](./learning_labs/python_hangman_game/hangman.py) |
 
 [Explorar a vitrine interativa do portfólio](https://eduardojr-pereira.github.io/data-science-portfolio/).
 
@@ -79,7 +79,7 @@ data-science-portfolio/
 ├── learning_labs/
 │   ├── README.md / README.pt-BR.md
 │   └── python_hangman_game/
-│       ├── forca.py e tests/
+│       ├── hangman.py e tests/
 │       ├── web/
 │       └── reports/index.html
 ├── independent_experiments/

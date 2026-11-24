@@ -6,7 +6,7 @@ on:
     paths:
       - 'learning_labs/**'
       - 'selected_projects/**'
-      - 'tools/build_pages_site.py'
+      - 'config/projects.json'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
   repository_dispatch:
@@ -39,9 +39,10 @@ jobs:
           path: .ep-brand-assets-build
 
       - name: Prepare the static site
-        env:
-          EP_BRAND_ASSETS_ROOT: ${{ github.workspace }}/.ep-brand-assets-build
-        run: python3 tools/build_pages_site.py --output "$RUNNER_TEMP/portfolio-pages"
+        run: |
+          python3 .ep-brand-assets-build/tools/build_site.py \
+            --source "$GITHUB_WORKSPACE" \
+            --output "$RUNNER_TEMP/portfolio-pages"
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5

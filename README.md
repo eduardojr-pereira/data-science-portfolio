@@ -57,7 +57,7 @@ This repository is the practical project companion to the [Data Science Knowledg
 | Project | Collection | Online experience | Source / documentation |
 |---|---|---|---|
 | **Bike Sharing — Demand & Operational Insights** | Selected Projects | [Interactive report](https://eduardojr-pereira.github.io/data-science-portfolio/selected_projects/bike_sharing/reports/) | [README](./selected_projects/bike_sharing/README.md) · [Notebook](./selected_projects/bike_sharing/bike_sharing_analysis.ipynb) |
-| **Hangman Game — Python Learning Lab** | Learning Labs | [Play Hangman](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python_hangman_game/reports/index.html) | [README](./learning_labs/python_hangman_game/README.md) · [Python game](./learning_labs/python_hangman_game/forca.py) |
+| **Hangman Game — Python Learning Lab** | Learning Labs | [Play Hangman](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python_hangman_game/reports/index.html) | [README](./learning_labs/python_hangman_game/README.md) · [Python game](./learning_labs/python_hangman_game/hangman.py) |
 
 [Explore the interactive portfolio showcase](https://eduardojr-pereira.github.io/data-science-portfolio/).
 
@@ -79,7 +79,7 @@ data-science-portfolio/
 ├── learning_labs/
 │   ├── README.md / README.pt-BR.md
 │   └── python_hangman_game/
-│       ├── forca.py and tests/
+│       ├── hangman.py and tests/
 │       ├── web/
 │       └── reports/index.html
 ├── independent_experiments/

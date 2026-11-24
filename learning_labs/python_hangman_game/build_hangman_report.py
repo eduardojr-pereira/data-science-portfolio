@@ -19,14 +19,12 @@ REPORT = PROJECT / "reports/index.html"
 def build_html() -> str:
     sys.path.insert(0,str(ROOT / 'tools'))
     from ep_brand import render_footer, logo_data_uri
-    footer_html,footer_css=render_footer()
+    footer_html,_=render_footer()
     source=(PROJECT/'web/report.template.html').read_text(encoding='utf-8')
     replacements={
-      '__EP_FOOTER_CSS__':footer_css,
       '__EP_FOOTER_HTML__':footer_html,
       '__EP_LOGO__':logo_data_uri(),
       '__GAME_CSS__':(PROJECT/'web/report.css').read_text(encoding='utf-8'),
-      '__EP_MOTION_CSS__':(PROJECT/'web/ep_footer_motion.css').read_text(encoding='utf-8'),
       '__GAME_JS__':(PROJECT/'web/report.js').read_text(encoding='utf-8'),
       '__KEYS__': '\n'.join(f'<button type="button" class="key" data-letter="{ch}" aria-label="{ch}">{ch}</button>' for ch in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'),
     }
@@ -50,7 +48,6 @@ def main() -> None:
         PROJECT / "web/report.template.html",
         PROJECT / "web/report.css",
         PROJECT / "web/report.js",
-        PROJECT / "web/ep_footer_motion.css",
     ]
 
     for path in required:

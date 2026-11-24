@@ -48,7 +48,7 @@ This collection contains smaller, focused projects for learning programming conc
 
 | Lab | Area | Resources |
 |---|---|---|
-| **Hangman Game** | Python · JavaScript · Programming Fundamentals | [Documentation](./python_hangman_game/README.md) · [Play online](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python_hangman_game/reports/index.html) · [Python](./python_hangman_game/forca.py) · [Tests](./python_hangman_game/tests/test_forca.py) |
+| **Hangman Game** | Python · JavaScript · Programming Fundamentals | [Documentation](./python_hangman_game/README.md) · [Play online](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python_hangman_game/reports/index.html) · [Python](./python_hangman_game/hangman.py) · [Tests](./python_hangman_game/tests/test_hangman.py) |
 
 **Hangman Game** — Word-guessing game with terminal and browser editions, single-player and two-player modes, PT-BR/EN interface and eight automated Python tests.
 
@@ -84,7 +84,7 @@ To run the Python version locally:
 ```bash
 git clone https://github.com/eduardojr-pereira/data-science-portfolio.git
 cd data-science-portfolio/learning_labs/python_hangman_game
-python forca.py
+python hangman.py
 ```
 
 No third-party Python packages are required to run the CLI game.
@@ -119,7 +119,7 @@ learning_labs/
 ├── README.pt-BR.md
 └── python_hangman_game/
     ├── README.md / README.pt-BR.md
-    ├── forca.py
+    ├── hangman.py
     ├── tests/
     ├── web/
     └── reports/index.html

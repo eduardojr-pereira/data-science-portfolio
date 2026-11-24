@@ -14,7 +14,7 @@ import argparse
 from html import escape
 from html.parser import HTMLParser
 from pathlib import Path
-from ep_brand import render_footer, logo_data_uri
+from ep_brand import render_footer, logo_data_uri, render_header, copy_shared_assets
 import shutil
 from urllib.parse import unquote, urlsplit
 
@@ -94,7 +94,7 @@ def ensure_valid_local_links(source_html: Path, parser: PageLinks) -> None:
 
 def make_homepage(reports: list[dict[str, object]]) -> str:
     topics = sorted({t for p in reports for t in p["topics"]})
-    filters = ['<button class="filter is-active" type="button" data-topic="all" aria-pressed="true">All projects</button>']
+    filters = ['<button class="filter is-active" type="button" data-topic="all" aria-pressed="true" data-i18n="allProjects">All projects</button>']
     filters += [f'<button class="filter" type="button" data-topic="{escape(t, quote=True)}" aria-pressed="false">{escape(t)}</button>' for t in topics]
     cards = []
     for p in reports:
@@ -104,10 +104,10 @@ def make_homepage(reports: list[dict[str, object]]) -> str:
         tech_tags = "".join(f'<span class="tech">{escape(str(t))}</span>' for t in p["technologies"])
         document_links = []
         if p["notebook"]:
-            document_links.append(f'<a href="{escape(str(p["notebook"]), quote=True)}">Notebook <span aria-hidden="true">↗</span></a>')
+            document_links.append(f'<a href="{escape(str(p["notebook"]), quote=True)}"><span data-i18n="code">Code</span> <span aria-hidden="true">↗</span></a>')
         if p["readme"]:
-            document_links.append(f'<a href="{escape(str(p["readme"]), quote=True)}">Documentation <span aria-hidden="true">↗</span></a>')
-        document_links.append(f'<a class="report-cta" href="{escape(str(p["report"]), quote=True)}">Interactive report <span aria-hidden="true">↗</span></a>')
+            document_links.append(f'<a href="{escape(str(p["readme"]), quote=True)}"><span data-i18n="documentation">Documentation</span> <span aria-hidden="true">↗</span></a>')
+        document_links.append(f'<a class="report-cta" href="{escape(str(p["report"]), quote=True)}"><span data-i18n="view">View</span> <span aria-hidden="true">↗</span></a>')
         label = "Featured · " if p["featured"] else ""
         cards.append(f'''<article class="project-card" data-collection="{escape(collection, quote=True)}" data-topics="{escape('|'.join(p['topics']), quote=True)}">
   <div class="card-head"><span class="eyebrow">{label}{kind}</span></div>
@@ -119,11 +119,15 @@ def make_homepage(reports: list[dict[str, object]]) -> str:
 </article>''')
     markup = '\n'.join(cards)
     ep_footer_html, ep_footer_css = render_footer()
+    ep_header_html, ep_header_css = render_header(reports)
     ep_logo_src = logo_data_uri()
     return f'''<!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark">
+<meta name="color-scheme" content="light dark">
+<script src="assets/scripts/theme-init.js"></script>
+<link rel="stylesheet" href="assets/styles/theme-tokens.css">
+<link rel="stylesheet" href="assets/styles/typography-v2.css">
 <meta name="description" content="Applied data science projects, reproducible notebooks, and interactive analytical reports.">
 <title>Data Science Portfolio · Eduardo Junior Pereira</title>
 <style>
@@ -262,24 +266,26 @@ def make_homepage(reports: list[dict[str, object]]) -> str:
   .ep-footer__contact:hover {{transform:none !important;}}
 }}
 
+{ep_header_css}
 </style></head><body>
-<header class="site-header"><div class="container header-inner">
-<a class="brand" href="{WEBSITE}" aria-label="Eduardo Pereira personal website"><img src="{ep_logo_src}" alt="EP logo"><span class="brand-name">EDUARDO PEREIRA<small>DATA SCIENCE</small></span></a>
-<nav class="top-nav" aria-label="Main navigation"><details class="github-dropdown"><summary>GitHub <span aria-hidden="true">⌄</span></summary><div class="github-dropdown__menu"><a href="{REPO}" target="_blank" rel="noopener noreferrer">Data Science Portfolio</a><a href="{KNOWLEDGE}" target="_blank" rel="noopener noreferrer">Knowledge Base</a></div></details><a class="top-nav__link" href="{WEBSITE}" target="_blank" rel="noopener noreferrer">Website</a></nav>
-</div></header>
+{ep_header_html}
+
 <main class="container">
-<section class="hero" id="home"><div class="intro-label">Data Science · Analytics · Applied Projects</div><h1>Data Science Portfolio</h1><p class="lead">Explore applied analyses, interactive reports and reproducible methods. Each project connects a practical question to evidence, results and limitations, with source code and documentation available on GitHub.</p></section>
-<section class="section" aria-labelledby="explore-title"><h2 id="explore-title">Explore by category</h2><p class="section-subtitle">Filter projects by area or collection. Only published reports are shown.</p>
-<fieldset class="collection-fieldset"><legend>Collection</legend>
-<label class="collection-option"><input type="radio" name="collection" value="all" checked> All Projects</label>
-<label class="collection-option"><input type="radio" name="collection" value="selected_projects"> Selected Projects</label>
-<label class="collection-option"><input type="radio" name="collection" value="learning_labs"> Learning Labs</label>
+<section class="hero" id="home"><div class="intro-label" data-i18n="heroLabel">Data Science · Analytics · Applied Projects</div><h1 data-i18n="headline">Data Science Portfolio</h1><p class="lead" data-i18n="lead">Explore applied analyses, interactive reports and reproducible methods. Each project connects a practical question to evidence, results and limitations, with source code and documentation available on GitHub.</p></section>
+<section class="section" aria-labelledby="explore-title"><h2 id="explore-title" data-i18n="exploreTitle">Explore by category</h2><p class="section-subtitle" data-i18n="exploreSubtitle">Filter projects by area or collection. Only published reports are shown.</p>
+<fieldset class="collection-fieldset"><legend data-i18n="collectionLabel">Collection</legend>
+<label class="collection-option"><input type="radio" name="collection" value="all" checked> <span data-i18n="allProjects">All Projects</span></label>
+<label class="collection-option"><input type="radio" name="collection" value="selected_projects"> <span data-i18n="selectedProjects">Selected Projects</span></label>
+<label class="collection-option"><input type="radio" name="collection" value="learning_labs"> <span data-i18n="learningLabs">Learning Labs</span></label>
 </fieldset>
-<div class="area-filters"><h3>Area</h3><div class="filters" role="group" aria-label="Project areas">{''.join(filters)}</div></div>
+<div class="area-filters"><h3 data-i18n="area">Area</h3><div class="filters" role="group" aria-label="Project areas">{''.join(filters)}</div></div>
 </section>
-<section class="section" aria-labelledby="projects-title"><h2 id="projects-title">Projects &amp; reports</h2><p class="section-subtitle" id="result-count" aria-live="polite"></p><div class="projects" id="projects">{markup}</div><p class="empty" id="empty" hidden>No published projects match these filters. Choose another category or collection.</p></section>
+<section class="section" aria-labelledby="projects-title"><h2 id="projects-title" data-i18n="projectsReports">Projects &amp; reports</h2><p class="section-subtitle" id="result-count" aria-live="polite"></p><div class="projects" id="projects">{markup}</div><p class="empty" id="empty" hidden data-i18n="empty">No published projects match these filters. Choose another category or collection.</p></section>
 </main>
 {ep_footer_html}
+<script src="assets/scripts/theme.js" defer></script>
+<script src="assets/scripts/i18n.js" defer></script>
+<script src="assets/scripts/header.js" defer></script>
 <script>
 (function() {{
 let topic='all',collection='all';
@@ -351,6 +357,7 @@ def main() -> None:
             raise SystemExit(f"Refusing to overwrite an unmarked directory: {output}")
         shutil.rmtree(output)
     output.mkdir(parents=True)
+    copy_shared_assets(output)
     (output / ".portfolio-pages-build").touch()
     published: list[dict[str, object]] = []
     for report, page in parsed:
