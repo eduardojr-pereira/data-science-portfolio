@@ -35,7 +35,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: eduardojr-pereira/ep-brand-assets
-          ref: main
+          ref: 9e77cfba8fc9d21fa46a8261e6ea2b7c52d28081
           path: .ep-brand-assets-build
 
       - name: Prepare the static site
