@@ -12,20 +12,13 @@ from string import Template
 import pandas as pd
 import plotly.graph_objects as go
 import plotly.express as px
-from plotly.io import to_html
+from ep_brand import analytical_palette, render_plotly, plotly_head
 from plotly.offline import get_plotlyjs
 
 
-COLORS = {
-    "background": "#0c1525",
-    "card": "#14243a",
-    "aqua": "#67d8e9",
-    "blue": "#7f98ff",
-    "orange": "#ffc07a",
-    "green": "#87dbc0",
-    "red": "#ff9898",
-    "muted": "#a7bfd3",
-}
+_palette = analytical_palette()
+COLORS = dict(zip(("aqua", "blue", "orange", "green", "red", "lavender", "rose", "muted"), _palette))
+COLORS.update(background="#242424", card="#333230")
 
 
 BIKE_REPORT_TRANSLATIONS = '(function(){\n\'use strict\';\n  const bike = document.querySelector(\'.bike-local-nav\');\n  if (!bike) return;\n  const pt = {\n    \'Overview\':\'Visão geral\',\n    \'Business\':\'Negócio\',\n    \'Exploration\':\'Exploração\',\n    \'Hourly\':\'Padrões horários\',\n    \'Models\':\'Modelos\',\n    \'Conclusions\':\'Conclusões\',\n    \'Outputs\':\'Resultados\',\n    \'References\':\'Referências\',\n    \'Technical report · Regression analysis\':\'Relatório técnico · Análise de regressão\',\n    \'Bike Sharing Demand Analysis\':\'Análise da Demanda por Bicicletas Compartilhadas\',\n    \'Explore daily and hourly demand patterns from Washington, D.C. (2011–2012), compare regression models through chronological validation, and examine the limitations of retrospective demand estimation.\':\'Explore os padrões diários e horários da demanda em Washington, D.C. (2011–2012), compare modelos de regressão com validação cronológica e examine as limitações da estimativa retrospectiva da demanda.\',\n    \'Time-series CV\':\'Validação temporal\',\n    \'Dataset overview\':\'Visão geral dos dados\',\n    \'The UCI dataset contains daily and hourly bike rental totals and weather-related variables. These figures are historical observations, not forecasts.\':\'O conjunto de dados da UCI contém totais diários e horários de aluguéis de bicicletas e variáveis meteorológicas. Esses números representam observações históricas, não previsões.\',\n    \'Daily observations\':\'Observações diárias\',\n    \'Total rentals\':\'Total de aluguéis\',\n    \'Development days\':\'Dias de desenvolvimento\',\n    \'Holdout days\':\'Dias de teste cronológico\',\n    \'Total recorded rentals\':\'Total de aluguéis registrados\',\n    \'Business questions & operational insights\':\'Questões de negócio e insights operacionais\',\n    \'A historical system-level demand study: where might the operator investigate staffing, bicycle availability or rebalancing windows? These are planning hypotheses, not measured cost savings or station-level prescriptions.\':\'Um estudo histórico da demanda no sistema: em quais períodos o operador poderia investigar equipes, disponibilidade de bicicletas ou redistribuição? São hipóteses de planejamento, não economias comprovadas nem recomendações específicas por estação.\',\n    \'Most active clock hour\':\'Horário de maior movimento\',\n    \'Average\':\'Média de\',\n    \'461.5 rentals\':\'461,5 aluguéis\',\n    \'per recorded observation at this hour, over 2011–2012. Missing clock-hour records are not imputed as zero.\':\'por observação registrada nesse horário, em 2011–2012. Horários ausentes não foram imputados como zero.\',\n    \'Demand growth\':\'Crescimento da demanda\',\n    \'Change in mean daily rentals from 2011 to 2012. It does not establish the causes of growth or a future growth rate.\':\'Variação da média diária de aluguéis de 2011 para 2012. Isso não estabelece as causas do crescimento nem uma taxa futura.\',\n    \'Operational questions\':\'Questões operacionais\',\n    \'Compare registered and casual hourly patterns, workdays and non-workdays, and peak windows before planning inventory coverage. Station-level supply data are required to design actual rebalancing routes.\':\'Compare padrões horários de usuários registrados e ocasionais, dias úteis e não úteis e horários de pico antes de planejar a cobertura da frota. Dados de disponibilidade por estação são necessários para definir rotas de redistribuição.\',\n    \'Evidence, not a production forecast\':\'Evidências, não previsões em produção\',\n    \'Historical hourly holdout R²:\':\'R² do teste cronológico horário:\',\n    \'; daily holdout R²:\':\'; R² do teste cronológico diário:\',\n    \'. These models use observed contemporaneous weather; deployment requires available-at-prediction-time inputs and independent evaluation.\':\'. Esses modelos utilizam o clima observado no mesmo período; sua implantação exige variáveis disponíveis no momento da previsão e avaliação independente.\',\n    \'Exploratory analysis\':\'Análise exploratória\',\n    \'Hover to inspect values; use the modebar to zoom, pan or download chart images. In the first chart, switch rider groups and use the range slider to focus on a period.\':\'Passe o cursor para inspecionar valores; use a barra de ferramentas para ampliar, deslocar ou baixar imagens dos gráficos. No primeiro gráfico, alterne entre grupos de usuários e use o seletor de intervalo para focar um período.\',\n    \'Daily rental demand\':\'Demanda diária por aluguéis\',\n    \'Choose a rider segment or period; explore detailed values by hovering over the line.\':\'Escolha um segmento de usuários ou período; passe o cursor sobre a linha para explorar os valores.\',\n    \'Correlations are descriptive; `cnt` is the sum of casual and registered rentals, so its association with those components is structural.\':\'As correlações são descritivas; `cnt` é a soma dos aluguéis ocasionais e registrados, portanto a associação com esses componentes é estrutural.\',\n    \'Weather comparisons are observational. Group sizes differ, and no causal effect should be inferred from these summaries.\':\'As comparações meteorológicas são observacionais. Os grupos têm tamanhos diferentes, e não se deve inferir causalidade desses resumos.\',\n    \'Hourly patterns & validation\':\'Padrões horários e validação\',\n    \'The hourly UCI records cover the same 2011–2012 Capital Bikeshare rentals as the daily dataset, shown at a finer aggregation level. These are not additional rentals.\':\'Os registros horários da UCI abrangem os mesmos aluguéis do Capital Bikeshare de 2011–2012 presentes nos dados diários, em um nível mais detalhado. Não são aluguéis adicionais.\',\n    \'Recorded hourly observations\':\'Observações horárias registradas\',\n    \'Selected hourly candidate\':\'Modelo horário selecionado\',\n    \'Random forest\':\'Floresta aleatória\',\n    \'Hourly CV RMSE\':\'RMSE da validação horária\',\n    \'Hourly holdout R²\':\'R² do teste horário\',\n    \'Hourly chronological holdout\':\'Teste cronológico horário\',\n    \'76 days\':\'76 dias\',\n    \'Data completeness\':\'Completude dos dados\',\n    \'The source has\':\'A fonte possui\',\n    \'unrecorded clock hours across those days. The absent hours were not artificially imputed.\':\'horários sem registro nesses dias. As horas ausentes não foram imputadas artificialmente.\',\n    \'How to interpret:\':\'Como interpretar:\',\n    "Hourly and daily RMSE/MAE are measured in different units and should not be compared numerically. Both models are retrospective conditional estimates using observed weather at the target date/hour, not proven advance forecasts. The daily model\'s negative holdout R² is reported transparently. An earlier iteration already examined the holdout; this evaluation is not an untouched external benchmark.":\'O RMSE/MAE horário e diário é medido em unidades diferentes e não deve ser comparado numericamente. Ambos os modelos produzem estimativas condicionais retrospectivas usando o clima observado na data/hora de interesse, não previsões antecipadas comprovadas. O R² negativo do modelo diário no teste cronológico é apresentado de forma transparente. Uma versão anterior já examinou esse conjunto de teste; portanto, a avaliação não representa um teste externo ainda não explorado.\',\n    \'Operational questions: How do commute peaks differ from leisure use? Which hours would be important to examine for bicycle rebalancing and staffing? These associations are descriptive and do not prove that a specific intervention would increase demand.\':\'Questões operacionais: como os picos de deslocamento diferem do uso recreativo? Quais horários merecem investigação para redistribuição de bicicletas e dimensionamento de equipes? Essas associações são descritivas e não comprovam que uma intervenção específica aumentaria a demanda.\',\n    \'Daily model evaluation\':\'Avaliação do modelo diário\',\n    \'Candidate models are evaluated using expanding-window cross-validation on the development period. The final chronological holdout was examined in earlier pilot revisions, so it must not be presented as an untouched independent benchmark.\':\'Os modelos candidatos são avaliados por validação cruzada com janela de treinamento crescente no período de desenvolvimento. O conjunto final de teste cronológico já foi examinado em versões piloto anteriores e não pode ser apresentado como uma referência independente ainda não explorada.\',\n    \'Selected candidate\':\'Modelo selecionado\',\n    \'Polynomial ridge (degree 2)\':\'Ridge polinomial (grau 2)\',\n    \'Mean CV RMSE:\':\'RMSE médio da validação:\',\n    \'daily rentals\':\'aluguéis diários\',\n    \'Chronological holdout\':\'Teste cronológico\',\n    \'Importance comes from an illustrative Random Forest, not from the selected Polynomial Ridge model; impurity-based importances can be biased.\':\'A importância das variáveis vem de uma floresta aleatória ilustrativa, não do modelo Ridge polinomial selecionado; medidas baseadas na impureza podem apresentar vieses.\',\n    \'Key findings and limitations\':\'Principais resultados e limitações\',\n    \'Generalization warning:\':\'Alerta de generalização:\',\n    \'Negative R² indicates a poor fit relative to the holdout mean baseline. This is not evidence of deployment-ready prediction.\':\'Um R² negativo indica desempenho inferior à referência baseada na média do conjunto de teste. Isso não demonstra prontidão para previsões em produção.\',\n    \'Demand variation\':\'Variação da demanda\',\n    \'Rental counts vary across seasons, weather categories and rider groups. These are descriptive patterns, not causal explanations.\':\'A quantidade de aluguéis varia conforme as estações do ano, as condições meteorológicas e os grupos de usuários. São padrões descritivos, não explicações causais.\',\n    \'Interpretation of model performance\':\'Interpretação do desempenho dos modelos\',\n    \'Training-only cross-validation was used to select candidates. A difficult chronological holdout reveals limitations not evident from development-fold scores.\':\'A validação cruzada realizada apenas nos dados de treinamento foi utilizada para selecionar os candidatos. O teste cronológico mais difícil revela limitações que não aparecem nos resultados das partições de desenvolvimento.\',\n    \'Same-day weather\':\'Clima do mesmo dia\',\n    \'The models use observed same-day weather variables. This is\':\'Os modelos utilizam variáveis meteorológicas observadas no próprio dia. Trata-se de\',\n    \'retrospective conditional demand estimation\':\'estimativa retrospectiva condicional da demanda\',\n    \'and must not be described as a day-ahead forecast.\':\'e não deve ser descrita como previsão para o dia seguinte.\',\n    \'External validity\':\'Validade externa\',\n    \'These results cover a single city and 2011–2012. Prospective evaluation with a new period would be required before operational use.\':\'Esses resultados abrangem uma única cidade e os anos de 2011–2012. Uma avaliação prospectiva com novos dados seria necessária antes do uso operacional.\',\n    \'Validated outputs & additional figures\':\'Resultados validados e figuras adicionais\',\n    "The HTML is built from the notebook\'s exported metrics and tables. Use these source artifacts to inspect exact numbers. Additional PNG figures remain available without reproducing them in new storage formats.":\'O HTML é construído a partir de métricas e tabelas exportadas pelo notebook. Utilize esses arquivos para conferir os números exatos. As figuras PNG adicionais continuam disponíveis sem necessidade de reproduzi-las em outros formatos.\',\n    \'Daily metrics JSON\':\'Métricas diárias (JSON)\',\n    \'Hourly metrics JSON\':\'Métricas horárias (JSON)\',\n    \'Hourly model comparison CSV\':\'Comparação de modelos horários (CSV)\',\n    \'Hourly holdout predictions CSV\':\'Predições do teste horário (CSV)\',\n    \'Model comparison CSV\':\'Comparação de modelos (CSV)\',\n    \'Holdout predictions CSV\':\'Predições do teste (CSV)\',\n    \'Feature importance CSV\':\'Importância das variáveis (CSV)\',\n    \'Variable distributions\':\'Distribuições das variáveis\',\n    \'Tree excerpt\':\'Trecho de árvore\',\n    \'Notebook demand patterns\':\'Padrões de demanda do notebook\',\n    \'References and reproducibility\':\'Referências e reprodutibilidade\',\n    \'Original dataset:\':\'Conjunto de dados original:\',\n    \', Fanaee-T & Gama, DOI 10.24432/C5W894, distributed under CC BY 4.0 with attribution.\':\', Fanaee-T & Gama, DOI 10.24432/C5W894, distribuído sob CC BY 4.0, com atribuição.\',\n    \'Knowledge Base:\':\'Base de conhecimento:\',\n    \'Machine Learning\':\'Aprendizado de Máquina\',\n    \'and\':\'e\',\n    \'Data Analysis & Visualization\':\'Análise e Visualização de Dados\',\n    \'Implementation:\':\'Implementação:\',\n    \'execute\':\'execute\',\n    \'to regenerate data exports, then run\':\'para regenerar os dados exportados; depois execute\',\n    \'from the project directory to rebuild this HTML. The HTML requires no Python server and includes Plotly.js offline; GitHub Pages hosting is supported.\':\'na pasta do projeto para reconstruir este HTML. O HTML não requer servidor Python, inclui Plotly.js para uso offline e pode ser hospedado no GitHub Pages.\',\n    \'MAE\':\'MAE\',\n    \'rentals/hour · R²\':\'aluguéis/hora · R²\',\n  };\n  const rootNodes = [document.querySelector(\'.hero\'),document.querySelector(\'main\'),bike].filter(Boolean);\n  const originals = [];\n  const normalize = value => value.replace(/\\s+/g,\' \').trim();\n  for (const root of rootNodes) {\n    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);\n    while (walker.nextNode()) {\n      const node = walker.currentNode;\n      if (node.parentElement.closest(\'script,style,svg,.plotly-graph-div,.ep-references,.ep-outputs\')) continue;\n      const key = normalize(node.nodeValue);\n      if (Object.prototype.hasOwnProperty.call(pt,key)) originals.push({node,original:node.nodeValue,key});\n    }\n  }\n  function syncBike() {\n    const translated = document.documentElement.lang === \'pt-BR\';\n    for (const item of originals) {\n      if (!item.node.isConnected) continue;\n      if (!translated) { item.node.nodeValue = item.original; continue; }\n      const value = item.original;\n      const start = value.match(/^\\s*/)[0];\n      const end = value.match(/\\s*$/)[0];\n      item.node.nodeValue = start + pt[item.key] + end;\n    }\n  }\n  document.addEventListener(\'DOMContentLoaded\', syncBike);\n  document.addEventListener(\'ep:languagechange\', syncBike);\n})();\n'
@@ -132,7 +125,7 @@ def _safe_float(value):
 def _layout(fig, title, y_title=None, height=370, legend_orientation="h"):
     fig.update_layout(
         title=dict(text=title, font=dict(size=17)),
-        template="plotly_dark",
+        template="none",
         paper_bgcolor=COLORS["card"],
         plot_bgcolor=COLORS["card"],
         font=dict(family="Inter, system-ui, sans-serif", color="#e7eef9", size=12),
@@ -244,6 +237,8 @@ PLOTLY_TRANSLATIONS = {
     "Decision tree": "Árvore de decisão",
     "Decision Tree": "Árvore de decisão",
     "Gradient boosting": "Gradient boosting",
+    "Ridge regression": "Regressão Ridge",
+    "Median baseline": "Referência pela mediana",
 
     # Hover templates
     "Mean rentals:": "Média de aluguéis:",
@@ -346,6 +341,7 @@ def _plotly_translation_spec(fig, plot_id):
         if isinstance(hover, str):
             translated = translate_hover(hover)
 
+            translated = translated.replace("%{x|%Y-%m-%d}", "%{x|%d/%m/%Y}")
             if translated != hover:
                 update_en["hovertemplate"] = hover
                 update_pt["hovertemplate"] = translated
@@ -425,14 +421,7 @@ def _plotly_translation_html(fig, plot_id):
 
 
 def _figure_html(fig, plot_id):
-    return to_html(
-        fig,
-        full_html=False,
-        include_plotlyjs=False,
-        div_id=plot_id,
-        config={"responsive": True, "displaylogo": False,
-                "modeBarButtonsToRemove": ["lasso2d", "select2d"]},
-    )
+    return render_plotly(fig, plot_id)
 
 
 def build_html_report(project_root: Path | None = None, *, metrics_path: Path | None = None,
@@ -580,7 +569,7 @@ def build_html_report(project_root: Path | None = None, *, metrics_path: Path | 
     correlations = daily[["cnt", "temp", "atemp", "hum", "windspeed", "casual", "registered"]].corr()
     corr = go.Figure(go.Heatmap(z=correlations.to_numpy(), x=correlations.columns,
                                 y=correlations.columns, zmin=-1, zmax=1,
-                                colorscale="RdBu", reversescale=True,
+                                colorscale=analytical_palette("vik"), reversescale=False,
                                 text=correlations.round(2).to_numpy(), texttemplate="%{text}",
                                 hovertemplate="%{x} / %{y}: %{z:.2f}<extra></extra>"))
     _layout(corr, "Pairwise Pearson correlations", height=440)
@@ -638,7 +627,7 @@ def build_html_report(project_root: Path | None = None, *, metrics_path: Path | 
     weekday_names = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
     hourly_heatmap = go.Figure(go.Heatmap(
         x=list(range(24)), y=weekday_names, z=hour_weekdays.to_numpy(),
-        colorscale="YlOrBr", colorbar=dict(title="Mean rentals"),
+        colorscale=analytical_palette("nuuk"), colorbar=dict(title="Mean rentals"),
         hovertemplate="%{y}, %{x}:00 — %{z:.1f} mean rentals<extra></extra>"))
     _layout(hourly_heatmap, "Hour × weekday: mean recorded demand", height=450)
     hourly_heatmap.update_xaxes(title="Hour of day", dtick=2)
@@ -717,6 +706,13 @@ def build_html_report(project_root: Path | None = None, *, metrics_path: Path | 
         "plot-residuals": residuals,
         "plot-importance": rf,
     }
+    for figure in (seasonality, holdout, hourly_profile, hourly_workday, hour_holdout_chart):
+        for i, trace in enumerate(figure.data):
+            trace.line.dash = ("solid", "dash", "dot")[i % 3]
+            if "markers" in (trace.mode or ""):
+                trace.marker.symbol = ("circle", "square", "diamond")[i % 3]
+    for i, trace in enumerate(composition.data):
+        trace.marker.pattern.shape = ("", "/")[i % 2]
     chart_divs = {}
 
     for key, figure in plots.items():
@@ -801,6 +797,7 @@ def build_html_report(project_root: Path | None = None, *, metrics_path: Path | 
         "holdout_start": preds["date"].iloc[0].strftime("%Y-%m-%d"),
         "holdout_end": preds["date"].iloc[-1].strftime("%Y-%m-%d"),
         "plotly_js": plotly_js,
+        "ep_plotly_head": plotly_head(),
         "business_peak": f"{business_peak_hour:02d}:00–{(business_peak_hour+1) % 24:02d}:00",
         "business_peak_mean": f"{float(business_hourly_avg.loc[business_peak_hour]):,.1f}",
         "business_growth": f"{business_growth:.1f}",
@@ -865,6 +862,7 @@ def build_html_report(project_root: Path | None = None, *, metrics_path: Path | 
 
   </style>
   <script>$plotly_js</script>
+  $ep_plotly_head
 </head>
 <body>
   <nav class="bike-local-nav ep-report-nav" aria-label="Report sections">

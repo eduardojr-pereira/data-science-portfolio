@@ -8,9 +8,12 @@
 
 ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white&style=for-the-badge) ![Jupyter](https://img.shields.io/badge/Jupyter-F37626?logo=jupyter&logoColor=white&style=for-the-badge) ![Data Science](https://img.shields.io/badge/Data-Science-21618C?style=for-the-badge)
 
-*Projetos aplicados selecionados, experimentos de aprendizado e exercícios acadêmicos autorais em Ciência de Dados.*
+*Economia, Ciência de Dados e Analytics aplicados a problemas de negócio.*
 
 </div>
+
+
+<p align="center"><a href="https://eduardojr-pereira.github.io/data-science-portfolio/"><strong>Explorar a vitrine interativa</strong></a></p>
 
 ---
 
@@ -18,9 +21,7 @@
 
 <div align="center">
 
-[Visão Geral](#overview) • [Conteúdo](#contents) • [Instalação e Configuração](#setup) • [Instruções de Uso](#usage)
-
-[Testes e Validação](#validation) • [Referências](#references) • [Licença](#license) • [Contato](#contact)
+[Visão Geral](#overview) • [Projetos](#projects) • [Estrutura de Diretórios](#directory-structure) • [Repositórios Relacionados](#related-repositories) • [Licença](#license) • [Contato](#contact)
 
 </div>
 
@@ -30,137 +31,87 @@
 
 ## Visão Geral
 
-Este repositório reúne trabalhos práticos e complementa a [Base de Conhecimento em Ciência de Dados](https://github.com/eduardojr-pereira/data-science-knowledge-base). Ele separa projetos aplicados selecionados de exercícios de aprendizagem, facilitando a navegação conforme a finalidade e a maturidade de cada trabalho.
+Este portfólio reúne projetos de Ciência de Dados e Analytics que conectam minha formação em Ciências Econômicas (UFV) e pós-graduação em Ciência de Dados (PUC) à investigação de problemas práticos. É o complemento aplicado da Base de Conhecimento em Ciência de Dados.
 
-**Situação atual:** O portfólio contém dois projetos: **Bike Sharing**, um estudo aplicado de análise de dados, e **Jogo da Forca**, um Learning Lab interativo em Python e JavaScript. Ambos possuem documentação e demonstrações acessíveis pelo navegador. O Bike Sharing apresenta análises retrospectivas, não previsões operacionais; as ressalvas de reexecução do notebook permanecem no README do projeto.
-
-**Idiomas:** o portfólio e os dois projetos atuais têm documentação em inglês e português brasileiro. O jogo web da Forca também oferece interface bilíngue.
+Os projetos são organizados conforme sua finalidade e maturidade. A documentação e as experiências interativas dos dois projetos atuais estão disponíveis em inglês e português brasileiro. Cada projeto documenta suas dependências, metodologia, validação e limitações; não há um ambiente Python único para todo o repositório. Novos trabalhos são revisados quanto à autoria, procedência e direitos dos dados, informações sensíveis, reprodutibilidade e documentação antes da inclusão.
 
 <p align="right"><a href="#readme-top">↑ VOLTAR AO TOPO</a></p>
 
 ---
 
-<a id="contents"></a>
+<a id="projects"></a>
 
-## Conteúdo
+## Projetos
 
-### Coleções de Projetos
+[Projetos Selecionados](#selected-projects) • [Laboratórios de Aprendizado](#learning-labs) • [Experimentos Independentes](#independent-experiments)
 
-| Coleção | Finalidade |
-|---|---|
-| [Projetos Selecionados](./selected_projects/README.pt-BR.md) | Projetos curados com problema de negócio, resultados, limitações e execução reproduzível |
-| [Learning Labs](./learning_labs/README.pt-BR.md) | Notebooks menores e estudos técnicos, independentemente da origem acadêmica |
-| [Experimentos Independentes](./independent_experiments/README.pt-BR.md) | Investigações exploratórias ainda não promovidas a estudos de caso selecionados |
+<a id="selected-projects"></a>
 
-### Projetos Publicados
+### Projetos Selecionados
 
-| Projeto | Coleção | Experiência online | Código / documentação |
-|---|---|---|---|
-| **Bike Sharing — Demanda e Insights Operacionais** | Projetos Selecionados | [Relatório interativo](https://eduardojr-pereira.github.io/data-science-portfolio/selected_projects/bike_sharing/reports/) | [README](./selected_projects/bike_sharing/README.pt-BR.md) · [Notebook](./selected_projects/bike_sharing/bike_sharing_analysis.ipynb) |
-| **Jogo da Forca — Laboratório de Python** | Learning Labs | [Jogar agora](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python_hangman_game/reports/index.html) | [README](./learning_labs/python_hangman_game/README.pt-BR.md) · [Código Python](./learning_labs/python_hangman_game/hangman.py) |
+Estudos de caso aplicados, orientados por questões de negócio, evidências e limitações documentadas.
 
-[Explorar a vitrine interativa do portfólio](https://eduardojr-pereira.github.io/data-science-portfolio/).
+| Projeto | Área e tecnologias | Recursos |
+|---|---|---|
+| **Bike Sharing — Demanda e Insights Operacionais** | Analytics de demanda · Regressão e avaliação de modelos · Python, pandas, scikit-learn, Plotly | [README](./selected_projects/bike_sharing/README.pt-BR.md) · [Notebook](./selected_projects/bike_sharing/bike_sharing_analysis.ipynb) · [Relatório interativo](https://eduardojr-pereira.github.io/data-science-portfolio/selected_projects/bike_sharing/reports/) |
 
-### Navegação por Tema
+O estudo analisa padrões históricos de demanda diária e horária, segmentos de usuários e avaliação temporal de modelos. Os resultados são retrospectivos, não previsões validadas em produção; as limitações de reexecução do notebook estão documentadas no README do projeto.
 
-Os projetos disponíveis abordam **análise de demanda e avaliação de modelos de regressão** (Bike Sharing) e **fundamentos de Python e interatividade no navegador** (Jogo da Forca). Outros temas serão incluídos somente quando houver projetos publicados.
+<a id="learning-labs"></a>
 
-### Organização de Diretórios
+### Laboratórios de Aprendizado
 
-~~~text
+Projetos menores voltados ao desenvolvimento de competências técnicas e experimentação.
+
+| Projeto | Área e tecnologias | Recursos |
+|---|---|---|
+| **Hangman Game — Jogo da Forca** | Fundamentos de programação · Python, JavaScript, HTML, CSS | [README](./learning_labs/python_hangman_game/README.pt-BR.md) · [Código Python](./learning_labs/python_hangman_game/hangman.py) · [Testes](./learning_labs/python_hangman_game/tests/test_hangman.py) · [Jogar online](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python_hangman_game/reports/index.html) |
+
+Jogo de adivinhação de palavras com versões no terminal e navegador, modos de um e dois jogadores e interface bilíngue no navegador.
+
+<a id="independent-experiments"></a>
+
+### Experimentos Independentes
+
+Investigações exploratórias autorais ainda não selecionadas como estudos de caso. Nenhum experimento publicado nesta coleção até o momento.
+
+<p align="right"><a href="#readme-top">↑ VOLTAR AO TOPO</a></p>
+
+---
+
+<a id="directory-structure"></a>
+
+## Estrutura de Diretórios
+
+```text
 data-science-portfolio/
-├── README.md / README.pt-BR.md
+├── README.md
+├── README.pt-BR.md
 ├── selected_projects/
-│   ├── README.md / README.pt-BR.md
 │   └── bike_sharing/
-│       ├── bike_sharing_analysis.ipynb
-│       ├── datasets/ e outputs/
-│       └── reports/index.html
 ├── learning_labs/
-│   ├── README.md / README.pt-BR.md
 │   └── python_hangman_game/
-│       ├── hangman.py e tests/
-│       ├── web/
-│       └── reports/index.html
 ├── independent_experiments/
-└── tools/
-~~~
+├── config/
+├── tools/
+├── vendor/
+└── .github/workflows/
+```
 
-Bike Sharing e Jogo da Forca são os primeiros projetos incorporados às respectivas coleções. Os materiais históricos continuam preservados separadamente; novos projetos serão adicionados após revisão.
-
-<p align="right"><a href="#readme-top">↑ VOLTAR AO TOPO</a></p>
-
----
-
-<a id="setup"></a>
-
-## Instalação e Configuração
-
-**1. Clone o repositório:**
-
-~~~bash
-git clone https://github.com/eduardojr-pereira/data-science-portfolio.git
-cd data-science-portfolio
-~~~
-
-**2. Consulte as coleções disponíveis:**
-
-~~~bash
-ls selected_projects
-ls learning_labs
-ls independent_experiments
-~~~
-
-Não existe **`requirements.txt` global**. O Bike Sharing documenta dependências e execução próprias; o Jogo da Forca utiliza a biblioteca padrão do Python na versão de terminal e HTML/CSS/JavaScript no navegador. Consulte o README de cada projeto em vez de presumir um ambiente comum.
+Cada projeto possui documentação e estrutura próprias. `config/` contém o catálogo; `tools/` contém ferramentas de integração. `vendor/` é um snapshot existente cuja revisão pertence a uma etapa posterior.
 
 <p align="right"><a href="#readme-top">↑ VOLTAR AO TOPO</a></p>
 
 ---
 
-<a id="usage"></a>
+<a id="related-repositories"></a>
 
-## Instruções de Uso
+## Repositórios Relacionados
 
-Comece por [Projetos Selecionados](./selected_projects/README.pt-BR.md) para análises aplicadas ou por [Learning Labs](./learning_labs/README.pt-BR.md) para projetos de programação menores. A [vitrine interativa](https://eduardojr-pereira.github.io/data-science-portfolio/) oferece acesso direto às duas experiências web.
-
-Antes da publicação, cada trabalho candidato será revisado quanto à autoria, proveniência e direitos de redistribuição dos dados, informações sensíveis, reprodutibilidade, integridade dos outputs e documentação. Materiais didáticos de terceiros não serão apresentados como trabalhos autorais. Os acervos históricos originais permanecerão preservados separadamente.
-
-Os futuros projetos deverão documentar objetivo, fontes de dados, preparação do ambiente, métodos, resultados, limitações e licenças aplicáveis.
-
-<p align="right"><a href="#readme-top">↑ VOLTAR AO TOPO</a></p>
-
----
-
-<a id="validation"></a>
-
-## Testes e Validação
-
-| Verificação | Situação documentada |
+| Repositório | Finalidade |
 |---|---|
-| Estrutura do repositório e índice bilíngue | Disponíveis na branch `main` |
-| Projetos selecionados | Código e relatório interativo do Bike Sharing incluídos |
-| Learning Labs | Jogo da Forca, interface web e oito testes unitários Python aprovados |
-| Reprodutibilidade do Bike Sharing | Verificação dos dados, resultados e ressalvas de execução registrados no [README do projeto](./selected_projects/bike_sharing/README.pt-BR.md) |
-| Novos projetos | Revisados individualmente antes da inclusão |
-
-**A publicação do piloto não valida os próximos projetos.** Cada README específico documentará a execução, a reprodutibilidade e as limitações metodológicas efetivamente verificadas.
-
-<p align="right"><a href="#readme-top">↑ VOLTAR AO TOPO</a></p>
-
----
-
-<a id="references"></a>
-
-## Referências
-
-| Recurso | Link |
-|---|---|
-| Base de Conhecimento em Ciência de Dados | [Notebooks de estudo e referências técnicas](https://github.com/eduardojr-pereira/data-science-knowledge-base) |
-| Identidade Visual EP | [Logotipo e ícones compartilhados](https://github.com/eduardojr-pereira/ep-brand-assets) |
-| JupyterLab | [Documentação oficial](https://jupyterlab.readthedocs.io/en/stable/) |
-| Python | [Documentação oficial](https://docs.python.org/3/) |
-
-As referências específicas de cada projeto serão documentadas junto ao respectivo trabalho.
+| [Data Science Knowledge Base](https://github.com/eduardojr-pereira/data-science-knowledge-base) | Notebooks de estudo, guias e materiais de referência técnica |
+| [EP Brand Assets](https://github.com/eduardojr-pereira/ep-brand-assets) | Identidade visual, componentes compartilhados e infraestrutura de apresentação |
 
 <p align="right"><a href="#readme-top">↑ VOLTAR AO TOPO</a></p>
 
@@ -180,26 +131,28 @@ Datasets externos, imagens, bibliotecas e recursos de identidade visual mantêm 
 
 <a id="contact"></a>
 
+<!-- EP-FOOTER:START -->
 ## Contato
 
 <div align="center">
 
-<a href="https://eduardo-pereira.webflow.io/" title="Personal website — Eduardo Junior Pereira"><img src="https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/logos/logo_initials.png" alt="EP logo — Eduardo Junior Pereira" height="90"></a>
+<a href="https://eduardo-pereira.webflow.io/" title="Site pessoal — Eduardo Junior Pereira"><img src="https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/logos/logo_initials.png" alt="Logo EP — Eduardo Junior Pereira" height="90"></a>
 
 **Eduardo Junior Pereira**
 
-*Economics • Data Science • Python*
+*Economics · Data Science · Analytics*
 
-<a href="mailto:eduardojr.pereira@gmail.com"><img src="https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/icons/gmail_icon.svg" alt="Email" height="27"></a>&nbsp;&nbsp;
+<a href="mailto:eduardojr.pereira@gmail.com"><img src="https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/icons/gmail_icon.svg" alt="E-mail" height="27"></a>&nbsp;&nbsp;
 <a href="https://www.linkedin.com/in/eduardo-jr-pereira/"><img src="https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/icons/linkedin_icon.svg" alt="LinkedIn" height="27"></a>&nbsp;&nbsp;
 <a href="https://github.com/eduardojr-pereira"><img src="https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/icons/github_icon.svg" alt="GitHub" height="27"></a>
 
 [Vamos nos conectar no LinkedIn para trocar ideias e oportunidades.](https://www.linkedin.com/in/eduardo-jr-pereira/)
 
-[**Base de Conhecimento**](https://github.com/eduardojr-pereira/data-science-knowledge-base) &nbsp;•&nbsp; [**Site Pessoal**](https://eduardo-pereira.webflow.io/)
+[**Base de Conhecimento**](https://github.com/eduardojr-pereira/data-science-knowledge-base)
 
 </div>
 
 <p align="right"><a href="#readme-top">↑ VOLTAR AO TOPO</a></p>
 
 ---
+<!-- EP-FOOTER:END -->

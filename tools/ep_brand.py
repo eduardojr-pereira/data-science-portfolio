@@ -86,3 +86,13 @@ def render_outputs(data):
 
 def render_project_links(repository, *, back_to_portfolio=False):
     return _canonical_module("render_project_links").render_project_links(repository, back_to_portfolio=back_to_portfolio)
+
+
+def analytical_palette(*args, **kwargs):
+    return _canonical_module("render_plotly").analytical_palette(*args, **kwargs)
+
+def render_plotly(*args, **kwargs):
+    return _canonical_module("render_plotly").render_plotly(*args, **kwargs)
+
+def plotly_head():
+    return _canonical_module("render_plotly").plotly_head()

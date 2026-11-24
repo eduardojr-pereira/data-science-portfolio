@@ -13,7 +13,7 @@
 </div>
 
 <p align="center">
-  <a href="../README.md">Back to Learning Labs</a> &nbsp;·&nbsp; <a href="../../README.md">Portfolio home</a> &nbsp;·&nbsp; <a href="https://eduardojr-pereira.github.io/data-science-portfolio/">Interactive showcase</a>
+  <a href="../../README.md#learning-labs">Back to Learning Labs</a> &nbsp;·&nbsp; <a href="../../README.md">Portfolio home</a> &nbsp;·&nbsp; <a href="https://eduardojr-pereira.github.io/data-science-portfolio/">Interactive showcase</a>
 </p>
 
 <p align="center">
@@ -90,6 +90,7 @@ The `data-science-portfolio` repository has **no declared repository-wide licens
 
 <a id="contact"></a>
 
+<!-- EP-FOOTER:START -->
 ## Contact
 
 <div align="center">
@@ -98,7 +99,7 @@ The `data-science-portfolio` repository has **no declared repository-wide licens
 
 **Eduardo Junior Pereira**
 
-*Economics • Data Science • Python*
+*Economics · Data Science · Analytics*
 
 <a href="mailto:eduardojr.pereira@gmail.com"><img src="https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/icons/gmail_icon.svg" alt="Email" height="27"></a>&nbsp;&nbsp;
 <a href="https://www.linkedin.com/in/eduardo-jr-pereira/"><img src="https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/icons/linkedin_icon.svg" alt="LinkedIn" height="27"></a>&nbsp;&nbsp;
@@ -106,10 +107,11 @@ The `data-science-portfolio` repository has **no declared repository-wide licens
 
 [Let's connect on LinkedIn to exchange ideas and opportunities.](https://www.linkedin.com/in/eduardo-jr-pereira/)
 
-[**Knowledge Base**](https://github.com/eduardojr-pereira/data-science-knowledge-base) &nbsp;•&nbsp; [**Personal Website**](https://eduardo-pereira.webflow.io/)
+[**Knowledge Base**](https://github.com/eduardojr-pereira/data-science-knowledge-base)
 
 </div>
 
 <p align="right"><a href="#readme-top">↑ BACK TO TOP</a></p>
 
 ---
+<!-- EP-FOOTER:END -->
