@@ -2,26 +2,20 @@
 
 <div align="center">
 
-[🇺🇸 English](./README.md) &nbsp;|&nbsp; [🇧🇷 Português](./README.pt-BR.md)
+| [English](./README.md) · [Português](./README.pt-BR.md) |
 
 # Portfólio de Ciência de Dados
-
-![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white&style=for-the-badge) ![Jupyter](https://img.shields.io/badge/Jupyter-F37626?logo=jupyter&logoColor=white&style=for-the-badge) ![Data Science](https://img.shields.io/badge/Data-Science-21618C?style=for-the-badge)
 
 *Economia, Ciência de Dados e Analytics aplicados a problemas de negócio.*
 
 </div>
 
-
-<p align="center"><a href="https://eduardojr-pereira.github.io/data-science-portfolio/"><strong>Explorar a vitrine interativa</strong></a></p>
-
----
-
-## Nesta Página
+<p align="center"><a href="https://eduardojr-pereira.github.io/data-science-portfolio/"><strong>Explorar o portfólio interativo</strong></a></p>
 
 <div align="center">
 
-[Visão Geral](#overview) • [Projetos](#projects) • [Estrutura de Diretórios](#directory-structure) • [Repositórios Relacionados](#related-repositories) • [Licença](#license) • [Contato](#contact)
+[Visão Geral](#overview) · [Projetos](#projects) · [Estrutura de Diretórios](#directory-structure)<br>
+[Repositórios Relacionados](#related-repositories) · [Licença](#license) · [Contato](#contact)
 
 </div>
 
@@ -31,11 +25,10 @@
 
 ## Visão Geral
 
-Este portfólio reúne projetos de Ciência de Dados e Analytics que conectam minha formação em Ciências Econômicas (UFV) e pós-graduação em Ciência de Dados (PUC) à investigação de problemas práticos. É o complemento aplicado da Base de Conhecimento em Ciência de Dados.
+Este portfólio reúne projetos de Ciência de Dados e Analytics que conectam minha formação em Ciências Econômicas (UFV) e pós-graduação em Ciência de Dados (PUC) à resolução de problemas práticos. É o complemento aplicado da Base de Conhecimento em Ciência de Dados.
 
 Os projetos são organizados conforme sua finalidade e maturidade. A documentação e as experiências interativas dos dois projetos atuais estão disponíveis em inglês e português brasileiro. Cada projeto documenta suas dependências, metodologia, validação e limitações; não há um ambiente Python único para todo o repositório. Novos trabalhos são revisados quanto à autoria, procedência e direitos dos dados, informações sensíveis, reprodutibilidade e documentação antes da inclusão.
 
-<p align="right"><a href="#readme-top">↑ VOLTAR AO TOPO</a></p>
 
 ---
 
@@ -43,39 +36,42 @@ Os projetos são organizados conforme sua finalidade e maturidade. A documentaç
 
 ## Projetos
 
-[Projetos Selecionados](#selected-projects) • [Laboratórios de Aprendizado](#learning-labs) • [Experimentos Independentes](#independent-experiments)
+Explore o portfólio por meio de três coleções de projetos, organizadas conforme sua finalidade, profundidade técnica e maturidade.
+
+- [**Projetos Selecionados**](#selected-projects) — Estudos de caso aplicados a problemas reais de negócio e análise de dados.
+- [**Laboratórios de Aprendizado**](#learning-labs) — Projetos práticos voltados ao desenvolvimento de competências técnicas e à implementação de soluções.
+- [**Experimentos Independentes**](#independent-experiments) — Investigações exploratórias e abordagens experimentais.
 
 <a id="selected-projects"></a>
 
 ### Projetos Selecionados
 
-Estudos de caso aplicados, orientados por questões de negócio, evidências e limitações documentadas.
-
 | Projeto | Área e tecnologias | Recursos |
 |---|---|---|
-| **Bike Sharing — Demanda e Insights Operacionais** | Analytics de demanda · Regressão e avaliação de modelos · Python, pandas, scikit-learn, Plotly | [README](./selected_projects/bike_sharing/README.pt-BR.md) · [Notebook](./selected_projects/bike_sharing/bike_sharing_analysis.ipynb) · [Relatório interativo](https://eduardojr-pereira.github.io/data-science-portfolio/selected_projects/bike_sharing/reports/) |
+| **Bike Sharing — Demanda e Insights Operacionais** | Análise de demanda · Regressão e avaliação de modelos · Python, pandas, scikit-learn, Plotly | [Documentação](./selected_projects/bike_sharing/README.pt-BR.md) · [Código-fonte](./selected_projects/bike_sharing/) · [Demonstração online](https://eduardojr-pereira.github.io/data-science-portfolio/selected_projects/bike_sharing/reports/) |
 
-O estudo analisa padrões históricos de demanda diária e horária, segmentos de usuários e avaliação temporal de modelos. Os resultados são retrospectivos, não previsões validadas em produção; as limitações de reexecução do notebook estão documentadas no README do projeto.
+O estudo analisa padrões históricos de demanda diária e horária, segmentos de usuários e avaliação temporal de modelos.
+
+> [!CAUTION]
+> Os resultados são retrospectivos, não previsões validadas para uso em produção. As limitações de reexecução do notebook estão documentadas no README do projeto.
 
 <a id="learning-labs"></a>
 
 ### Laboratórios de Aprendizado
 
-Projetos menores voltados ao desenvolvimento de competências técnicas e experimentação.
-
 | Projeto | Área e tecnologias | Recursos |
 |---|---|---|
-| **Hangman Game — Jogo da Forca** | Fundamentos de programação · Python, JavaScript, HTML, CSS | [README](./learning_labs/python_hangman_game/README.pt-BR.md) · [Código Python](./learning_labs/python_hangman_game/hangman.py) · [Testes](./learning_labs/python_hangman_game/tests/test_hangman.py) · [Jogar online](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python_hangman_game/reports/index.html) |
+| **Hangman Game — Jogo da Forca** | Fundamentos de programação · Python, JavaScript, HTML, CSS | [Documentação](./learning_labs/python_hangman_game/README.pt-BR.md) · [Código-fonte](./learning_labs/python_hangman_game/) · [Demonstração online](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python_hangman_game/reports/index.html) |
 
-Jogo de adivinhação de palavras com versões no terminal e navegador, modos de um e dois jogadores e interface bilíngue no navegador.
+Jogo de adivinhação de palavras com versões no terminal e no navegador, modos de um e dois jogadores e interface bilíngue no navegador.
 
 <a id="independent-experiments"></a>
 
 ### Experimentos Independentes
 
-Investigações exploratórias autorais ainda não selecionadas como estudos de caso. Nenhum experimento publicado nesta coleção até o momento.
+Nenhum experimento foi publicado nesta coleção até o momento.
 
-<p align="right"><a href="#readme-top">↑ VOLTAR AO TOPO</a></p>
+<p align="right"><sub><a href="#readme-top">↑ Voltar ao topo</a></sub></p>
 
 ---
 
@@ -83,24 +79,38 @@ Investigações exploratórias autorais ainda não selecionadas como estudos de 
 
 ## Estrutura de Diretórios
 
+<details>
+<summary><strong>Árvore do repositório</strong></summary>
+
 ```text
 data-science-portfolio/
+├── .github/
+│   └── workflows/
+├── .gitignore
+├── LICENSE-CODE.txt
+├── LICENSE-CONTENT.md
 ├── README.md
 ├── README.pt-BR.md
-├── selected_projects/
-│   └── bike_sharing/
+├── config/
+│   └── projects.json
+├── independent_experiments/
+│   └── .gitkeep
 ├── learning_labs/
 │   └── python_hangman_game/
-├── independent_experiments/
-├── config/
-├── tools/
-├── vendor/
-└── .github/workflows/
+├── selected_projects/
+│   └── bike_sharing/
+└── tools/
+    └── ep_brand.py
 ```
 
-Cada projeto possui documentação e estrutura próprias. `config/` contém o catálogo; `tools/` contém ferramentas de integração. `vendor/` é um snapshot existente cuja revisão pertence a uma etapa posterior.
+</details>
 
-<p align="right"><a href="#readme-top">↑ VOLTAR AO TOPO</a></p>
+Cada projeto possui documentação e estrutura próprias.
+
+- `config/` — Contém o catálogo de projetos.
+- `tools/` — Contém o adaptador de integração com a fonte canônica EP Brand.
+
+<p align="right"><sub><a href="#readme-top">↑ Voltar ao topo</a></sub></p>
 
 ---
 
@@ -113,7 +123,7 @@ Cada projeto possui documentação e estrutura próprias. `config/` contém o ca
 | [Data Science Knowledge Base](https://github.com/eduardojr-pereira/data-science-knowledge-base) | Notebooks de estudo, guias e materiais de referência técnica |
 | [EP Brand Assets](https://github.com/eduardojr-pereira/ep-brand-assets) | Identidade visual, componentes compartilhados e infraestrutura de apresentação |
 
-<p align="right"><a href="#readme-top">↑ VOLTAR AO TOPO</a></p>
+<p align="right"><sub><a href="#readme-top">↑ Voltar ao topo</a></sub></p>
 
 ---
 
@@ -121,11 +131,27 @@ Cada projeto possui documentação e estrutura próprias. `config/` contém o ca
 
 ## Licença
 
-**Ainda não foi definida uma licença geral** para este repositório. Antes de publicar os projetos, revisaremos os direitos sobre códigos originais, documentação e dados de terceiros e registraremos as licenças aplicáveis. As licenças da Base de Conhecimento, que é um repositório separado, não se aplicam automaticamente a este portfólio.
+Estas licenças se aplicam somente aos materiais sobre os quais o autor detém os direitos necessários; código e conteúdo editorial podem estar sujeitos a licenças distintas.
 
-Datasets externos, imagens, bibliotecas e recursos de identidade visual mantêm seus próprios direitos e condições de uso.
+<table>
+<tr>
+<td align="center" valign="middle"><a href="./LICENSE-CODE.txt"><img src="https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/badges/licenses/mit.svg" alt="MIT"></a></td>
+<td valign="middle"><strong>Código-fonte</strong> | Scripts autorais, código dos notebooks, testes e implementação dos relatórios.</td>
+</tr>
+<tr>
+<td align="center" valign="middle"><a href="./LICENSE-CONTENT.md"><img src="https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/badges/licenses/cc_by_nc_4_0.svg" alt="CC BY-NC 4.0"></a></td>
+<td valign="middle"><strong>Conteúdo editorial e analítico</strong> | READMEs, explicações, estudos de caso, narrativas dos relatórios e conteúdo visual autoral.</td>
+</tr>
+<tr>
+<td align="center" valign="middle">Termos de terceiros</td>
+<td valign="middle"><strong>Conteúdo externo</strong> | Datasets, imagens, marcas e outros recursos; aplicam-se os respectivos termos de uso.</td>
+</tr>
+</table>
 
-<p align="right"><a href="#readme-top">↑ VOLTAR AO TOPO</a></p>
+> [!WARNING]
+> Dados de terceiros, bibliotecas e componentes do EP Brand mantêm seus respectivos termos de licença. Verifique a procedência, os direitos de redistribuição e os avisos aplicáveis antes de publicar novos projetos ou dados.
+
+<p align="right"><sub><a href="#readme-top">↑ Voltar ao topo</a></sub></p>
 
 ---
 
@@ -136,23 +162,15 @@ Datasets externos, imagens, bibliotecas e recursos de identidade visual mantêm 
 
 <div align="center">
 
-<a href="https://eduardo-pereira.webflow.io/" title="Site pessoal — Eduardo Junior Pereira"><img src="https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/logos/logo_initials.png" alt="Logo EP — Eduardo Junior Pereira" height="90"></a>
+<a href="https://eduardo-pereira.webflow.io/"><img src="https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/logos/logo_initials.png" alt="Logo EP" height="90"></a>
 
-**Eduardo Junior Pereira**
-
-*Economics · Data Science · Analytics*
+Vamos nos conectar e trocar ideias e oportunidades.
 
 <a href="mailto:eduardojr.pereira@gmail.com"><img src="https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/icons/gmail_icon.svg" alt="E-mail" height="27"></a>&nbsp;&nbsp;
 <a href="https://www.linkedin.com/in/eduardo-jr-pereira/"><img src="https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/icons/linkedin_icon.svg" alt="LinkedIn" height="27"></a>&nbsp;&nbsp;
-<a href="https://github.com/eduardojr-pereira"><img src="https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/icons/github_icon.svg" alt="GitHub" height="27"></a>
-
-[Vamos nos conectar no LinkedIn para trocar ideias e oportunidades.](https://www.linkedin.com/in/eduardo-jr-pereira/)
-
-[**Base de Conhecimento**](https://github.com/eduardojr-pereira/data-science-knowledge-base)
+<a href="https://github.com/eduardojr-pereira"><img src="https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/icons/github_icon.svg" alt="GitHub" height="27"></a>&nbsp;&nbsp;
+<a href="https://discord.com/users/533043855122235393"><img src="https://raw.githubusercontent.com/eduardojr-pereira/ep-brand-assets/main/assets/icons/discord_icon.svg" alt="Discord" height="27"></a>
 
 </div>
 
-<p align="right"><a href="#readme-top">↑ VOLTAR AO TOPO</a></p>
-
----
 <!-- EP-FOOTER:END -->
