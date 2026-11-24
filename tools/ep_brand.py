@@ -1,11 +1,8 @@
-"""EP web component renderer, synchronized from sibling ep-brand-assets snapshot."""
+"""Adapter to the canonical EP Brand component renderers."""
 from pathlib import Path
-import base64
-import datetime
-import json
-import mimetypes
+import importlib
 import os
-import re
+import sys
 
 def _canonical_root() -> Path:
     """Find the actual EP Brand checkout; never silently use vendored copies."""
@@ -23,6 +20,9 @@ def _canonical_root() -> Path:
             "config/brand.json",
             "components/web/footer.html",
             "components/web/footer.css",
+            "tools/render_footer.py",
+            "tools/render_header.py",
+            "tools/publish_assets.py",
         )):
             return root
     checked = ", ".join(str(p) for p in candidates)
@@ -36,79 +36,53 @@ def _canonical_root() -> Path:
 
 ROOT = _canonical_root()
 
-def _values():
-    brand=json.loads((ROOT/'config/brand.json').read_text(encoding='utf-8'))
-    values=dict(brand)
-    for key, rel in {'logo_src':'logos/logo_initials.png', 'gmail_src':'icons/gmail_icon.svg', 'linkedin_src':'icons/linkedin_icon.svg'}.items():
-        payload=(ROOT/'assets'/rel).read_bytes()
-        mime=mimetypes.guess_type(rel)[0] or 'application/octet-stream'
-        values[key]=f'data:{mime};base64,'+base64.b64encode(payload).decode('ascii')
-    values['year']=str(datetime.date.today().year)
-    return values
 
-def _sub(template, values):
-    def replace(m):
-        k=m.group(1)
-        if k not in values:raise ValueError('Unknown EP placeholder: '+k)
-        return str(values[k])
-    result=re.sub(r'\{\{([a-z_]+)\}\}',replace,template)
-    if '{{' in result or '}}' in result:raise ValueError('Unresolved EP placeholders')
-    return result
+def _canonical_module(name):
+    """Import a module exclusively from the resolved EP Brand checkout."""
+    tools_dir = ROOT / "tools"
+    sys.path.insert(0, str(tools_dir))
+    try:
+        module = importlib.import_module(name)
+        expected = (tools_dir / f"{name}.py").resolve()
+        actual = Path(module.__file__).resolve()
+        if actual != expected:
+            raise ImportError(
+                f"Unexpected EP module: {actual}; expected {expected}"
+            )
+        return module
+    finally:
+        sys.path.remove(str(tools_dir))
+
+
+_footer = _canonical_module("render_footer")
+_header = _canonical_module("render_header")
+_assets = _canonical_module("publish_assets")
+
 
 def logo_data_uri():
-    return _values()['logo_src']
+    return _header.logo_data_uri()
+
 
 def render_footer():
-    values=_values()
-    html=_sub((ROOT/'components/web/footer.html').read_text(encoding='utf-8'),values)
-    css_paths = [
-        ROOT / 'styles' / 'colors.css',
-        ROOT / 'styles' / 'typography.css',
-        ROOT / 'styles' / 'layout.css',
-        ROOT / 'components/web/footer.css',
-    ]
-    css = '\n'.join(
-        path.read_text(encoding='utf-8').rstrip()
-        for path in css_paths
-    ) + '\n'
-    return html,css
+    return (
+        _footer.render_web_footer(embed=True),
+        _footer.render_web_css(),
+    )
 
 
-
-def render_header(projects):
-    """Render the shared EP header for the generated portfolio showcase."""
-    from html import escape
-    values = _values()
-    menu = []
-    for project in projects:
-        href = escape(str(project.get("report", "#projects")), quote=True)
-        label = escape(str(project.get("name", "Project")))
-        menu.append(f'<a href="{href}">{label}</a>')
-    values["projects_menu"] = "\n          ".join(menu)
-    template = (ROOT / "components" / "web" / "header.html").read_text(encoding="utf-8")
-    markup = _sub(template, values)
-    css = "\n".join([
-        (ROOT / "components" / "web" / "header.css").read_text(encoding="utf-8"),
-        (ROOT / "styles" / "portfolio-theme.css").read_text(encoding="utf-8"),
-    ])
-    return markup, css
+def render_header(projects, **kwargs):
+    return _header.render_header(projects, **kwargs)
 
 
 def copy_shared_assets(output):
-    """Copy the validated theme/i18n runtime and animation assets into Pages output."""
-    import shutil
-    destination = output / "assets"
-    files = (
-        "styles/theme-tokens.css", "styles/typography-v2.css", "styles/portfolio-theme.css",
-        "scripts/theme-init.js", "scripts/theme.js", "scripts/i18n.js", "scripts/header.js",
-    )
-    for relative in files:
-        source = ROOT / relative
-        if not source.is_file():
-            raise FileNotFoundError(f"Missing shared EP asset: {source}")
-        target = destination / relative
-        target.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(source, target)
-    animations = ROOT / "assets" / "animations"
-    if animations.is_dir():
-        shutil.copytree(animations, destination / "animations", dirs_exist_ok=True)
+    return _assets.copy_shared_assets(output)
+
+def render_references(data):
+    return _canonical_module("render_references").render_references(data)
+
+def render_outputs(data):
+    return _canonical_module("render_outputs").render_outputs(data)
+
+
+def render_project_links(repository, *, back_to_portfolio=False):
+    return _canonical_module("render_project_links").render_project_links(repository, back_to_portfolio=back_to_portfolio)

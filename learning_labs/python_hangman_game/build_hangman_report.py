@@ -16,13 +16,17 @@ PROJECT = Path(__file__).resolve().parent
 ROOT = PROJECT.parents[1]
 REPORT = PROJECT / "reports/index.html"
 
+
+
 def build_html() -> str:
     sys.path.insert(0,str(ROOT / 'tools'))
-    from ep_brand import render_footer, logo_data_uri
+    from ep_brand import render_footer, logo_data_uri, render_project_links
     footer_html,_=render_footer()
     source=(PROJECT/'web/report.template.html').read_text(encoding='utf-8')
     replacements={
       '__EP_FOOTER_HTML__':footer_html,
+      '__EP_PROJECT_LINKS__':render_project_links('https://github.com/eduardojr-pereira/data-science-portfolio/tree/main/learning_labs/python_hangman_game', back_to_portfolio=False),
+
       '__EP_LOGO__':logo_data_uri(),
       '__GAME_CSS__':(PROJECT/'web/report.css').read_text(encoding='utf-8'),
       '__GAME_JS__':(PROJECT/'web/report.js').read_text(encoding='utf-8'),

@@ -6,7 +6,7 @@ from html import escape
 from pathlib import Path
 import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "tools"))
-from ep_brand import render_footer, logo_data_uri
+from ep_brand import render_footer, logo_data_uri, render_references, render_outputs, render_project_links
 from string import Template
 
 import pandas as pd
@@ -28,6 +28,103 @@ COLORS = {
 }
 
 
+BIKE_REPORT_TRANSLATIONS = '(function(){\n\'use strict\';\n  const bike = document.querySelector(\'.bike-local-nav\');\n  if (!bike) return;\n  const pt = {\n    \'Overview\':\'Visão geral\',\n    \'Business\':\'Negócio\',\n    \'Exploration\':\'Exploração\',\n    \'Hourly\':\'Padrões horários\',\n    \'Models\':\'Modelos\',\n    \'Conclusions\':\'Conclusões\',\n    \'Outputs\':\'Resultados\',\n    \'References\':\'Referências\',\n    \'Technical report · Regression analysis\':\'Relatório técnico · Análise de regressão\',\n    \'Bike Sharing Demand Analysis\':\'Análise da Demanda por Bicicletas Compartilhadas\',\n    \'Explore daily and hourly demand patterns from Washington, D.C. (2011–2012), compare regression models through chronological validation, and examine the limitations of retrospective demand estimation.\':\'Explore os padrões diários e horários da demanda em Washington, D.C. (2011–2012), compare modelos de regressão com validação cronológica e examine as limitações da estimativa retrospectiva da demanda.\',\n    \'Time-series CV\':\'Validação temporal\',\n    \'Dataset overview\':\'Visão geral dos dados\',\n    \'The UCI dataset contains daily and hourly bike rental totals and weather-related variables. These figures are historical observations, not forecasts.\':\'O conjunto de dados da UCI contém totais diários e horários de aluguéis de bicicletas e variáveis meteorológicas. Esses números representam observações históricas, não previsões.\',\n    \'Daily observations\':\'Observações diárias\',\n    \'Total rentals\':\'Total de aluguéis\',\n    \'Development days\':\'Dias de desenvolvimento\',\n    \'Holdout days\':\'Dias de teste cronológico\',\n    \'Total recorded rentals\':\'Total de aluguéis registrados\',\n    \'Business questions & operational insights\':\'Questões de negócio e insights operacionais\',\n    \'A historical system-level demand study: where might the operator investigate staffing, bicycle availability or rebalancing windows? These are planning hypotheses, not measured cost savings or station-level prescriptions.\':\'Um estudo histórico da demanda no sistema: em quais períodos o operador poderia investigar equipes, disponibilidade de bicicletas ou redistribuição? São hipóteses de planejamento, não economias comprovadas nem recomendações específicas por estação.\',\n    \'Most active clock hour\':\'Horário de maior movimento\',\n    \'Average\':\'Média de\',\n    \'461.5 rentals\':\'461,5 aluguéis\',\n    \'per recorded observation at this hour, over 2011–2012. Missing clock-hour records are not imputed as zero.\':\'por observação registrada nesse horário, em 2011–2012. Horários ausentes não foram imputados como zero.\',\n    \'Demand growth\':\'Crescimento da demanda\',\n    \'Change in mean daily rentals from 2011 to 2012. It does not establish the causes of growth or a future growth rate.\':\'Variação da média diária de aluguéis de 2011 para 2012. Isso não estabelece as causas do crescimento nem uma taxa futura.\',\n    \'Operational questions\':\'Questões operacionais\',\n    \'Compare registered and casual hourly patterns, workdays and non-workdays, and peak windows before planning inventory coverage. Station-level supply data are required to design actual rebalancing routes.\':\'Compare padrões horários de usuários registrados e ocasionais, dias úteis e não úteis e horários de pico antes de planejar a cobertura da frota. Dados de disponibilidade por estação são necessários para definir rotas de redistribuição.\',\n    \'Evidence, not a production forecast\':\'Evidências, não previsões em produção\',\n    \'Historical hourly holdout R²:\':\'R² do teste cronológico horário:\',\n    \'; daily holdout R²:\':\'; R² do teste cronológico diário:\',\n    \'. These models use observed contemporaneous weather; deployment requires available-at-prediction-time inputs and independent evaluation.\':\'. Esses modelos utilizam o clima observado no mesmo período; sua implantação exige variáveis disponíveis no momento da previsão e avaliação independente.\',\n    \'Exploratory analysis\':\'Análise exploratória\',\n    \'Hover to inspect values; use the modebar to zoom, pan or download chart images. In the first chart, switch rider groups and use the range slider to focus on a period.\':\'Passe o cursor para inspecionar valores; use a barra de ferramentas para ampliar, deslocar ou baixar imagens dos gráficos. No primeiro gráfico, alterne entre grupos de usuários e use o seletor de intervalo para focar um período.\',\n    \'Daily rental demand\':\'Demanda diária por aluguéis\',\n    \'Choose a rider segment or period; explore detailed values by hovering over the line.\':\'Escolha um segmento de usuários ou período; passe o cursor sobre a linha para explorar os valores.\',\n    \'Correlations are descriptive; `cnt` is the sum of casual and registered rentals, so its association with those components is structural.\':\'As correlações são descritivas; `cnt` é a soma dos aluguéis ocasionais e registrados, portanto a associação com esses componentes é estrutural.\',\n    \'Weather comparisons are observational. Group sizes differ, and no causal effect should be inferred from these summaries.\':\'As comparações meteorológicas são observacionais. Os grupos têm tamanhos diferentes, e não se deve inferir causalidade desses resumos.\',\n    \'Hourly patterns & validation\':\'Padrões horários e validação\',\n    \'The hourly UCI records cover the same 2011–2012 Capital Bikeshare rentals as the daily dataset, shown at a finer aggregation level. These are not additional rentals.\':\'Os registros horários da UCI abrangem os mesmos aluguéis do Capital Bikeshare de 2011–2012 presentes nos dados diários, em um nível mais detalhado. Não são aluguéis adicionais.\',\n    \'Recorded hourly observations\':\'Observações horárias registradas\',\n    \'Selected hourly candidate\':\'Modelo horário selecionado\',\n    \'Random forest\':\'Floresta aleatória\',\n    \'Hourly CV RMSE\':\'RMSE da validação horária\',\n    \'Hourly holdout R²\':\'R² do teste horário\',\n    \'Hourly chronological holdout\':\'Teste cronológico horário\',\n    \'76 days\':\'76 dias\',\n    \'Data completeness\':\'Completude dos dados\',\n    \'The source has\':\'A fonte possui\',\n    \'unrecorded clock hours across those days. The absent hours were not artificially imputed.\':\'horários sem registro nesses dias. As horas ausentes não foram imputadas artificialmente.\',\n    \'How to interpret:\':\'Como interpretar:\',\n    "Hourly and daily RMSE/MAE are measured in different units and should not be compared numerically. Both models are retrospective conditional estimates using observed weather at the target date/hour, not proven advance forecasts. The daily model\'s negative holdout R² is reported transparently. An earlier iteration already examined the holdout; this evaluation is not an untouched external benchmark.":\'O RMSE/MAE horário e diário é medido em unidades diferentes e não deve ser comparado numericamente. Ambos os modelos produzem estimativas condicionais retrospectivas usando o clima observado na data/hora de interesse, não previsões antecipadas comprovadas. O R² negativo do modelo diário no teste cronológico é apresentado de forma transparente. Uma versão anterior já examinou esse conjunto de teste; portanto, a avaliação não representa um teste externo ainda não explorado.\',\n    \'Operational questions: How do commute peaks differ from leisure use? Which hours would be important to examine for bicycle rebalancing and staffing? These associations are descriptive and do not prove that a specific intervention would increase demand.\':\'Questões operacionais: como os picos de deslocamento diferem do uso recreativo? Quais horários merecem investigação para redistribuição de bicicletas e dimensionamento de equipes? Essas associações são descritivas e não comprovam que uma intervenção específica aumentaria a demanda.\',\n    \'Daily model evaluation\':\'Avaliação do modelo diário\',\n    \'Candidate models are evaluated using expanding-window cross-validation on the development period. The final chronological holdout was examined in earlier pilot revisions, so it must not be presented as an untouched independent benchmark.\':\'Os modelos candidatos são avaliados por validação cruzada com janela de treinamento crescente no período de desenvolvimento. O conjunto final de teste cronológico já foi examinado em versões piloto anteriores e não pode ser apresentado como uma referência independente ainda não explorada.\',\n    \'Selected candidate\':\'Modelo selecionado\',\n    \'Polynomial ridge (degree 2)\':\'Ridge polinomial (grau 2)\',\n    \'Mean CV RMSE:\':\'RMSE médio da validação:\',\n    \'daily rentals\':\'aluguéis diários\',\n    \'Chronological holdout\':\'Teste cronológico\',\n    \'Importance comes from an illustrative Random Forest, not from the selected Polynomial Ridge model; impurity-based importances can be biased.\':\'A importância das variáveis vem de uma floresta aleatória ilustrativa, não do modelo Ridge polinomial selecionado; medidas baseadas na impureza podem apresentar vieses.\',\n    \'Key findings and limitations\':\'Principais resultados e limitações\',\n    \'Generalization warning:\':\'Alerta de generalização:\',\n    \'Negative R² indicates a poor fit relative to the holdout mean baseline. This is not evidence of deployment-ready prediction.\':\'Um R² negativo indica desempenho inferior à referência baseada na média do conjunto de teste. Isso não demonstra prontidão para previsões em produção.\',\n    \'Demand variation\':\'Variação da demanda\',\n    \'Rental counts vary across seasons, weather categories and rider groups. These are descriptive patterns, not causal explanations.\':\'A quantidade de aluguéis varia conforme as estações do ano, as condições meteorológicas e os grupos de usuários. São padrões descritivos, não explicações causais.\',\n    \'Interpretation of model performance\':\'Interpretação do desempenho dos modelos\',\n    \'Training-only cross-validation was used to select candidates. A difficult chronological holdout reveals limitations not evident from development-fold scores.\':\'A validação cruzada realizada apenas nos dados de treinamento foi utilizada para selecionar os candidatos. O teste cronológico mais difícil revela limitações que não aparecem nos resultados das partições de desenvolvimento.\',\n    \'Same-day weather\':\'Clima do mesmo dia\',\n    \'The models use observed same-day weather variables. This is\':\'Os modelos utilizam variáveis meteorológicas observadas no próprio dia. Trata-se de\',\n    \'retrospective conditional demand estimation\':\'estimativa retrospectiva condicional da demanda\',\n    \'and must not be described as a day-ahead forecast.\':\'e não deve ser descrita como previsão para o dia seguinte.\',\n    \'External validity\':\'Validade externa\',\n    \'These results cover a single city and 2011–2012. Prospective evaluation with a new period would be required before operational use.\':\'Esses resultados abrangem uma única cidade e os anos de 2011–2012. Uma avaliação prospectiva com novos dados seria necessária antes do uso operacional.\',\n    \'Validated outputs & additional figures\':\'Resultados validados e figuras adicionais\',\n    "The HTML is built from the notebook\'s exported metrics and tables. Use these source artifacts to inspect exact numbers. Additional PNG figures remain available without reproducing them in new storage formats.":\'O HTML é construído a partir de métricas e tabelas exportadas pelo notebook. Utilize esses arquivos para conferir os números exatos. As figuras PNG adicionais continuam disponíveis sem necessidade de reproduzi-las em outros formatos.\',\n    \'Daily metrics JSON\':\'Métricas diárias (JSON)\',\n    \'Hourly metrics JSON\':\'Métricas horárias (JSON)\',\n    \'Hourly model comparison CSV\':\'Comparação de modelos horários (CSV)\',\n    \'Hourly holdout predictions CSV\':\'Predições do teste horário (CSV)\',\n    \'Model comparison CSV\':\'Comparação de modelos (CSV)\',\n    \'Holdout predictions CSV\':\'Predições do teste (CSV)\',\n    \'Feature importance CSV\':\'Importância das variáveis (CSV)\',\n    \'Variable distributions\':\'Distribuições das variáveis\',\n    \'Tree excerpt\':\'Trecho de árvore\',\n    \'Notebook demand patterns\':\'Padrões de demanda do notebook\',\n    \'References and reproducibility\':\'Referências e reprodutibilidade\',\n    \'Original dataset:\':\'Conjunto de dados original:\',\n    \', Fanaee-T & Gama, DOI 10.24432/C5W894, distributed under CC BY 4.0 with attribution.\':\', Fanaee-T & Gama, DOI 10.24432/C5W894, distribuído sob CC BY 4.0, com atribuição.\',\n    \'Knowledge Base:\':\'Base de conhecimento:\',\n    \'Machine Learning\':\'Aprendizado de Máquina\',\n    \'and\':\'e\',\n    \'Data Analysis & Visualization\':\'Análise e Visualização de Dados\',\n    \'Implementation:\':\'Implementação:\',\n    \'execute\':\'execute\',\n    \'to regenerate data exports, then run\':\'para regenerar os dados exportados; depois execute\',\n    \'from the project directory to rebuild this HTML. The HTML requires no Python server and includes Plotly.js offline; GitHub Pages hosting is supported.\':\'na pasta do projeto para reconstruir este HTML. O HTML não requer servidor Python, inclui Plotly.js para uso offline e pode ser hospedado no GitHub Pages.\',\n    \'MAE\':\'MAE\',\n    \'rentals/hour · R²\':\'aluguéis/hora · R²\',\n  };\n  const rootNodes = [document.querySelector(\'.hero\'),document.querySelector(\'main\'),bike].filter(Boolean);\n  const originals = [];\n  const normalize = value => value.replace(/\\s+/g,\' \').trim();\n  for (const root of rootNodes) {\n    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);\n    while (walker.nextNode()) {\n      const node = walker.currentNode;\n      if (node.parentElement.closest(\'script,style,svg,.plotly-graph-div,.ep-references,.ep-outputs\')) continue;\n      const key = normalize(node.nodeValue);\n      if (Object.prototype.hasOwnProperty.call(pt,key)) originals.push({node,original:node.nodeValue,key});\n    }\n  }\n  function syncBike() {\n    const translated = document.documentElement.lang === \'pt-BR\';\n    for (const item of originals) {\n      if (!item.node.isConnected) continue;\n      if (!translated) { item.node.nodeValue = item.original; continue; }\n      const value = item.original;\n      const start = value.match(/^\\s*/)[0];\n      const end = value.match(/\\s*$/)[0];\n      item.node.nodeValue = start + pt[item.key] + end;\n    }\n  }\n  document.addEventListener(\'DOMContentLoaded\', syncBike);\n  document.addEventListener(\'ep:languagechange\', syncBike);\n})();\n'
+
+
+BIKE_REFERENCES = {
+    "data_source": {
+        "name": "UCI Bike Sharing Dataset",
+        "url": "https://archive.ics.uci.edu/dataset/275/bike+sharing+dataset",
+        "authors": "Fanaee-T & Gama",
+        "doi": "10.24432/C5W894",
+        "license": "CC BY 4.0",
+        "note": {"en": "Distributed with attribution.", "pt-BR": "Distribuído com atribuição."},
+    },
+    "knowledge_base": [
+        {"label": {"en": "Machine Learning", "pt-BR": "Aprendizado de Máquina"},
+         "url": "https://github.com/eduardojr-pereira/data-science-knowledge-base/tree/main/05_machine_learning"},
+        {"label": {"en": "Data Analysis & Visualization", "pt-BR": "Análise e Visualização de Dados"},
+         "url": "https://github.com/eduardojr-pereira/data-science-knowledge-base/tree/main/02_data_analysis_visualization"},
+    ],
+    "reproducibility": {
+        "intro": {"en": "Review the project documentation for dependencies and data setup before executing the analysis.",
+                  "pt-BR": "Consulte a documentação do projeto para configurar as dependências e os dados antes de executar a análise."},
+        "steps": [
+            {"label": {"en": "Clone the portfolio in your working directory.", "pt-BR": "Clone o portfólio no seu diretório de trabalho."},
+             "command": "git clone https://github.com/eduardojr-pereira/data-science-portfolio.git"},
+            {"label": {"en": "Clone EP Brand Assets alongside the portfolio, in the same parent directory.", "pt-BR": "Clone o EP Brand Assets ao lado do portfólio, no mesmo diretório pai."},
+             "command": "git clone https://github.com/eduardojr-pereira/ep-brand-assets.git"},
+            {"label": {"en": "Navigate to the Bike Sharing project.", "pt-BR": "Acesse o diretório do projeto Bike Sharing."},
+             "command": "cd data-science-portfolio/selected_projects/bike_sharing"},
+            {"label": {"en": "If you need to regenerate data exports, execute bike_sharing_analysis.ipynb using the configured Python environment.", "pt-BR": "Se precisar regenerar os dados exportados, execute bike_sharing_analysis.ipynb no ambiente Python configurado."}},
+            {"label": {"en": "Build the HTML report from the existing validated exports.", "pt-BR": "Gere o relatório HTML a partir dos dados exportados e validados."},
+             "command": "python build_bike_report.py"},
+        ],
+        "note": {"en": "Static HTML with offline Plotly.js. No Python server is required to view the generated report. GitHub Pages hosting is supported.",
+                 "pt-BR": "HTML estático com Plotly.js offline. Não é necessário um servidor Python para visualizar o relatório gerado. Compatível com GitHub Pages."},
+        "documentation": "https://github.com/eduardojr-pereira/data-science-portfolio/tree/main/selected_projects/bike_sharing",
+    },
+}
+
+
+BIKE_OUTPUTS = {'items': [{'name': {'en': 'Daily metrics', 'pt-BR': 'Métricas diárias'},
+            'origin': {'en': 'Daily analysis', 'pt-BR': 'Análise diária'},
+            'description': {'en': 'Model performance and validation metrics.',
+                            'pt-BR': 'Métricas de desempenho e validação dos modelos.'},
+            'path': '../outputs/metrics.json',
+            'format': 'JSON'},
+           {'name': {'en': 'Hourly metrics', 'pt-BR': 'Métricas horárias'},
+            'origin': {'en': 'Hourly analysis', 'pt-BR': 'Análise horária'},
+            'description': {'en': 'Hourly model performance and data completeness.',
+                            'pt-BR': 'Desempenho do modelo horário e completude dos dados.'},
+            'path': '../outputs/hourly/metrics.json',
+            'format': 'JSON'},
+           {'name': {'en': 'Model comparison', 'pt-BR': 'Comparação de modelos'},
+            'origin': {'en': 'Daily analysis', 'pt-BR': 'Análise diária'},
+            'description': {'en': 'Cross-validation results for candidate models.',
+                            'pt-BR': 'Resultados da validação cruzada dos modelos candidatos.'},
+            'path': '../outputs/tables/model_comparison.csv',
+            'format': 'CSV'},
+           {'name': {'en': 'Hourly model comparison', 'pt-BR': 'Comparação de modelos horários'},
+            'origin': {'en': 'Hourly analysis', 'pt-BR': 'Análise horária'},
+            'description': {'en': 'Cross-validation results for hourly regression models.',
+                            'pt-BR': 'Resultados da validação cruzada dos modelos de regressão '
+                                     'horária.'},
+            'path': '../outputs/hourly/tables/hourly_model_comparison.csv',
+            'format': 'CSV'},
+           {'name': {'en': 'Holdout predictions', 'pt-BR': 'Predições do teste'},
+            'origin': {'en': 'Daily analysis', 'pt-BR': 'Análise diária'},
+            'description': {'en': 'Observed and estimated daily rentals in the chronological holdout.',
+                            'pt-BR': 'Aluguéis diários observados e estimados no teste cronológico.'},
+            'path': '../outputs/tables/holdout_predictions.csv',
+            'format': 'CSV'},
+           {'name': {'en': 'Hourly holdout predictions', 'pt-BR': 'Predições do teste horário'},
+            'origin': {'en': 'Hourly analysis', 'pt-BR': 'Análise horária'},
+            'description': {'en': 'Observed and estimated hourly rentals in the chronological holdout.',
+                            'pt-BR': 'Aluguéis horários observados e estimados no teste cronológico.'},
+            'path': '../outputs/hourly/tables/hourly_holdout_predictions.csv',
+            'format': 'CSV'},
+           {'name': {'en': 'Feature importance', 'pt-BR': 'Importância das variáveis'},
+            'origin': {'en': 'Random Forest', 'pt-BR': 'Floresta aleatória'},
+            'description': {'en': 'Illustrative impurity-based feature importance.',
+                            'pt-BR': 'Importância ilustrativa das variáveis baseada na impureza.'},
+            'path': '../outputs/tables/random_forest_feature_importance.csv',
+            'format': 'CSV'}],
+ 'figures': [{'name': {'en': 'Variable distributions', 'pt-BR': 'Distribuições das variáveis'},
+              'description': {'en': 'Exploratory distributions and relationships between variables.',
+                              'pt-BR': 'Distribuições e relações exploratórias entre variáveis.'},
+              'path': '../outputs/figures/distributions.png'},
+             {'name': {'en': 'Tree excerpt', 'pt-BR': 'Trecho de árvore'},
+              'description': {'en': 'Structure of an illustrative Random Forest decision tree.',
+                              'pt-BR': 'Estrutura de uma árvore de decisão ilustrativa da floresta '
+                                       'aleatória.'},
+              'path': '../outputs/figures/random_forest_tree_excerpt.png'},
+             {'name': {'en': 'Demand patterns', 'pt-BR': 'Padrões de demanda'},
+              'description': {'en': 'Historical rental trends and seasonality from the notebook.',
+                              'pt-BR': 'Tendências históricas de aluguéis e sazonalidade do notebook.'},
+              'path': '../outputs/figures/demand_patterns.png'}]}
+
+
 def _safe_float(value):
     return f"{float(value):,.2f}"
 
@@ -47,6 +144,284 @@ def _layout(fig, title, y_title=None, height=370, legend_orientation="h"):
         xaxis=dict(gridcolor="#31435a"),
     )
     return fig
+
+
+
+PLOTLY_TRANSLATIONS = {
+    # Chart titles
+    "Average daily rentals by month and year":
+        "Média diária de aluguéis por mês e ano",
+    "Annual rentals by rider type":
+        "Aluguéis anuais por tipo de usuário",
+    "Mean rentals by recorded weather conditions":
+        "Média de aluguéis por condição meteorológica",
+    "Daily rentals by day of the week":
+        "Aluguéis diários por dia da semana",
+    "Pairwise Pearson correlations":
+        "Correlações de Pearson entre variáveis",
+    "Expanding-window cross-validation · lower RMSE is better":
+        "Validação cruzada com janela crescente · menor RMSE é melhor",
+    "Chronological holdout · observed vs estimated":
+        "Teste cronológico · observado versus estimado",
+    "Holdout residuals · observed − estimated":
+        "Resíduos do teste · observado − estimado",
+    "Random forest feature importance · illustrative model":
+        "Importância das variáveis · floresta aleatória ilustrativa",
+    "Mean recorded rentals by hour and rider type":
+        "Média de aluguéis por hora e tipo de usuário",
+    "Hour × weekday: mean recorded demand":
+        "Hora × dia da semana: demanda média registrada",
+    "Working vs non-working day hourly patterns":
+        "Padrões horários em dias úteis e não úteis",
+    "Hourly models: expanding-window CV RMSE":
+        "Modelos horários: RMSE da validação com janela crescente",
+    "Hourly chronological holdout: observed vs estimated":
+        "Teste cronológico horário: observado versus estimado",
+    "Hourly holdout: mean absolute error by hour":
+        "Teste horário: erro absoluto médio por hora",
+
+    # Axes and units
+    "Rentals per day": "Aluguéis por dia",
+    "Mean daily rentals": "Média diária de aluguéis",
+    "Recorded rentals": "Aluguéis registrados",
+    "Daily rentals": "Aluguéis diários",
+    "RMSE (rentals / day)": "RMSE (aluguéis/dia)",
+    "Impurity-based importance": "Importância baseada na impureza",
+    "Mean rentals per recorded hour":
+        "Média de aluguéis por hora registrada",
+    "Hour of day": "Hora do dia",
+    "Day of week": "Dia da semana",
+    "Mean rentals": "Média de aluguéis",
+    "Mean recorded rentals": "Média de aluguéis registrados",
+    "RMSE · rentals per recorded hour":
+        "RMSE · aluguéis por hora registrada",
+    "Rentals per hour": "Aluguéis por hora",
+    "MAE · rentals/hour": "MAE · aluguéis/hora",
+
+    # Legends and controls
+    "All rentals": "Todos os aluguéis",
+    "All riders": "Todos os usuários",
+    "Registered": "Registrados",
+    "Casual": "Ocasionais",
+    "Observed": "Observado",
+    "Estimated": "Estimado",
+    "Working day": "Dia útil",
+    "Non-working day": "Dia não útil",
+    "All": "Tudo",
+    "3m": "3m",
+    "6m": "6m",
+
+    # Weather categories
+    "Clear / partly cloudy": "Claro / parcialmente nublado",
+    "Mist / cloudy": "Neblina / nublado",
+    "Light rain / snow": "Chuva leve / neve",
+    "Severe weather": "Condições severas",
+
+    # Months
+    "Jan": "Jan", "Feb": "Fev", "Mar": "Mar",
+    "Apr": "Abr", "May": "Mai", "Jun": "Jun",
+    "Jul": "Jul", "Aug": "Ago", "Sep": "Set",
+    "Oct": "Out", "Nov": "Nov", "Dec": "Dez",
+
+    # Weekdays
+    "Sun": "Dom", "Mon": "Seg", "Tue": "Ter",
+    "Wed": "Qua", "Thu": "Qui", "Fri": "Sex",
+    "Sat": "Sáb",
+    "Sunday": "Domingo",
+    "Monday": "Segunda-feira",
+    "Tuesday": "Terça-feira",
+    "Wednesday": "Quarta-feira",
+    "Thursday": "Quinta-feira",
+    "Friday": "Sexta-feira",
+    "Saturday": "Sábado",
+
+    # Model labels
+    "Random forest": "Floresta aleatória",
+    "Random Forest": "Floresta aleatória",
+    "Linear regression": "Regressão linear",
+    "Linear Regression": "Regressão linear",
+    "Polynomial ridge (degree 2)": "Ridge polinomial (grau 2)",
+    "Decision tree": "Árvore de decisão",
+    "Decision Tree": "Árvore de decisão",
+    "Gradient boosting": "Gradient boosting",
+
+    # Hover templates
+    "Mean rentals:": "Média de aluguéis:",
+    "Mean:": "Média:",
+    "Days:": "Dias:",
+    "Mean CV RMSE:": "RMSE médio da validação:",
+    "Residual:": "Resíduo:",
+    "Importance:": "Importância:",
+    "mean rentals": "aluguéis em média",
+    "mean CV RMSE": "RMSE médio da validação",
+    "rentals/hour": "aluguéis/hora",
+}
+
+
+def _plotly_translation_spec(fig, plot_id):
+    """Generate presentation-only bilingual updates."""
+
+    def translate(value):
+        return PLOTLY_TRANSLATIONS.get(value, value)
+
+    def translate_hover(value):
+        if not isinstance(value, str):
+            return value
+        import re
+        keys = sorted(PLOTLY_TRANSLATIONS, key=len, reverse=True)
+        # Preserve Plotly placeholders and HTML tags.
+        parts = re.split(r"(%\{[^}]+\}|<[^>]+>)", value)
+        for i in range(0, len(parts), 2):
+            part = parts[i]
+            pattern = "|".join(
+                re.escape(key) for key in keys
+            )
+            parts[i] = re.sub(
+                pattern,
+                lambda m: PLOTLY_TRANSLATIONS[m.group(0)],
+                part
+            )
+        return "".join(parts)
+
+    layout_en = {"separators": ".,"}
+    layout_pt = {"separators": ",."}
+
+    def add_layout(key, value):
+        if isinstance(value, str) and value:
+            translated = translate(value)
+            if translated != value:
+                layout_en[key] = value
+                layout_pt[key] = translated
+
+    layout = fig.layout.to_plotly_json()
+
+    add_layout(
+        "title.text",
+        layout.get("title", {}).get("text")
+    )
+
+    for axis_name, axis in layout.items():
+        if not axis_name.startswith(("xaxis", "yaxis")):
+            continue
+        if not isinstance(axis, dict):
+            continue
+
+        add_layout(
+            axis_name + ".title.text",
+            axis.get("title", {}).get("text")
+        )
+
+        for i, button in enumerate(
+            axis.get("rangeselector", {}).get("buttons", [])
+        ):
+            add_layout(
+                f"{axis_name}.rangeselector.buttons[{i}].label",
+                button.get("label")
+            )
+
+    for i, menu in enumerate(layout.get("updatemenus", [])):
+        for j, button in enumerate(menu.get("buttons", [])):
+            add_layout(
+                f"updatemenus[{i}].buttons[{j}].label",
+                button.get("label")
+            )
+
+    traces_en = []
+    traces_pt = []
+
+    for i, trace in enumerate(fig.data):
+        item = trace.to_plotly_json()
+
+        update_en = {}
+        update_pt = {}
+
+        name = item.get("name")
+
+        if isinstance(name, str) and translate(name) != name:
+            update_en["name"] = name
+            update_pt["name"] = translate(name)
+
+        hover = item.get("hovertemplate")
+
+        if isinstance(hover, str):
+            translated = translate_hover(hover)
+
+            if translated != hover:
+                update_en["hovertemplate"] = hover
+                update_pt["hovertemplate"] = translated
+
+        colorbar = item.get("colorbar", {})
+        title = colorbar.get("title", {}).get("text")
+
+        if isinstance(title, str) and translate(title) != title:
+            update_en["colorbar.title.text"] = title
+            update_pt["colorbar.title.text"] = translate(title)
+
+        if update_en:
+            traces_en.append({"index": i, "update": update_en})
+            traces_pt.append({"index": i, "update": update_pt})
+
+    # Translate categorical tick labels without modifying category data.
+    for dimension in ("x", "y"):
+        categories = []
+
+        for trace in fig.data:
+            values = getattr(trace, dimension, None)
+
+            if values is None:
+                continue
+
+            for value in values:
+                if isinstance(value, str) and value not in categories:
+                    categories.append(value)
+
+        if categories and any(
+            translate(value) != value for value in categories
+        ):
+            axis = dimension + "axis"
+
+            for destination, localized in (
+                (layout_en, categories),
+                (layout_pt, [translate(v) for v in categories])
+            ):
+                destination[axis + ".tickmode"] = "array"
+                destination[axis + ".tickvals"] = categories
+                destination[axis + ".ticktext"] = localized
+
+    heading = layout.get("title", {}).get("text") or ""
+
+    # Titles are presented outside the Plotly canvas.
+    layout_en.pop("title.text", None)
+    layout_pt.pop("title.text", None)
+
+    return {
+        "id": plot_id,
+        "locales": {
+            "en": {
+                "heading": heading,
+                "layout": layout_en,
+                "traces": traces_en
+            },
+            "pt-BR": {
+                "heading": translate(heading),
+                "layout": layout_pt,
+                "traces": traces_pt
+            }
+        }
+    }
+
+
+def _plotly_translation_html(fig, plot_id):
+    specification = _plotly_translation_spec(fig, plot_id)
+    payload = json.dumps(
+        specification, ensure_ascii=False
+    ).replace("<", "\\u003c")
+
+    return (
+        '<script type="application/json" data-ep-plotly-i18n>'
+        + payload
+        + '</script>'
+    )
 
 
 def _figure_html(fig, plot_id):
@@ -342,7 +717,48 @@ def build_html_report(project_root: Path | None = None, *, metrics_path: Path | 
         "plot-residuals": residuals,
         "plot-importance": rf,
     }
-    chart_divs = {key: _figure_html(figure, key) for key, figure in plots.items()}
+    chart_divs = {}
+
+    for key, figure in plots.items():
+        heading = figure.layout.title.text or ""
+        translation = _plotly_translation_html(figure, key)
+
+        if heading:
+            heading_html = (
+                f'<h3 class="ep-chart-heading" id="{key}-heading">'
+                f'{escape(heading)}</h3>'
+            )
+        else:
+            heading_html = ""
+
+        # The demand chart already has its external title.
+        figure.update_layout(title=None)
+
+        if key != "plot-demand":
+            has_legend = (
+                len(figure.data) > 1
+                and figure.layout.showlegend is not False
+            )
+
+            if has_legend:
+                figure.update_layout(
+                    margin=dict(t=65),
+                    legend=dict(
+                        orientation="h",
+                        x=0,
+                        xanchor="left",
+                        y=1.04,
+                        yanchor="bottom"
+                    )
+                )
+            else:
+                figure.update_layout(margin=dict(t=28))
+
+        chart_divs[key] = (
+            heading_html
+            + _figure_html(figure, key)
+            + translation
+        )
     if not any(row["model"] == model_name for row in models.to_dict("records")):
         raise ValueError("Selected model name absent from model_comparison.csv")
     sel_cv = float(models.loc[models["model"] == model_name, "cv_mean_rmse"].iloc[0])
@@ -405,7 +821,8 @@ def build_html_report(project_root: Path | None = None, *, metrics_path: Path | 
 
     ep_footer_html, _ = render_footer()
     ep_logo_src = logo_data_uri()
-    data.update(ep_footer_html=ep_footer_html, ep_logo_src=ep_logo_src)
+    data.update(ep_footer_html=ep_footer_html, ep_logo_src=ep_logo_src, ep_references_html=render_references(BIKE_REFERENCES), ep_outputs_html=render_outputs(BIKE_OUTPUTS))
+    data["ep_project_links_html"] = render_project_links('https://github.com/eduardojr-pereira/data-science-portfolio/tree/main/selected_projects/bike_sharing')
     template = Template(r'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -417,7 +834,7 @@ def build_html_report(project_root: Path | None = None, *, metrics_path: Path | 
   :root{--bg:#0c1525;--card:#14243a;--border:#28445e;--text:#e7eef9;--muted:#a7bfd3;--aqua:#67d8e9;--orange:#ffc07a;--nav-orange:#ff9f43;--warn:#ffd19b}
   *{box-sizing:border-box} html{scroll-behavior:smooth;scroll-padding-top:88px}
   body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
-  a{color:var(--aqua);text-underline-offset:3px}a:hover{color:#e9ffff}
+  a{color:var(--aqua);text-underline-offset:3px}a:hover{color:var(--ep-color-link-hover)}
   .container{width:min(1180px,calc(100% - 36px));margin:auto}
   /* Bike Sharing controls layout only; EP Brand controls link styling. */
   .bike-local-nav{position:sticky;top:0;z-index:20;background:var(--ep-color-bg);border-bottom:1px solid var(--ep-color-border)}
@@ -426,12 +843,7 @@ def build_html_report(project_root: Path | None = None, *, metrics_path: Path | 
   .bike-local-nav__back{margin-left:auto}
   @media(max-width:670px){.bike-local-nav__links{gap:6px}}
   @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-  .hero{background:linear-gradient(125deg,#14375a 5%,#112642 50%,#102135);border-bottom:1px solid var(--border);padding:64px 0 52px}
-  .eyebrow{font-size:.76rem;letter-spacing:.17em;text-transform:uppercase;font-weight:700;color:#8cdaec}
-  h1{font-size:clamp(2.1rem,5vw,3.7rem);line-height:1.14;letter-spacing:-.035em;margin:12px 0}
-  .lead{color:#c7d7e7;max-width:820px;font-size:1.09rem}.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
-  .tag{font-size:.78rem;border:1px solid #527b94;background:#1a3a52;padding:6px 12px;border-radius:999px}
-  main{padding:25px 0 80px}section{margin:36px 0 56px}.section-heading{margin:0 0 8px;font-size:1.55rem;letter-spacing:-.02em}
+  main{padding:25px 0 80px}main section{margin:36px 0 56px}.section-heading{margin:0 0 8px;font-size:1.55rem;letter-spacing:-.02em}
   .hint{color:var(--muted);font-size:.9rem;margin:0 0 19px;max-width:950px}.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
   .stat,.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;min-width:0}
   .stat small{color:var(--muted);display:block;font-size:.8rem}.stat strong{font-size:1.7rem;letter-spacing:-.03em;display:block;margin-top:4px}
@@ -440,16 +852,16 @@ def build_html_report(project_root: Path | None = None, *, metrics_path: Path | 
   .chart-heading{font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:1.07rem;font-weight:700;letter-spacing:-.015em;line-height:1.35;color:var(--text);margin:10px 12px 3px}
   .chart-subheading{font-size:.83rem;color:var(--muted);margin:0 12px 4px}
   .chart--demand .plotly-graph-div{margin-top:2px}
-  .callout{border-left:4px solid #e7a958;background:#2e2a30;padding:16px 19px;border-radius:0 10px 10px 0;color:#f4e1ca}
-  .callout strong{color:#ffd8a6}p{margin-top:8px}.card h3{margin:0 0 9px;font-size:1.1rem}.card p{color:#c7d7e7}.metric{font-size:1.35rem;font-weight:800;color:white}
-  .caption{font-size:.82rem;color:var(--muted);padding:6px 4px 0}.downloads{display:flex;gap:10px;flex-wrap:wrap}
-  .download{display:inline-flex;align-items:center;border:1px solid #547d94;text-decoration:none;padding:9px 14px;border-radius:9px;background:#1a3348;font-weight:650;font-size:.86rem}
-  .gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.gallery a{text-decoration:none;border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--card)}
-  .gallery img{width:100%;height:170px;object-fit:cover;background:white;display:block}.gallery span{display:block;padding:9px 12px;font-size:.85rem;color:#dfedf9}
+  .callout{border-left:4px solid var(--ep-color-accent);background:var(--ep-color-surface);padding:16px 19px;border-radius:0 10px 10px 0;color:var(--ep-color-text)}
+  .callout strong{color:var(--ep-color-accent)}p{margin-top:8px}.card h3{margin:0 0 9px;font-size:1.1rem}.card p{color:var(--ep-color-muted)}.metric{font-size:1.35rem;font-weight:800;color:var(--ep-color-text)}
+  .caption{font-size:.82rem;color:var(--muted);padding:6px 4px 0}
+
+
+
   footer:not(.ep-footer){border-top:1px solid var(--border);text-align:center;padding:34px 16px 48px;color:var(--muted);font-size:.85rem}footer:not(.ep-footer) img{width:72px;height:auto}
   .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-  @media(max-width:850px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
-  @media(max-width:670px){.grid{grid-template-columns:1fr}.chart.full{grid-column:auto}.gallery{grid-template-columns:1fr}.hero{padding:35px 0}.stat strong{font-size:1.4rem}}
+  @media(max-width:850px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:670px){.grid{grid-template-columns:1fr}.chart.full{grid-column:auto}.stat strong{font-size:1.4rem}}
 
   </style>
   <script>$plotly_js</script>
@@ -458,22 +870,24 @@ def build_html_report(project_root: Path | None = None, *, metrics_path: Path | 
   <nav class="bike-local-nav ep-report-nav" aria-label="Report sections">
     <div class="container bike-local-nav__inner">
       <div class="bike-local-nav__links">
-        <a class="ep-report-nav__link" href="#overview">Overview</a>
-        <a class="ep-report-nav__link" href="#business">Business</a>
-        <a class="ep-report-nav__link" href="#exploration">Exploration</a>
-        <a class="ep-report-nav__link" href="#hourly">Hourly</a>
-        <a class="ep-report-nav__link" href="#models">Models</a>
-        <a class="ep-report-nav__link" href="#findings">Conclusions</a>
-        <a class="ep-report-nav__link" href="#outputs">Outputs</a>
-        <a class="ep-report-nav__back bike-local-nav__back" href="../../../index.html" aria-label="Back to Showcase" data-replace="Back to Showcase"><span>Back to Showcase</span></a>
+        <a class="ep-report-nav__link" href="#overview" data-i18n-en="Overview" data-i18n-pt="Visão geral">Overview</a>
+        <a class="ep-report-nav__link" href="#business" data-i18n-en="Business" data-i18n-pt="Negócios">Business</a>
+        <a class="ep-report-nav__link" href="#exploration" data-i18n-en="Exploration" data-i18n-pt="Exploração">Exploration</a>
+        <a class="ep-report-nav__link" href="#hourly" data-i18n-en="Hourly" data-i18n-pt="Análise horária">Hourly</a>
+        <a class="ep-report-nav__link" href="#models" data-i18n-en="Models" data-i18n-pt="Modelos">Models</a>
+        <a class="ep-report-nav__link" href="#findings" data-i18n-en="Conclusions" data-i18n-pt="Conclusões">Conclusions</a>
+        <a class="ep-report-nav__link" href="#outputs" data-i18n-en="Outputs" data-i18n-pt="Resultados">Outputs</a>
+        <a class="ep-report-nav__link" href="#references" data-i18n-en="References" data-i18n-pt="Referências">References</a>
+        <a class="ep-report-nav__back bike-local-nav__back" href="../../../index.html" aria-label="Back to Portfolio" data-replace="Back to Portfolio"><span>Back to Portfolio</span></a>
       </div>
     </div>
   </nav>
-  <div id="top" class="hero"><div class="container">
-    <div class="eyebrow">Interactive technical report · Academic regression exercise</div>
+  <div id="top" class="hero ep-project-intro"><div class="ep-project-intro__inner">
+    <div class="eyebrow">Technical report · Regression analysis</div>
     <h1>Bike Sharing Demand Analysis</h1>
     <p class="lead">Explore daily and hourly demand patterns from Washington, D.C. (2011–2012), compare regression models through chronological validation, and examine the limitations of retrospective demand estimation.</p>
     <div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">scikit-learn</span><span class="tag">Plotly</span><span class="tag">Time-series CV</span></div>
+    $ep_project_links_html
   </div></div>
   <main class="container">
     <section id="overview"><h2 class="section-heading">Dataset overview</h2>
@@ -553,28 +967,8 @@ def build_html_report(project_root: Path | None = None, *, metrics_path: Path | 
         <div class="card"><h3>External validity</h3><p>These results cover a single city and 2011–2012. Prospective evaluation with a new period would be required before operational use.</p></div>
       </div>
     </section>
-    <section id="outputs"><h2 class="section-heading">Validated outputs & additional figures</h2>
-      <p class="hint">The HTML is built from the notebook's exported metrics and tables. Use these source artifacts to inspect exact numbers. Additional PNG figures remain available without reproducing them in new storage formats.</p>
-      <div class="downloads">
-        <a class="download" href="../outputs/metrics.json">Daily metrics JSON</a>
-        <a class="download" href="../outputs/hourly/metrics.json">Hourly metrics JSON</a>
-        <a class="download" href="../outputs/hourly/tables/hourly_model_comparison.csv">Hourly model comparison CSV</a>
-        <a class="download" href="../outputs/hourly/tables/hourly_holdout_predictions.csv">Hourly holdout predictions CSV</a>
-        <a class="download" href="../outputs/tables/model_comparison.csv">Model comparison CSV</a>
-        <a class="download" href="../outputs/tables/holdout_predictions.csv">Holdout predictions CSV</a>
-        <a class="download" href="../outputs/tables/random_forest_feature_importance.csv">Feature importance CSV</a>
-      </div>
-      <div class="gallery" style="margin-top:20px">
-        <a href="../outputs/figures/distributions.png"><img loading="lazy" src="../outputs/figures/distributions.png" alt="Exploratory variable distributions"><span>Variable distributions</span></a>
-        <a href="../outputs/figures/random_forest_tree_excerpt.png"><img loading="lazy" src="../outputs/figures/random_forest_tree_excerpt.png" alt="Illustrative Random Forest decision tree excerpt"><span>Tree excerpt</span></a>
-        <a href="../outputs/figures/demand_patterns.png"><img loading="lazy" src="../outputs/figures/demand_patterns.png" alt="Notebook demand analysis"><span>Notebook demand patterns</span></a>
-      </div>
-    </section>
-    <section id="references"><h2 class="section-heading">References and reproducibility</h2>
-      <div class="card"><p><strong>Original dataset:</strong> <a href="https://archive.ics.uci.edu/dataset/275/bike+sharing+dataset">UCI Bike Sharing Dataset</a>, Fanaee-T & Gama, DOI 10.24432/C5W894, distributed under CC BY 4.0 with attribution.</p>
-      <p><strong>Knowledge Base:</strong> <a href="https://github.com/eduardojr-pereira/data-science-knowledge-base/tree/main/05_machine_learning">Machine Learning</a> and <a href="https://github.com/eduardojr-pereira/data-science-knowledge-base/tree/main/02_data_analysis_visualization">Data Analysis & Visualization</a>.</p>
-      <p><strong>Implementation:</strong> execute <code>bike_sharing_analysis.ipynb</code> to regenerate data exports, then run <code>python build_bike_report.py</code> from the project directory to rebuild this HTML. The HTML requires no Python server and includes Plotly.js offline; GitHub Pages hosting is supported.</p></div>
-    </section>
+    $ep_outputs_html
+    $ep_references_html
   </main>
   $ep_footer_html
   <script>
@@ -638,6 +1032,12 @@ def build_html_report(project_root: Path | None = None, *, metrics_path: Path | 
   </script>
 </body></html>''')
     html = template.safe_substitute(data)
+    html = html.replace(
+        "</body>",
+        "<script>\n" + BIKE_REPORT_TRANSLATIONS
+        + "\n</script>\n</body>",
+        1
+    )
     report_path.write_text(html, encoding="utf-8")
     print(f"HTML report updated: {report_path}")
     print(f"Figures: {len(plots)} interactive Plotly charts; notebook and outputs unchanged")
