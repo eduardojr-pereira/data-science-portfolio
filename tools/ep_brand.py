@@ -80,6 +80,9 @@ def copy_shared_assets(output):
 def render_references(data):
     return _canonical_module("render_references").render_references(data)
 
+def render_report_licenses(licenses):
+    return _canonical_module("render_references").render_report_licenses(licenses)
+
 def render_outputs(data):
     return _canonical_module("render_outputs").render_outputs(data)
 
