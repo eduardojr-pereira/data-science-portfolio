@@ -27,7 +27,7 @@
 
 This portfolio brings together Data Science and Analytics projects that connect my background in Economics (UFV) and postgraduate studies in Data Science (PUC) with practical problem solving. It is the applied companion to the Data Science Knowledge Base.
 
-Projects are organized by purpose and maturity. Documentation is available in English and Brazilian Portuguese. The linked interactive experiences belong to the previous published version; their reconstruction using the canonical EP Brand builder is pending. Each project documents its dependencies, methodology, validation and limitations; there is no shared Python environment for the entire repository. New work is reviewed for authorship, data provenance and rights, sensitive information, reproducibility and documentation before inclusion.
+Projects are organized by purpose and maturity. Documentation is available in English and Brazilian Portuguese. The linked interactive experiences belong to the previous published version; their reconstruction using the canonical EP Brand builder remains pending. The builder infrastructure uses an isolated, immutable EP Brand checkout; no library copy or generated site is maintained in this repository. Each project documents its dependencies, methodology, validation and limitations; there is no shared Python environment for the entire repository. New work is reviewed for authorship, data provenance and rights, sensitive information, reproducibility and documentation before inclusion.
 
 
 ---

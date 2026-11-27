@@ -27,7 +27,7 @@
 
 Este portfólio reúne projetos de Ciência de Dados e Analytics que conectam minha formação em Ciências Econômicas (UFV) e pós-graduação em Ciência de Dados (PUC) à resolução de problemas práticos. É o complemento aplicado da Base de Conhecimento em Ciência de Dados.
 
-Os projetos são organizados conforme sua finalidade e maturidade. A documentação está disponível em inglês e português brasileiro. As experiências interativas vinculadas pertencem à versão publicada anterior; sua reconstrução com o builder canônico do EP Brand está pendente. Cada projeto documenta suas dependências, metodologia, validação e limitações; não há um ambiente Python único para todo o repositório. Novos trabalhos são revisados quanto à autoria, procedência e direitos dos dados, informações sensíveis, reprodutibilidade e documentação antes da inclusão.
+Os projetos são organizados conforme sua finalidade e maturidade. A documentação está disponível em inglês e português brasileiro. As experiências interativas vinculadas pertencem à versão publicada anterior; sua reconstrução com o builder canônico do EP Brand permanece pendente. A infraestrutura de build usa um checkout isolado e imutável do EP Brand; nenhuma cópia da biblioteca ou site gerado é mantido neste repositório. Cada projeto documenta suas dependências, metodologia, validação e limitações; não há um ambiente Python único para todo o repositório. Novos trabalhos são revisados quanto à autoria, procedência e direitos dos dados, informações sensíveis, reprodutibilidade e documentação antes da inclusão.
 
 
 ---
