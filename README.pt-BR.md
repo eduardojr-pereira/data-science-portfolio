@@ -27,7 +27,7 @@
 
 Este portfólio reúne projetos de Ciência de Dados e Analytics que conectam minha formação em Ciências Econômicas (UFV) e pós-graduação em Ciência de Dados (PUC) à resolução de problemas práticos. É o complemento aplicado da Base de Conhecimento em Ciência de Dados.
 
-Os projetos são organizados conforme sua finalidade e maturidade. A documentação e as experiências interativas dos dois projetos atuais estão disponíveis em inglês e português brasileiro. Cada projeto documenta suas dependências, metodologia, validação e limitações; não há um ambiente Python único para todo o repositório. Novos trabalhos são revisados quanto à autoria, procedência e direitos dos dados, informações sensíveis, reprodutibilidade e documentação antes da inclusão.
+Os projetos são organizados conforme sua finalidade e maturidade. A documentação está disponível em inglês e português brasileiro. As experiências interativas vinculadas pertencem à versão publicada anterior; sua reconstrução com o builder canônico do EP Brand está pendente. Cada projeto documenta suas dependências, metodologia, validação e limitações; não há um ambiente Python único para todo o repositório. Novos trabalhos são revisados quanto à autoria, procedência e direitos dos dados, informações sensíveis, reprodutibilidade e documentação antes da inclusão.
 
 
 ---
@@ -84,8 +84,6 @@ Nenhum experimento foi publicado nesta coleção até o momento.
 
 ```text
 data-science-portfolio/
-├── .github/
-│   └── workflows/
 ├── .gitignore
 ├── LICENSE-CODE.txt
 ├── LICENSE-CONTENT.md
@@ -97,10 +95,8 @@ data-science-portfolio/
 │   └── .gitkeep
 ├── learning_labs/
 │   └── python_hangman_game/
-├── selected_projects/
-│   └── bike_sharing/
-└── tools/
-    └── ep_brand.py
+└── selected_projects/
+    └── bike_sharing/
 ```
 
 </details>
@@ -108,7 +104,7 @@ data-science-portfolio/
 Cada projeto possui documentação e estrutura próprias.
 
 - `config/` — Contém o catálogo de projetos.
-- `tools/` — Contém o adaptador de integração com a fonte canônica EP Brand.
+- A infraestrutura compartilhada de apresentação e a composição do site pertencem ao EP Brand Assets. A nova integração está pendente.
 
 <p align="right"><sub><a href="#readme-top">↑ Voltar ao topo</a></sub></p>
 

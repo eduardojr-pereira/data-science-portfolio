@@ -24,7 +24,7 @@
 
 ## Visão Geral
 
-O Jogo da Forca é um **Learning Lab** educacional, não um projeto de aprendizado de máquina ou análise de dados. Há duas implementações: um jogo de terminal em Python e uma versão para navegador em HTML, CSS e JavaScript. As regras são equivalentes, mas o navegador **não executa o código Python**.
+O Jogo da Forca é um **Learning Lab** educacional, não um projeto de aprendizado de máquina ou análise de dados. Este repositório inclui a implementação em Python para terminal. A versão para navegador publicada anteriormente utiliza HTML, CSS e JavaScript. As regras são equivalentes, mas o navegador **não executa o código Python**. A migração da versão web para a arquitetura canônica do EP Brand está pendente.
 
 ## Funcionalidades
 
@@ -34,7 +34,7 @@ O Jogo da Forca é um **Learning Lab** educacional, não um projeto de aprendiza
 | Dois jogadores | Uma pessoa informa a palavra secreta e a outra tenta descobri-la |
 | Validação | Letras são verificadas; tentativas repetidas não consomem chances |
 | Evolução da partida | Desenho progressivo, até seis erros, identificação de vitória e derrota |
-| Interface web | Layout responsivo, teclado virtual e físico, alternância português/inglês |
+| Interface web (versão publicada anterior) | Layout responsivo, teclado virtual e físico, alternância português/inglês |
 | Privacidade | Os palpites são processados localmente, sem envio da palavra a um servidor |
 
 ## Conteúdo
@@ -44,14 +44,10 @@ O Jogo da Forca é um **Learning Lab** educacional, não um projeto de aprendiza
 | [Jogar no navegador](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python_hangman_game/reports/index.html) | Versão web interativa |
 | [`hangman.py`](./hangman.py) | Implementação em Python para terminal |
 | [`tests/test_hangman.py`](./tests/test_hangman.py) | Testes automatizados |
-| [`web/report.js`](./web/report.js) | Lógica do jogo no navegador |
-| [`web/report.css`](./web/report.css) | Layout e interações visuais |
-| [`web/report.template.html`](./web/report.template.html) | Modelo-fonte da interface web |
-| [`reports/index.html`](./reports/index.html) | Página web autônoma gerada |
 
 ## Tecnologias
 
-Python 3 (biblioteca padrão, `unittest`) · HTML5 · CSS3 · JavaScript puro. Não é necessário instalar pacotes Python, Node.js, API externa ou backend para jogar.
+Python 3 (biblioteca padrão, `unittest`) para a implementação de terminal. A versão web publicada anteriormente utiliza HTML5, CSS3 e JavaScript puro. Não é necessário instalar pacotes Python, Node.js, API externa ou backend para jogar nas versões existentes.
 
 ## Instalação e Execução
 
@@ -75,7 +71,7 @@ python -m unittest discover -s tests -v
 
 Escolha o modo individual ou para duas pessoas e descubra a palavra antes de cometer seis erros. No modo para duas pessoas, o primeiro jogador deve informar a palavra sem que o outro veja. Na versão web, use o teclado virtual ou físico e selecione o idioma preferido. O controle de nova partida reinicia o jogo.
 
-O notebook Jupyter original foi preservado fora do pacote publicado por decisão do autor; a versão mantida neste projeto é o código Python com a demonstração web.
+O notebook Jupyter original foi preservado fora do pacote publicado por decisão do autor. Este checkpoint mantém o código Python e os testes; a demonstração web vinculada pertence à versão publicada anterior.
 
 ## Referências
 

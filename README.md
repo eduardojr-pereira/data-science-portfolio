@@ -27,7 +27,7 @@
 
 This portfolio brings together Data Science and Analytics projects that connect my background in Economics (UFV) and postgraduate studies in Data Science (PUC) with practical problem solving. It is the applied companion to the Data Science Knowledge Base.
 
-Projects are organized by purpose and maturity. Documentation and interactive experiences for both current projects are available in English and Brazilian Portuguese. Each project documents its dependencies, methodology, validation and limitations; there is no shared Python environment for the entire repository. New work is reviewed for authorship, data provenance and rights, sensitive information, reproducibility and documentation before inclusion.
+Projects are organized by purpose and maturity. Documentation is available in English and Brazilian Portuguese. The linked interactive experiences belong to the previous published version; their reconstruction using the canonical EP Brand builder is pending. Each project documents its dependencies, methodology, validation and limitations; there is no shared Python environment for the entire repository. New work is reviewed for authorship, data provenance and rights, sensitive information, reproducibility and documentation before inclusion.
 
 
 ---
@@ -84,8 +84,6 @@ No individual experiment has been published in this collection yet.
 
 ```text
 data-science-portfolio/
-├── .github/
-│   └── workflows/
 ├── .gitignore
 ├── LICENSE-CODE.txt
 ├── LICENSE-CONTENT.md
@@ -97,10 +95,8 @@ data-science-portfolio/
 │   └── .gitkeep
 ├── learning_labs/
 │   └── python_hangman_game/
-├── selected_projects/
-│   └── bike_sharing/
-└── tools/
-    └── ep_brand.py
+└── selected_projects/
+    └── bike_sharing/
 ```
 
 </details>
@@ -108,7 +104,7 @@ data-science-portfolio/
 Each project has its own documentation and structure.
 
 - `config/` — Holds the project catalog.
-- `tools/` — Contains the canonical EP Brand integration adapter.
+- Shared presentation infrastructure and site composition belong to EP Brand Assets. The new integration is pending.
 
 <p align="right"><sub><a href="#readme-top">↑ Back to top</a></sub></p>
 

@@ -24,7 +24,7 @@
 
 ## Overview
 
-Hangman is an educational **Learning Lab**, not a machine-learning or data-analytics project. It has two implementations: a command-line game in Python and a browser-based game in HTML, CSS and JavaScript. The two versions follow equivalent game rules, but the browser does **not** execute the Python source.
+Hangman is an educational **Learning Lab**, not a machine-learning or data-analytics project. This repository includes the command-line Python implementation. The previously published browser version uses HTML, CSS and JavaScript. The two versions follow equivalent game rules, but the browser does **not** execute the Python source. Migration of the web version to the canonical EP Brand architecture is pending.
 
 ## Features
 
@@ -34,7 +34,7 @@ Hangman is an educational **Learning Lab**, not a machine-learning or data-analy
 | Two-player mode | One player enters the secret word; the other guesses |
 | Guess handling | Letters are validated; repeated guesses do not consume attempts |
 | Game progress | Progressive hangman drawing, up to six incorrect guesses, win/loss detection |
-| Web interface | Responsive layout, on-screen and physical keyboard, English/Portuguese language selection |
+| Web interface (previous published version) | Responsive layout, on-screen and physical keyboard, English/Portuguese language selection |
 | Privacy | Guessing happens locally, without sending the secret word to a server |
 
 ## Contents
@@ -44,14 +44,10 @@ Hangman is an educational **Learning Lab**, not a machine-learning or data-analy
 | [Play online](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python_hangman_game/reports/index.html) | Interactive browser version |
 | [`hangman.py`](./hangman.py) | Python command-line implementation |
 | [`tests/test_hangman.py`](./tests/test_hangman.py) | Automated unit tests |
-| [`web/report.js`](./web/report.js) | Browser game logic |
-| [`web/report.css`](./web/report.css) | Web layout and interactions |
-| [`web/report.template.html`](./web/report.template.html) | Source template for the web interface |
-| [`reports/index.html`](./reports/index.html) | Generated standalone web page |
 
 ## Technologies
 
-Python 3 (standard library, `unittest`) · HTML5 · CSS3 · JavaScript (vanilla). No Python packages, Node.js installation, external API or backend are required to play.
+Python 3 (standard library, `unittest`) for the terminal implementation. The previously published web version uses HTML5, CSS3 and vanilla JavaScript. No Python packages, Node.js installation, external API or backend are required to play either existing version.
 
 ## Setup and Installation
 
@@ -75,7 +71,7 @@ python -m unittest discover -s tests -v
 
 Choose one-player or two-player mode, then guess letters before reaching six mistakes. In two-player mode, the first player should enter the word privately. On the web, use the on-screen keyboard or the physical keyboard and select your preferred language. Use the replay control to start a new round.
 
-The initial Jupyter notebook was kept outside this published project package by decision of the author; the maintained version is the Python source plus the web demonstration.
+The initial Jupyter notebook was kept outside this published project package by decision of the author. This checkpoint maintains the Python source and tests; the linked web demonstration belongs to the previous published version.
 
 ## References
 

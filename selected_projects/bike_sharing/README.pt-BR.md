@@ -39,7 +39,7 @@
 
 **Problema de negócio:** Como a demanda por bicicletas varia ao longo do dia, do calendário e entre segmentos de usuários, e como esses padrões podem orientar decisões operacionais? O estudo analisa o Capital Bikeshare (Washington, D.C., 2011–2012) com **731 observações diárias e 17.379 registros horários** provenientes da mesma base UCI.
 
-**Situação no portfólio:** Publicado como Projeto Selecionado no repositório GitHub, com relatório HTML interativo na vitrine. As bases diária e horária foram conciliadas, e uma versão anterior do notebook de 57 células foi executada sem erros. A reexecução integral do notebook após a mudança na geração do relatório ainda precisa ser verificada; a publicação não significa que essa reexecução ocorreu.
+**Situação no portfólio:** Publicado como Projeto Selecionado no repositório GitHub. O relatório HTML interativo vinculado pertence à versão publicada anterior; a migração para o builder canônico do EP Brand está pendente. As bases diária e horária foram conciliadas, e uma versão anterior do notebook de 57 células foi executada sem erros. A reexecução integral após a remoção da dependência legada de geração do relatório ainda precisa ser verificada; a publicação não significa que essa reexecução ocorreu.
 
 **Evidências dos modelos:** O modelo diário Polynomial ridge (degree 2) apresentou R² **-0.257** no teste cronológico, enquanto o modelo horário Random forest obteve R² **0.695**. Os erros RMSE/MAE têm unidades diferentes (aluguéis por dia versus por hora) e não podem ser comparados diretamente.
 
@@ -73,11 +73,10 @@
 | Recurso | Finalidade |
 |---|---|
 | [Notebook](./bike_sharing_analysis.ipynb) | Notebook único das análises diária e horária |
-| [Relatório HTML interativo](./reports/index.html) | Painel Plotly com gráficos diários e horários e ressalvas |
+| [Relatório HTML interativo](https://eduardojr-pereira.github.io/data-science-portfolio/selected_projects/bike_sharing/reports/index.html) | Painel Plotly publicado anteriormente, com gráficos diários e horários e ressalvas |
 | [Dados diários](./datasets/day.csv) | Arquivo UCI original (731 dias) |
 | [Dados horários](./datasets/hour.csv) | Arquivo UCI original (17.379 registros) |
 | [Dependências](./requirements.txt) | Bibliotecas Python utilizadas |
-| [Gerador do relatório](./build_bike_report.py) | Reconstrução do HTML a partir das exportações |
 | [Métricas diárias](./outputs/metrics.json) | Resultados e metodologia diária |
 | [Métricas horárias](./outputs/hourly/metrics.json) | Resultados e metodologia horária |
 | [Comparação horária](./outputs/hourly/tables/hourly_model_comparison.csv) | Validação cruzada cronológica |
@@ -89,24 +88,22 @@
 bike_sharing/
 ├── README.md / README.pt-BR.md
 ├── bike_sharing_analysis.ipynb
-├── build_bike_report.py
 ├── requirements.txt
 ├── datasets/
 │   ├── day.csv
 │   └── hour.csv
-├── outputs/
-│   ├── metrics.json
-│   ├── figures/ and tables/
-│   └── hourly/
-│       ├── metrics.json
-│       ├── figures/
-│       └── tables/
-└── reports/
-    └── index.html
+└── outputs/
+    ├── metrics.json
+    ├── figures/
+    ├── tables/
+    └── hourly/
+        ├── metrics.json
+        ├── figures/
+        └── tables/
 
 ```
 
-Os dois arquivos UCI são usados e foram reconciliados. Checkpoints do Jupyter, backups locais e arquivos redundantes não devem ser publicados. O Plotly está incorporado ao relatório; a identidade visual externa pode precisar de conexão.
+Os dois arquivos UCI são usados e foram reconciliados. Checkpoints do Jupyter, backups locais e arquivos redundantes não devem ser publicados. O Plotly estava incorporado ao relatório publicado anteriormente; a identidade visual externa pode precisar de conexão.
 
 <p align="right"><a href="#readme-top">↑ VOLTAR AO TOPO</a></p>
 
@@ -122,7 +119,7 @@ Os dois arquivos UCI são usados e foram reconciliados. Checkpoints do Jupyter, 
 | pandas / NumPy | Validação dos dados e processamento numérico |
 | scikit-learn | Validação temporal, pipelines e regressão |
 | Matplotlib | Gráficos PNG reprodutíveis |
-| Plotly | Visualizações interativas offline em HTML |
+| Plotly | Visualizações interativas em HTML no relatório publicado anteriormente |
 | JupyterLab | Execução e inspeção do notebook |
 
 O projeto não depende de frameworks de aprendizado de máquina ou painéis externos desnecessários.
@@ -135,15 +132,16 @@ O projeto não depende de frameworks de aprendizado de máquina ou painéis exte
 
 ## Instalação e Configuração
 
-Após copiar a pasta para `04_Projetos`, execute os comandos **dentro do diretório do projeto**:
+Execute os comandos **dentro do diretório do projeto**, utilizando um ambiente Python ativo de sua escolha. O JupyterLab é uma dependência separada para execução do notebook:
 
 ```bash
 python -m pip install -r requirements.txt
+python -m pip install jupyterlab
 python -m pip check
 jupyter lab
 ```
 
-Você pode utilizar o ambiente `jupyter-env` já existente. Abra `bike_sharing_analysis.ipynb` e utilize **Restart Kernel → Run All Cells**. O notebook também consegue localizar seus arquivos quando executado a partir da raiz do repositório. A análise dispensa internet, embora a instalação das dependências possa exigir conexão.
+Abra `bike_sharing_analysis.ipynb` e utilize **Restart Kernel → Run All Cells** quando uma nova execução for necessária. O notebook também consegue localizar seus arquivos quando executado a partir da raiz do repositório. A análise dispensa internet, embora a instalação das dependências possa exigir conexão.
 
 A execução controlada foi realizada com **Python 3.13.5, pandas 2.2.3, scikit-learn 1.8.0, Matplotlib 3.10.8 e Plotly 6.5.2**. A compatibilidade com seu Python 3.14 local ainda precisa ser confirmada.
 
@@ -166,9 +164,9 @@ A execução controlada foi realizada com **Python 3.13.5, pandas 2.2.3, scikit-
 | Pré-processamento | `Pipeline` com `ColumnTransformer` ajustado em cada fold |
 | Melhor validação | **Polynomial ridge (degree 2)**, RMSE médio **1,431.31** |
 | Teste final | RMSE **2,101.41**, MAE **1,968.90**, R² **-0.257** |
-| Execução do notebook | Versão anterior: 57 células, 25 de código sem erros. Nova execução necessária após reordenar a geração do HTML |
-| Relatório HTML | Gerado com base nos resultados exportados |
-| Execução local | Concluída no `jupyter-env`; versão exata do Python a conferir separadamente |
+| Execução do notebook | Versão anterior: 57 células, 25 de código sem erros. Nova execução pendente após a remoção da dependência legada de geração do HTML |
+| Relatório HTML | Versão publicada anterior gerada a partir dos resultados analíticos; migração para o builder canônico pendente |
+| Execução local | Execução histórica concluída em ambiente Python local; versão exata do Python a conferir separadamente |
 
 **Ressalva entre versões:** O mesmo conjunto cronológico de teste já havia sido examinado no piloto v1. Embora a seleção de modelos nesta versão use apenas a validação no desenvolvimento, esse período não constitui mais um teste completamente inédito entre revisões. É necessária validação externa futura.
 
@@ -184,7 +182,7 @@ A execução controlada foi realizada com **Python 3.13.5, pandas 2.2.3, scikit-
 
 1. Percorra o notebook único: EDA e modelos diários, padrões horários e avaliação independente dos modelos horários.
 2. Consulte os CSVs gerados e `outputs/metrics.json` para verificar as métricas.
-3. [Abra o relatório HTML interativo publicado](https://eduardojr-pereira.github.io/data-science-portfolio/selected_projects/bike_sharing/reports/index.html) no navegador, ou abra `reports/index.html` localmente. O visualizador de código do GitHub não executa o relatório como uma aplicação web.
+3. [Abra o relatório HTML interativo publicado](https://eduardojr-pereira.github.io/data-science-portfolio/selected_projects/bike_sharing/reports/index.html) no navegador. Ele pertence à versão publicada anterior; este checkpoint não inclui um relatório HTML local. O visualizador de código do GitHub não executa o relatório como uma aplicação web.
 4. Leia as limitações antes de divulgar métricas no portfólio ou currículo.
 
 ### Conclusões Práticas
