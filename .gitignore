@@ -35,5 +35,3 @@ Thumbs.db
 *.old
 *.orig
 .readme_backups/
-
-# Canonical library checkouts and build outputs belong outside this repository

@@ -1,4 +1,6 @@
-"""Jogo da Forca: implementação didática em Python (biblioteca padrão)."""
+"""Responsibility: Implement the existing educational Hangman game rules and terminal interaction using the Python standard library.
+Boundaries: No web UI, publication, external data retrieval or analytical processing; game/presentation separation belongs to the authorized migration.
+"""
 from __future__ import annotations
 
 import random

@@ -1,4 +1,6 @@
-"""Testes determinísticos, sem interação nem execução automática ao importar."""
+"""Responsibility: Verify the existing Hangman rules and deterministic secret selection without interactive input.
+Boundaries: No browser testing, real game sessions, publication or automatic test execution on import.
+"""
 import sys
 import unittest
 from pathlib import Path
