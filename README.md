@@ -103,7 +103,7 @@ data-science-portfolio/
 
 Each project has its own documentation and structure.
 
-- `config/` — Holds the project catalog.
+- `config/` — Holds the ordered project registry (`projects.json`); individual `project.json` files own bilingual project metadata and references to existing documentation and notebooks.
 - Shared presentation infrastructure and site composition belong to EP Brand Assets. The new integration is pending.
 
 <p align="right"><sub><a href="#readme-top">↑ Back to top</a></sub></p>

@@ -103,7 +103,7 @@ data-science-portfolio/
 
 Cada projeto possui documentação e estrutura próprias.
 
-- `config/` — Contém o catálogo de projetos.
+- `config/` — Contém o registro ordenado de projetos (`projects.json`); os arquivos individuais `project.json` definem metadados bilíngues e referências à documentação e aos notebooks existentes.
 - A infraestrutura compartilhada de apresentação e a composição do site pertencem ao EP Brand Assets. A nova integração está pendente.
 
 <p align="right"><sub><a href="#readme-top">↑ Voltar ao topo</a></sub></p>

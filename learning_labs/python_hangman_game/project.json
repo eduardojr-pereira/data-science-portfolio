@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "name": {
+    "en": "Hangman Game — Python Fundamentals",
+    "pt-BR": "Jogo da Forca — Fundamentos de Python"
+  },
+  "description": {
+    "en": "Play an interactive bilingual Hangman game. Explore a tested Python implementation with single-player and two-player modes, input validation, and unit tests.",
+    "pt-BR": "Jogue uma versão interativa e bilíngue do Jogo da Forca. Explore uma implementação em Python com modos para um ou dois jogadores, validação de entradas e testes unitários."
+  },
+  "topics": [
+    {
+      "id": "python_programming",
+      "label": {
+        "en": "Python Programming",
+        "pt-BR": "Programação em Python"
+      }
+    }
+  ],
+  "technologies": [
+    "python",
+    "javascript",
+    "html5",
+    "css"
+  ],
+  "documentation": {
+    "en": "README.md",
+    "pt-BR": "README.pt-BR.md"
+  },
+  "notebook": null
+}

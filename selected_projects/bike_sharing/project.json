@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "name": {
+    "en": "Bike Sharing — Demand & Operational Insights",
+    "pt-BR": "Bike Sharing — Demanda e Análise Operacional"
+  },
+  "description": {
+    "en": "Explore historical daily and hourly bicycle rental demand, rider segments, seasonal patterns, and time-aware model validation. Results are retrospective, not production forecasts.",
+    "pt-BR": "Explore a demanda histórica diária e horária por aluguel de bicicletas, os segmentos de usuários, os padrões sazonais e a validação de modelos com respeito à ordem temporal. Os resultados são retrospectivos, não previsões em produção."
+  },
+  "topics": [
+    {
+      "id": "data_analytics",
+      "label": {
+        "en": "Data Analytics",
+        "pt-BR": "Análise de Dados"
+      }
+    },
+    {
+      "id": "machine_learning",
+      "label": {
+        "en": "Machine Learning",
+        "pt-BR": "Aprendizado de Máquina"
+      }
+    }
+  ],
+  "technologies": [
+    "python",
+    "pandas",
+    "scikit_learn",
+    "plotly"
+  ],
+  "documentation": {
+    "en": "README.md",
+    "pt-BR": "README.pt-BR.md"
+  },
+  "notebook": "bike_sharing_analysis.ipynb"
+}
