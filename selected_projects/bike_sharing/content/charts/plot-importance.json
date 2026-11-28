@@ -1,0 +1,87 @@
+{
+  "figure": {
+    "data": [
+      {
+        "type": "bar",
+        "y": [
+          "numeric__temp",
+          "numeric__hum",
+          "numeric__windspeed",
+          "categorical__mnth_1",
+          "categorical__weathersit_1",
+          "categorical__mnth_6",
+          "categorical__weathersit_3",
+          "binary__workingday",
+          "categorical__mnth_5",
+          "categorical__mnth_3",
+          "categorical__mnth_4",
+          "categorical__mnth_2"
+        ],
+        "x": [
+          0.6785227808541343,
+          0.1517129140004528,
+          0.0667233311918155,
+          0.0179840402759841,
+          0.0140994033249658,
+          0.0105053429108977,
+          0.0077672027839175,
+          0.0075650101499522,
+          0.0063520079691615,
+          0.006087724431893,
+          0.0055698513018656,
+          0.0036731489232873
+        ],
+        "orientation": "h",
+        "hovertemplate": "%{y}<br>Importance: %{x:.3f}<extra></extra>"
+      }
+    ],
+    "layout": {
+      "height": 430,
+      "autosize": true,
+      "title": {
+        "text": "Random forest feature importance · illustrative model"
+      },
+      "margin": {
+        "l": 205,
+        "r": 24,
+        "t": 75,
+        "b": 65
+      },
+      "xaxis": {
+        "title": {
+          "text": "Impurity-based importance"
+        }
+      },
+      "yaxis": {
+        "autorange": "reversed"
+      }
+    }
+  },
+  "translations": {
+    "layout": {
+      "title.text": "content.bike.chart.importance.title",
+      "xaxis.title.text": "content.bike.chart.axis.impurity_based_importance"
+    },
+    "traces": [
+      {
+        "index": 0,
+        "fields": {
+          "hovertemplate": "content.bike.chart.importance.hover"
+        }
+      }
+    ]
+  },
+  "colors": [
+    {
+      "trace": 0,
+      "path": "marker.color",
+      "palette": "ep-muted-pastel",
+      "index": 1
+    }
+  ],
+  "palette": "ep-muted-pastel",
+  "config": {
+    "responsive": true,
+    "displaylogo": false
+  }
+}

@@ -1,0 +1,240 @@
+{
+  "figure": {
+    "data": [
+      {
+        "type": "scatter",
+        "x": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "y": [
+          1231.9032258064517,
+          1721.9642857142858,
+          2065.967741935484,
+          3162.3333333333335,
+          4381.322580645161,
+          4783.733333333334,
+          4559.387096774193,
+          4409.387096774193,
+          4247.266666666666,
+          3984.2258064516127,
+          3405.5666666666666,
+          2816.8709677419356
+        ],
+        "mode": "lines+markers",
+        "name": "2011",
+        "line": {
+          "width": 3,
+          "dash": "solid"
+        },
+        "hovertemplate": "%{text}<br>Mean rentals: %{y:,.1f}<extra></extra>",
+        "text": [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec"
+        ]
+      },
+      {
+        "type": "scatter",
+        "x": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "y": [
+          3120.7741935483873,
+          3556.448275862069,
+          5318.548387096775,
+          5807.466666666666,
+          6318.225806451613,
+          6761.0,
+          6567.967741935484,
+          6919.451612903225,
+          7285.766666666666,
+          6414.225806451613,
+          5088.8,
+          3990.7419354838707
+        ],
+        "mode": "lines+markers",
+        "name": "2012",
+        "line": {
+          "width": 3,
+          "dash": "dash"
+        },
+        "hovertemplate": "%{text}<br>Mean rentals: %{y:,.1f}<extra></extra>",
+        "text": [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec"
+        ]
+      }
+    ],
+    "layout": {
+      "height": 370,
+      "autosize": true,
+      "title": {
+        "text": "Average daily rentals by month and year"
+      },
+      "margin": {
+        "l": 65,
+        "r": 24,
+        "t": 75,
+        "b": 65
+      },
+      "yaxis": {
+        "title": {
+          "text": "Mean daily rentals"
+        }
+      },
+      "xaxis": {
+        "tickmode": "array",
+        "tickvals": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "ticktext": [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec"
+        ]
+      }
+    }
+  },
+  "translations": {
+    "layout": {
+      "title.text": "content.bike.chart.seasonality.title",
+      "yaxis.title.text": "content.bike.chart.axis.mean_daily_rentals",
+      "xaxis.ticktext": [
+        "content.bike.chart.month.1",
+        "content.bike.chart.month.2",
+        "content.bike.chart.month.3",
+        "content.bike.chart.month.4",
+        "content.bike.chart.month.5",
+        "content.bike.chart.month.6",
+        "content.bike.chart.month.7",
+        "content.bike.chart.month.8",
+        "content.bike.chart.month.9",
+        "content.bike.chart.month.10",
+        "content.bike.chart.month.11",
+        "content.bike.chart.month.12"
+      ]
+    },
+    "traces": [
+      {
+        "index": 0,
+        "fields": {
+          "hovertemplate": "content.bike.chart.hover.category",
+          "text": [
+            "content.bike.chart.month.1",
+            "content.bike.chart.month.2",
+            "content.bike.chart.month.3",
+            "content.bike.chart.month.4",
+            "content.bike.chart.month.5",
+            "content.bike.chart.month.6",
+            "content.bike.chart.month.7",
+            "content.bike.chart.month.8",
+            "content.bike.chart.month.9",
+            "content.bike.chart.month.10",
+            "content.bike.chart.month.11",
+            "content.bike.chart.month.12"
+          ]
+        }
+      },
+      {
+        "index": 1,
+        "fields": {
+          "hovertemplate": "content.bike.chart.hover.category",
+          "text": [
+            "content.bike.chart.month.1",
+            "content.bike.chart.month.2",
+            "content.bike.chart.month.3",
+            "content.bike.chart.month.4",
+            "content.bike.chart.month.5",
+            "content.bike.chart.month.6",
+            "content.bike.chart.month.7",
+            "content.bike.chart.month.8",
+            "content.bike.chart.month.9",
+            "content.bike.chart.month.10",
+            "content.bike.chart.month.11",
+            "content.bike.chart.month.12"
+          ]
+        }
+      }
+    ]
+  },
+  "colors": [
+    {
+      "trace": 0,
+      "path": "line.color",
+      "palette": "ep-muted-pastel",
+      "index": 1
+    },
+    {
+      "trace": 1,
+      "path": "line.color",
+      "palette": "ep-muted-pastel",
+      "index": 0
+    }
+  ],
+  "palette": "ep-muted-pastel",
+  "config": {
+    "responsive": true,
+    "displaylogo": false
+  }
+}

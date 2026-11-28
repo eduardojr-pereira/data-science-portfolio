@@ -2,10 +2,6 @@
   "schema_version": 2,
   "projects": [
     {
-      "path": "learning_labs/python_hangman_game",
-      "featured": false
-    },
-    {
       "path": "selected_projects/bike_sharing",
       "featured": true
     }

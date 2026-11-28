@@ -1,0 +1,144 @@
+{
+  "figure": {
+    "data": [
+      {
+        "type": "bar",
+        "x": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "y": [
+          4228.828571428571,
+          4338.1238095238095,
+          4510.663461538462,
+          4548.538461538462,
+          4667.259615384615,
+          4690.288461538462,
+          4550.542857142857
+        ],
+        "customdata": [
+          [
+            105
+          ],
+          [
+            105
+          ],
+          [
+            104
+          ],
+          [
+            104
+          ],
+          [
+            104
+          ],
+          [
+            104
+          ],
+          [
+            105
+          ]
+        ],
+        "hovertemplate": "%{text}<br>Mean rentals: %{y:,.1f}<br>Days: %{customdata[0]:.0f}<extra></extra>",
+        "text": [
+          "Sun",
+          "Mon",
+          "Tue",
+          "Wed",
+          "Thu",
+          "Fri",
+          "Sat"
+        ]
+      }
+    ],
+    "layout": {
+      "height": 370,
+      "autosize": true,
+      "title": {
+        "text": "Daily rentals by day of the week"
+      },
+      "margin": {
+        "l": 65,
+        "r": 24,
+        "t": 75,
+        "b": 65
+      },
+      "yaxis": {
+        "title": {
+          "text": "Mean daily rentals"
+        }
+      },
+      "xaxis": {
+        "tickmode": "array",
+        "tickvals": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "ticktext": [
+          "Sun",
+          "Mon",
+          "Tue",
+          "Wed",
+          "Thu",
+          "Fri",
+          "Sat"
+        ]
+      }
+    }
+  },
+  "translations": {
+    "layout": {
+      "title.text": "content.bike.chart.weekday.title",
+      "yaxis.title.text": "content.bike.chart.axis.mean_daily_rentals",
+      "xaxis.ticktext": [
+        "content.bike.chart.weekday.0",
+        "content.bike.chart.weekday.1",
+        "content.bike.chart.weekday.2",
+        "content.bike.chart.weekday.3",
+        "content.bike.chart.weekday.4",
+        "content.bike.chart.weekday.5",
+        "content.bike.chart.weekday.6"
+      ]
+    },
+    "traces": [
+      {
+        "index": 0,
+        "fields": {
+          "hovertemplate": "content.bike.chart.hover.count",
+          "text": [
+            "content.bike.chart.weekday.0",
+            "content.bike.chart.weekday.1",
+            "content.bike.chart.weekday.2",
+            "content.bike.chart.weekday.3",
+            "content.bike.chart.weekday.4",
+            "content.bike.chart.weekday.5",
+            "content.bike.chart.weekday.6"
+          ]
+        }
+      }
+    ]
+  },
+  "colors": [
+    {
+      "trace": 0,
+      "path": "marker.color",
+      "palette": "ep-muted-pastel",
+      "index": 2
+    }
+  ],
+  "palette": "ep-muted-pastel",
+  "config": {
+    "responsive": true,
+    "displaylogo": false
+  }
+}

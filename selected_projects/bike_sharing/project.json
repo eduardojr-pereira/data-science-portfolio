@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "name": {
     "en": "Bike Sharing — Demand & Operational Insights",
     "pt-BR": "Bike Sharing — Demanda e Análise Operacional"
@@ -34,5 +34,320 @@
     "en": "README.md",
     "pt-BR": "README.pt-BR.md"
   },
-  "notebook": "bike_sharing_analysis.ipynb"
+  "notebook": "bike_sharing_analysis.ipynb",
+  "sections": [
+    {
+      "id": "project-intro",
+      "label": {
+        "en": "Overview",
+        "pt-BR": "Visão geral"
+      },
+      "title": {
+        "en": "Bike Sharing — Demand & Operational Insights",
+        "pt-BR": "Bike Sharing — Demanda e Análise Operacional"
+      },
+      "description": null
+    },
+    {
+      "id": "explore",
+      "label": {
+        "en": "Explore",
+        "pt-BR": "Explorar"
+      },
+      "title": {
+        "en": "Explore the evidence",
+        "pt-BR": "Explore as evidências"
+      },
+      "description": null
+    },
+    {
+      "id": "daily-demand",
+      "label": {
+        "en": "Daily demand",
+        "pt-BR": "Demanda diária"
+      },
+      "title": {
+        "en": "Daily demand patterns",
+        "pt-BR": "Padrões de demanda diária"
+      },
+      "description": null
+    },
+    {
+      "id": "hourly-demand",
+      "label": {
+        "en": "Hourly demand",
+        "pt-BR": "Demanda horária"
+      },
+      "title": {
+        "en": "Hourly demand patterns",
+        "pt-BR": "Padrões de demanda horária"
+      },
+      "description": null
+    },
+    {
+      "id": "daily-models",
+      "label": {
+        "en": "Daily models",
+        "pt-BR": "Modelos diários"
+      },
+      "title": {
+        "en": "Daily model validation",
+        "pt-BR": "Validação dos modelos diários"
+      },
+      "description": null
+    },
+    {
+      "id": "hourly-models",
+      "label": {
+        "en": "Hourly models",
+        "pt-BR": "Modelos horários"
+      },
+      "title": {
+        "en": "Hourly model validation",
+        "pt-BR": "Validação dos modelos horários"
+      },
+      "description": null
+    },
+    {
+      "id": "conclusion",
+      "label": {
+        "en": "Conclusion",
+        "pt-BR": "Conclusão"
+      },
+      "title": {
+        "en": "Conclusion",
+        "pt-BR": "Conclusão"
+      },
+      "description": null
+    },
+    {
+      "id": "references",
+      "label": {
+        "en": "References",
+        "pt-BR": "Referências"
+      },
+      "title": {
+        "en": "References",
+        "pt-BR": "Referências"
+      },
+      "description": null
+    }
+  ],
+  "report": {
+    "files": [
+      {
+        "path": "outputs/figures/correlation_matrix.png",
+        "role": "artifact",
+        "label": null
+      },
+      {
+        "path": "outputs/figures/cross_validation_comparison.png",
+        "role": "artifact",
+        "label": null
+      },
+      {
+        "path": "outputs/figures/demand_patterns.png",
+        "role": "artifact",
+        "label": null
+      },
+      {
+        "path": "outputs/figures/distributions.png",
+        "role": "artifact",
+        "label": null
+      },
+      {
+        "path": "outputs/figures/holdout_predictions.png",
+        "role": "artifact",
+        "label": null
+      },
+      {
+        "path": "outputs/figures/random_forest_importances.png",
+        "role": "artifact",
+        "label": null
+      },
+      {
+        "path": "outputs/figures/random_forest_tree_excerpt.png",
+        "role": "artifact",
+        "label": null
+      },
+      {
+        "path": "outputs/figures/rentals_by_weather.png",
+        "role": "artifact",
+        "label": null
+      },
+      {
+        "path": "outputs/figures/rider_type_mix.png",
+        "role": "artifact",
+        "label": null
+      },
+      {
+        "path": "outputs/figures/weekday_and_season.png",
+        "role": "artifact",
+        "label": null
+      },
+      {
+        "path": "outputs/hourly/figures/hourly_holdout.png",
+        "role": "artifact",
+        "label": null
+      },
+      {
+        "path": "outputs/hourly/figures/hourly_rider_segments.png",
+        "role": "artifact",
+        "label": null
+      },
+      {
+        "path": "outputs/hourly/figures/weekday_hour_heatmap.png",
+        "role": "artifact",
+        "label": null
+      },
+      {
+        "path": "outputs/hourly/figures/workingday_hourly_profiles.png",
+        "role": "artifact",
+        "label": null
+      },
+      {
+        "path": "outputs/hourly/metrics.json",
+        "role": "artifact",
+        "label": null
+      },
+      {
+        "path": "outputs/hourly/tables/hourly_holdout_predictions.csv",
+        "role": "artifact",
+        "label": null
+      },
+      {
+        "path": "outputs/hourly/tables/hourly_model_comparison.csv",
+        "role": "artifact",
+        "label": null
+      },
+      {
+        "path": "outputs/hourly/tables/mean_rentals_by_hour.csv",
+        "role": "artifact",
+        "label": null
+      },
+      {
+        "path": "outputs/metrics.json",
+        "role": "artifact",
+        "label": null
+      },
+      {
+        "path": "outputs/tables/holdout_predictions.csv",
+        "role": "artifact",
+        "label": null
+      },
+      {
+        "path": "outputs/tables/model_comparison.csv",
+        "role": "artifact",
+        "label": null
+      },
+      {
+        "path": "outputs/tables/random_forest_feature_importance.csv",
+        "role": "artifact",
+        "label": null
+      }
+    ],
+    "charts": [
+      {
+        "id": "plot-composition",
+        "path": "content/charts/plot-composition.json",
+        "label": "content.bike.chart.composition.title",
+        "fallback": "content.bike.report.chart_unavailable"
+      },
+      {
+        "id": "plot-corr",
+        "path": "content/charts/plot-corr.json",
+        "label": "content.bike.chart.corr.title",
+        "fallback": "content.bike.report.chart_unavailable"
+      },
+      {
+        "id": "plot-cv",
+        "path": "content/charts/plot-cv.json",
+        "label": "content.bike.chart.cv.title",
+        "fallback": "content.bike.report.chart_unavailable"
+      },
+      {
+        "id": "plot-demand",
+        "path": "content/charts/plot-demand.json",
+        "label": "content.bike.chart.demand.title",
+        "fallback": "content.bike.report.chart_unavailable"
+      },
+      {
+        "id": "plot-holdout",
+        "path": "content/charts/plot-holdout.json",
+        "label": "content.bike.chart.holdout.title",
+        "fallback": "content.bike.report.chart_unavailable"
+      },
+      {
+        "id": "plot-hourly-cv",
+        "path": "content/charts/plot-hourly-cv.json",
+        "label": "content.bike.chart.hourly-cv.title",
+        "fallback": "content.bike.report.chart_unavailable"
+      },
+      {
+        "id": "plot-hourly-errors",
+        "path": "content/charts/plot-hourly-errors.json",
+        "label": "content.bike.chart.hourly-errors.title",
+        "fallback": "content.bike.report.chart_unavailable"
+      },
+      {
+        "id": "plot-hourly-heatmap",
+        "path": "content/charts/plot-hourly-heatmap.json",
+        "label": "content.bike.chart.hourly-heatmap.title",
+        "fallback": "content.bike.report.chart_unavailable"
+      },
+      {
+        "id": "plot-hourly-holdout",
+        "path": "content/charts/plot-hourly-holdout.json",
+        "label": "content.bike.chart.hourly-holdout.title",
+        "fallback": "content.bike.report.chart_unavailable"
+      },
+      {
+        "id": "plot-hourly-profile",
+        "path": "content/charts/plot-hourly-profile.json",
+        "label": "content.bike.chart.hourly-profile.title",
+        "fallback": "content.bike.report.chart_unavailable"
+      },
+      {
+        "id": "plot-hourly-workday",
+        "path": "content/charts/plot-hourly-workday.json",
+        "label": "content.bike.chart.hourly-workday.title",
+        "fallback": "content.bike.report.chart_unavailable"
+      },
+      {
+        "id": "plot-importance",
+        "path": "content/charts/plot-importance.json",
+        "label": "content.bike.chart.importance.title",
+        "fallback": "content.bike.report.chart_unavailable"
+      },
+      {
+        "id": "plot-residuals",
+        "path": "content/charts/plot-residuals.json",
+        "label": "content.bike.chart.residuals.title",
+        "fallback": "content.bike.report.chart_unavailable"
+      },
+      {
+        "id": "plot-seasonality",
+        "path": "content/charts/plot-seasonality.json",
+        "label": "content.bike.chart.seasonality.title",
+        "fallback": "content.bike.report.chart_unavailable"
+      },
+      {
+        "id": "plot-weather",
+        "path": "content/charts/plot-weather.json",
+        "label": "content.bike.chart.weather.title",
+        "fallback": "content.bike.report.chart_unavailable"
+      },
+      {
+        "id": "plot-weekday",
+        "path": "content/charts/plot-weekday.json",
+        "label": "content.bike.chart.weekday.title",
+        "fallback": "content.bike.report.chart_unavailable"
+      }
+    ],
+    "badges": [
+      "mit",
+      "cc_by_nc_4_0",
+      "cc_by_4_0_data"
+    ]
+  }
 }

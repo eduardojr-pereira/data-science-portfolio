@@ -1,0 +1,88 @@
+{
+  "figure": {
+    "data": [
+      {
+        "type": "bar",
+        "x": [
+          "2011",
+          "2012"
+        ],
+        "y": [
+          995851,
+          1676811
+        ],
+        "name": "Registered"
+      },
+      {
+        "type": "bar",
+        "x": [
+          "2011",
+          "2012"
+        ],
+        "y": [
+          247252,
+          372765
+        ],
+        "name": "Casual"
+      }
+    ],
+    "layout": {
+      "height": 370,
+      "autosize": true,
+      "title": {
+        "text": "Annual rentals by rider type"
+      },
+      "margin": {
+        "l": 65,
+        "r": 24,
+        "t": 75,
+        "b": 65
+      },
+      "yaxis": {
+        "title": {
+          "text": "Recorded rentals"
+        }
+      },
+      "barmode": "stack"
+    }
+  },
+  "translations": {
+    "layout": {
+      "title.text": "content.bike.chart.composition.title",
+      "yaxis.title.text": "content.bike.chart.axis.recorded_rentals"
+    },
+    "traces": [
+      {
+        "index": 0,
+        "fields": {
+          "name": "content.bike.chart.series.registered"
+        }
+      },
+      {
+        "index": 1,
+        "fields": {
+          "name": "content.bike.chart.series.casual"
+        }
+      }
+    ]
+  },
+  "colors": [
+    {
+      "trace": 0,
+      "path": "marker.color",
+      "palette": "ep-muted-pastel",
+      "index": 1
+    },
+    {
+      "trace": 1,
+      "path": "marker.color",
+      "palette": "ep-muted-pastel",
+      "index": 2
+    }
+  ],
+  "palette": "ep-muted-pastel",
+  "config": {
+    "responsive": true,
+    "displaylogo": false
+  }
+}

@@ -59,11 +59,7 @@ O estudo analisa padrões históricos de demanda diária e horária, segmentos d
 
 ### Laboratórios de Aprendizado
 
-| Projeto | Área e tecnologias | Recursos |
-|---|---|---|
-| **Hangman Game — Jogo da Forca** | Fundamentos de programação · Python, JavaScript, HTML, CSS | [Documentação](./learning_labs/python_hangman_game/README.pt-BR.md) · [Código-fonte](./learning_labs/python_hangman_game/) · [Demonstração online](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python_hangman_game/reports/index.html) |
-
-Jogo de adivinhação de palavras com versões no terminal e no navegador, modos de um e dois jogadores e interface bilíngue no navegador.
+Nenhum laboratório foi publicado nesta coleção até o momento.
 
 <a id="independent-experiments"></a>
 
@@ -94,7 +90,7 @@ data-science-portfolio/
 ├── independent_experiments/
 │   └── .gitkeep
 ├── learning_labs/
-│   └── python_hangman_game/
+│   └── .gitkeep
 └── selected_projects/
     └── bike_sharing/
 ```

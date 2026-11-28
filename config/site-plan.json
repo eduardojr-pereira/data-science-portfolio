@@ -1,0 +1,196 @@
+{
+  "schema_version": 1,
+  "landing_content": "landing/content.json",
+  "legal": {
+    "privacy": "legal/privacy.html",
+    "terms": "legal/terms.html"
+  },
+  "pages": [
+    {
+      "route": "index.html",
+      "kind": "landing",
+      "project": null,
+      "title": {
+        "en": "Eduardo Pereira | Portfolio",
+        "pt-BR": "Eduardo Pereira | Portfólio"
+      },
+      "sections": [
+        {
+          "id": "home",
+          "title": null,
+          "paragraphs": []
+        },
+        {
+          "id": "selected-works",
+          "title": null,
+          "paragraphs": []
+        },
+        {
+          "id": "all-projects",
+          "title": null,
+          "paragraphs": []
+        },
+        {
+          "id": "about",
+          "title": null,
+          "paragraphs": []
+        },
+        {
+          "id": "contact",
+          "title": null,
+          "paragraphs": []
+        }
+      ]
+    },
+    {
+      "route": "legal/privacy.html",
+      "kind": "plain",
+      "project": null,
+      "title": {
+        "en": "Privacy Policy",
+        "pt-BR": "Política de Privacidade"
+      },
+      "sections": [
+        {
+          "id": "privacy",
+          "title": {
+            "en": "Scope and contact",
+            "pt-BR": "Escopo e contato"
+          },
+          "paragraphs": [
+            {
+              "en": "This personal portfolio presents educational and analytical projects. Privacy enquiries may be directed to Eduardo Junior Pereira using the email address in the Contact section.",
+              "pt-BR": "Este portfólio pessoal apresenta projetos educacionais e analíticos. Dúvidas sobre privacidade podem ser encaminhadas a Eduardo Junior Pereira pelo endereço de e-mail da seção Contact."
+            }
+          ]
+        },
+        {
+          "id": "hosting",
+          "title": {
+            "en": "Hosting and technical data",
+            "pt-BR": "Hospedagem e dados técnicos"
+          },
+          "paragraphs": [
+            {
+              "en": "The site is hosted on GitHub Pages. GitHub records visitors’ IP addresses for security purposes and processes technical data according to its own privacy statement. External services may have their own privacy practices.",
+              "pt-BR": "O site é hospedado no GitHub Pages. O GitHub registra endereços IP dos visitantes para fins de segurança e trata dados técnicos conforme sua própria política de privacidade. Serviços externos podem ter práticas de privacidade próprias."
+            }
+          ]
+        },
+        {
+          "id": "preferences",
+          "title": {
+            "en": "Local preferences",
+            "pt-BR": "Preferências locais"
+          },
+          "paragraphs": [
+            {
+              "en": "Language and theme preferences may be stored locally in your browser so that they persist between visits. You can clear these preferences using your browser settings.",
+              "pt-BR": "As preferências de idioma e tema podem ser armazenadas localmente no navegador para permanecerem entre visitas. Você pode apagá-las pelas configurações do navegador."
+            }
+          ]
+        },
+        {
+          "id": "messages",
+          "title": {
+            "en": "Messages",
+            "pt-BR": "Mensagens"
+          },
+          "paragraphs": [
+            {
+              "en": "The contact form currently validates entries locally and does not send messages. If you contact me by email, the information you choose to provide may be used to respond to your enquiry and manage the resulting correspondence. Avoid sending unnecessary sensitive information.",
+              "pt-BR": "O formulário de contato atualmente valida os campos localmente e não envia mensagens. Caso entre em contato por e-mail, as informações que você decidir fornecer poderão ser usadas para responder à solicitação e administrar a correspondência decorrente. Evite enviar informações sensíveis desnecessárias."
+            }
+          ]
+        },
+        {
+          "id": "rights",
+          "title": {
+            "en": "Your privacy rights",
+            "pt-BR": "Seus direitos de privacidade"
+          },
+          "paragraphs": [
+            {
+              "en": "You may use the contact email to request information about processing of your personal data and exercise applicable rights, including access, correction and deletion where appropriate, under Brazilian data protection law (LGPD).",
+              "pt-BR": "Você pode utilizar o e-mail de contato para solicitar informações sobre o tratamento de seus dados pessoais e exercer os direitos aplicáveis, incluindo acesso, correção e eliminação quando cabível, nos termos da Lei Geral de Proteção de Dados (LGPD)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "legal/terms.html",
+      "kind": "plain",
+      "project": null,
+      "title": {
+        "en": "Terms of Use",
+        "pt-BR": "Termos de Uso"
+      },
+      "sections": [
+        {
+          "id": "terms",
+          "title": {
+            "en": "Purpose",
+            "pt-BR": "Finalidade"
+          },
+          "paragraphs": [
+            {
+              "en": "This portfolio presents personal educational and analytical work. Its reports describe methods, data, results and limitations for informational purposes. They are not guarantees of future results or professional advice.",
+              "pt-BR": "Este portfólio apresenta trabalhos pessoais educacionais e analíticos. Seus relatórios descrevem métodos, dados, resultados e limitações para fins informativos. Não constituem garantia de resultados futuros nem aconselhamento profissional."
+            }
+          ]
+        },
+        {
+          "id": "licensing",
+          "title": {
+            "en": "Licenses and third-party rights",
+            "pt-BR": "Licenças e direitos de terceiros"
+          },
+          "paragraphs": [
+            {
+              "en": "Original portfolio code is governed by the MIT license and eligible original content by CC BY-NC 4.0, as specified in the repository license files. Third-party datasets, software, marks, artwork and EP Brand resources remain subject to their respective terms. The portfolio licenses do not grant additional rights over third-party materials.",
+              "pt-BR": "O código autoral do portfólio é regido pela licença MIT e o conteúdo autoral elegível pela CC BY-NC 4.0, conforme os arquivos de licença do repositório. Datasets, software, marcas, artes de terceiros e recursos EP Brand permanecem sujeitos aos respectivos termos. As licenças do portfólio não concedem direitos adicionais sobre materiais de terceiros."
+            },
+            {
+              "en": "Consult the source repository for license texts and project-specific attributions. Shared-resource notices are included in shared/THIRD-PARTY-NOTICES.md.",
+              "pt-BR": "Consulte o repositório de origem para os textos das licenças e atribuições específicas de cada projeto. Os avisos de recursos compartilhados estão em shared/THIRD-PARTY-NOTICES.md."
+            }
+          ]
+        },
+        {
+          "id": "external",
+          "title": {
+            "en": "External links",
+            "pt-BR": "Links externos"
+          },
+          "paragraphs": [
+            {
+              "en": "External sites and data sources operate under their own terms and policies. References to technologies and third-party services do not imply endorsement or affiliation.",
+              "pt-BR": "Sites externos e fontes de dados seguem seus próprios termos e políticas. Referências a tecnologias e serviços de terceiros não implicam endosso ou afiliação."
+            }
+          ]
+        },
+        {
+          "id": "availability",
+          "title": {
+            "en": "Availability and updates",
+            "pt-BR": "Disponibilidade e atualizações"
+          },
+          "paragraphs": [
+            {
+              "en": "Projects and reports may be revised as the portfolio develops. Use the documented versions, methodology and source data when reproducing an analysis. Nothing in these terms limits rights guaranteed by applicable law.",
+              "pt-BR": "Projetos e relatórios poderão ser revisados conforme o desenvolvimento do portfólio. Utilize as versões, metodologia e dados documentados ao reproduzir uma análise. Nada nestes termos limita direitos garantidos pela legislação aplicável."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "selected_projects/bike_sharing/reports/index.html",
+      "kind": "report",
+      "project": "selected_projects/bike_sharing",
+      "title": null,
+      "sections": []
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "figure": {
+    "data": [
+      {
+        "type": "bar",
+        "y": [
+          "Random forest",
+          "Histogram gradient boosting",
+          "Ridge"
+        ],
+        "x": [
+          102.65318015508892,
+          104.31812550470454,
+          121.46296793311916
+        ],
+        "orientation": "h",
+        "error_x": {
+          "type": "data",
+          "array": [
+            15.683524361346684,
+            23.30564645594997,
+            25.792103620201026
+          ],
+          "visible": true
+        },
+        "hovertemplate": "%{text}<br>Mean CV RMSE: %{x:,.1f}<extra></extra>",
+        "text": [
+          "Random forest",
+          "Histogram gradient boosting",
+          "Ridge"
+        ]
+      }
+    ],
+    "layout": {
+      "height": 350,
+      "autosize": true,
+      "title": {
+        "text": "Hourly models: expanding-window CV RMSE"
+      },
+      "margin": {
+        "l": 205,
+        "r": 24,
+        "t": 75,
+        "b": 65
+      },
+      "xaxis": {
+        "title": {
+          "text": "RMSE · rentals per recorded hour"
+        }
+      },
+      "yaxis": {
+        "tickmode": "array",
+        "tickvals": [
+          "Random forest",
+          "Histogram gradient boosting",
+          "Ridge"
+        ],
+        "ticktext": [
+          "Random forest",
+          "Histogram gradient boosting",
+          "Ridge"
+        ],
+        "autorange": "reversed"
+      }
+    }
+  },
+  "translations": {
+    "layout": {
+      "title.text": "content.bike.chart.hourly-cv.title",
+      "xaxis.title.text": "content.bike.chart.axis.rmse_rentals_per_recorded_hour",
+      "yaxis.ticktext": [
+        "content.bike.chart.model.3",
+        "content.bike.chart.model.7",
+        "content.bike.chart.model.8"
+      ]
+    },
+    "traces": [
+      {
+        "index": 0,
+        "fields": {
+          "hovertemplate": "content.bike.chart.hourly-cv.hover",
+          "text": [
+            "content.bike.chart.model.3",
+            "content.bike.chart.model.7",
+            "content.bike.chart.model.8"
+          ]
+        }
+      }
+    ]
+  },
+  "colors": [
+    {
+      "trace": 0,
+      "path": "marker.color",
+      "palette": "ep-muted-pastel",
+      "index": 0
+    }
+  ],
+  "palette": "ep-muted-pastel",
+  "config": {
+    "responsive": true,
+    "displaylogo": false
+  }
+}

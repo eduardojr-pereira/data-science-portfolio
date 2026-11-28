@@ -59,11 +59,7 @@ The study examines historical daily and hourly demand patterns, rider segments a
 
 ### Learning Labs
 
-| Project | Area and technologies | Resources |
-|---|---|---|
-| **Hangman Game — Python Learning Lab** | Programming fundamentals · Python, JavaScript, HTML, CSS | [Documentation](./learning_labs/python_hangman_game/README.md) · [Source Code](./learning_labs/python_hangman_game/) · [Live Demo](https://eduardojr-pereira.github.io/data-science-portfolio/learning_labs/python_hangman_game/reports/index.html) |
-
-A word-guessing game with terminal and browser editions, single-player and two-player modes, and a bilingual browser interface.
+No learning lab has been published in this collection yet.
 
 <a id="independent-experiments"></a>
 
@@ -94,7 +90,7 @@ data-science-portfolio/
 ├── independent_experiments/
 │   └── .gitkeep
 ├── learning_labs/
-│   └── python_hangman_game/
+│   └── .gitkeep
 └── selected_projects/
     └── bike_sharing/
 ```

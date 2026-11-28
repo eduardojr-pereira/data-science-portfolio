@@ -1,0 +1,104 @@
+{
+  "figure": {
+    "data": [
+      {
+        "type": "bar",
+        "x": [
+          1,
+          2,
+          3
+        ],
+        "y": [
+          4876.7861771058315,
+          4035.862348178138,
+          1803.2857142857142
+        ],
+        "customdata": [
+          [
+            463
+          ],
+          [
+            247
+          ],
+          [
+            21
+          ]
+        ],
+        "hovertemplate": "%{text}<br>Mean rentals: %{y:,.1f}<br>Days: %{customdata[0]:.0f}<extra></extra>",
+        "text": [
+          "Clear / partly cloudy",
+          "Mist / cloudy",
+          "Light rain / snow"
+        ]
+      }
+    ],
+    "layout": {
+      "height": 370,
+      "autosize": true,
+      "title": {
+        "text": "Mean rentals by recorded weather conditions"
+      },
+      "margin": {
+        "l": 65,
+        "r": 24,
+        "t": 75,
+        "b": 65
+      },
+      "yaxis": {
+        "title": {
+          "text": "Rentals per day"
+        }
+      },
+      "xaxis": {
+        "tickmode": "array",
+        "tickvals": [
+          1,
+          2,
+          3
+        ],
+        "ticktext": [
+          "Clear / partly cloudy",
+          "Mist / cloudy",
+          "Light rain / snow"
+        ]
+      }
+    }
+  },
+  "translations": {
+    "layout": {
+      "title.text": "content.bike.chart.weather.title",
+      "yaxis.title.text": "content.bike.chart.axis.rentals_per_day",
+      "xaxis.ticktext": [
+        "content.bike.chart.weather.1",
+        "content.bike.chart.weather.2",
+        "content.bike.chart.weather.3"
+      ]
+    },
+    "traces": [
+      {
+        "index": 0,
+        "fields": {
+          "hovertemplate": "content.bike.chart.hover.count",
+          "text": [
+            "content.bike.chart.weather.1",
+            "content.bike.chart.weather.2",
+            "content.bike.chart.weather.3"
+          ]
+        }
+      }
+    ]
+  },
+  "colors": [
+    {
+      "trace": 0,
+      "path": "marker.color",
+      "palette": "ep-muted-pastel",
+      "index": 0
+    }
+  ],
+  "palette": "ep-muted-pastel",
+  "config": {
+    "responsive": true,
+    "displaylogo": false
+  }
+}

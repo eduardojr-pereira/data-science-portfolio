@@ -1,0 +1,312 @@
+{
+  "schema_version": 1,
+  "copy": {
+    "hero.description": {
+      "en": "Combining economic reasoning and data science to understand complex problems and support better-informed decisions.",
+      "pt-BR": "Combinando raciocínio econômico e ciência de dados para compreender problemas complexos e fundamentar decisões."
+    },
+    "selected.description": {
+      "en": "Applied data science, analytical reasoning and evidence to support decisions.",
+      "pt-BR": "Ciência de dados aplicada, raciocínio analítico e evidências para apoiar decisões."
+    },
+    "catalog.description": {
+      "en": "Explore projects by area, technology or collection.",
+      "pt-BR": "Explore projetos por área, tecnologia ou coleção."
+    },
+    "catalog.foot": {
+      "en": "Only projects approved for publication appear here.",
+      "pt-BR": "Somente projetos aprovados para publicação são exibidos."
+    },
+    "about.description": {
+      "en": "An analytical perspective shaped by economics, data science and a diverse professional journey.",
+      "pt-BR": "Uma perspectiva analítica formada pela economia, ciência de dados e uma trajetória profissional diversa."
+    },
+    "about.alt": {
+      "en": "Editorial portrait of Eduardo Pereira",
+      "pt-BR": "Retrato editorial de Eduardo Pereira"
+    },
+    "cta.title": {
+      "en": "Let's get in touch",
+      "pt-BR": "Entre em contato"
+    },
+    "cta.line1": {
+      "en": "LET'S GET",
+      "pt-BR": "ENTRE EM"
+    },
+    "cta.line2": {
+      "en": "IN TOUCH",
+      "pt-BR": "CONTATO"
+    },
+    "cta.pause": {
+      "en": "Pause video",
+      "pt-BR": "Pausar vídeo"
+    },
+    "cta.play": {
+      "en": "Play video",
+      "pt-BR": "Reproduzir vídeo"
+    },
+    "cta.error": {
+      "en": "Video unavailable — showing original still.",
+      "pt-BR": "Vídeo indisponível — exibindo quadro original."
+    },
+    "cta.alt": {
+      "en": "Abstract animation of two luminous spheres moving along a dark ribbon",
+      "pt-BR": "Animação abstrata de duas esferas luminosas percorrendo uma fita escura"
+    },
+    "contact.title": {
+      "en": "CONTACT",
+      "pt-BR": "CONTATO"
+    },
+    "contact.intro": {
+      "en": "Have a project, an opportunity, or an idea in mind? Send me a message.",
+      "pt-BR": "Tem um projeto, uma oportunidade ou uma ideia em mente? Envie uma mensagem."
+    },
+    "contact.note": {
+      "en": "Message delivery is not configured. No information is transmitted; email is available below.",
+      "pt-BR": "O envio de mensagens ainda não está configurado. Nenhuma informação é transmitida; o e-mail está disponível abaixo."
+    },
+    "contact.valid": {
+      "en": "Validation successful. No message was sent.",
+      "pt-BR": "Validação concluída. Nenhuma mensagem foi enviada."
+    },
+    "contact.required": {
+      "en": "Please complete this field.",
+      "pt-BR": "Preencha este campo."
+    },
+    "contact.invalid": {
+      "en": "Enter a valid email address.",
+      "pt-BR": "Informe um e-mail válido."
+    },
+    "contact.name": {
+      "en": "Name",
+      "pt-BR": "Nome"
+    },
+    "contact.namePh": {
+      "en": "Your name",
+      "pt-BR": "Seu nome"
+    },
+    "contact.email": {
+      "en": "Email",
+      "pt-BR": "E-mail"
+    },
+    "contact.emailPh": {
+      "en": "Your email",
+      "pt-BR": "Seu e-mail"
+    },
+    "contact.subject": {
+      "en": "Subject",
+      "pt-BR": "Assunto"
+    },
+    "contact.subjectPh": {
+      "en": "What would you like to discuss?",
+      "pt-BR": "Sobre o que gostaria de conversar?"
+    },
+    "contact.message": {
+      "en": "Message",
+      "pt-BR": "Mensagem"
+    },
+    "contact.messagePh": {
+      "en": "Tell me a little about it",
+      "pt-BR": "Conte um pouco sobre isso"
+    },
+    "collection.independent": {
+      "en": "Independent Experiment",
+      "pt-BR": "Experimento Independente"
+    },
+    "collection.selected": {
+      "en": "Selected Project",
+      "pt-BR": "Projeto Selecionado"
+    },
+    "collection.learning": {
+      "en": "Learning Lab",
+      "pt-BR": "Laboratório"
+    }
+  },
+  "about": [
+    {
+      "label": {
+        "en": "Background",
+        "pt-BR": "Formação"
+      },
+      "eyebrow": {
+        "en": "Economics × Data Science",
+        "pt-BR": "Economia × Ciência de Dados"
+      },
+      "title": {
+        "en": "From economics to data",
+        "pt-BR": "Da economia aos dados"
+      },
+      "body": {
+        "en": "My background in Economics at the Federal University of Viçosa (UFV) and postgraduate studies in Data Science at PUC bring together economic reasoning, statistics and computational methods.",
+        "pt-BR": "Minha formação em Ciências Econômicas pela Universidade Federal de Viçosa (UFV) e a pós-graduação em Ciência de Dados pela PUC conectam raciocínio econômico, estatística e métodos computacionais."
+      },
+      "detail": {
+        "en": "Economics · UFV / Data Science · PUC",
+        "pt-BR": "Ciências Econômicas · UFV / Ciência de Dados · PUC"
+      }
+    },
+    {
+      "label": {
+        "en": "Journey",
+        "pt-BR": "Trajetória"
+      },
+      "eyebrow": {
+        "en": "Different perspectives",
+        "pt-BR": "Diferentes perspectivas"
+      },
+      "title": {
+        "en": "A non-linear path",
+        "pt-BR": "Uma trajetória não linear"
+      },
+      "body": {
+        "en": "My professional experience spans construction, video editing and the municipal market. These different environments are part of the perspective I bring to my transition into data and analytics.",
+        "pt-BR": "Minha experiência profissional passa pela construção civil, edição de vídeo e mercado municipal. Esses diferentes ambientes fazem parte da perspectiva que levo à minha transição para dados e analytics."
+      },
+      "detail": {
+        "en": "Practical experience · Professional transition",
+        "pt-BR": "Experiência prática · Transição profissional"
+      }
+    },
+    {
+      "label": {
+        "en": "Approach",
+        "pt-BR": "Abordagem"
+      },
+      "eyebrow": {
+        "en": "From questions to evidence",
+        "pt-BR": "Das perguntas às evidências"
+      },
+      "title": {
+        "en": "Make data meaningful",
+        "pt-BR": "Dar sentido aos dados"
+      },
+      "body": {
+        "en": "I approach analytical problems through economic reasoning, exploratory analysis, statistical methods and reproducible workflows. I am interested in analytics, business intelligence, market intelligence and machine learning applied to decisions.",
+        "pt-BR": "Abordo problemas analíticos por meio do raciocínio econômico, análise exploratória, métodos estatísticos e fluxos reprodutíveis. Tenho interesse em analytics, business intelligence, inteligência de mercado e aprendizado de máquina aplicado a decisões."
+      },
+      "detail": {
+        "en": "Python · Statistics · Data visualization · Machine learning",
+        "pt-BR": "Python · Estatística · Visualização de dados · Aprendizado de máquina"
+      }
+    },
+    {
+      "label": {
+        "en": "Knowledge Base",
+        "pt-BR": "Base de Conhecimento"
+      },
+      "eyebrow": {
+        "en": "Continuous learning",
+        "pt-BR": "Aprendizado contínuo"
+      },
+      "title": {
+        "en": "Learning in the open",
+        "pt-BR": "Aprendizado aberto"
+      },
+      "body": {
+        "en": "My Data Science Knowledge Base organizes technical studies, notebooks and supporting material across eleven study areas. It complements the portfolio by documenting the foundations behind the projects.",
+        "pt-BR": "Minha Base de Conhecimento em Ciência de Dados organiza estudos técnicos, notebooks e materiais de apoio em onze áreas. Ela complementa o portfólio ao documentar os fundamentos dos projetos."
+      },
+      "detail": {
+        "en": "11 study areas · 139 notebooks",
+        "pt-BR": "11 áreas de estudo · 139 notebooks"
+      },
+      "link": {
+        "en": "Explore the Knowledge Base",
+        "pt-BR": "Explorar a Base de Conhecimento"
+      }
+    }
+  ],
+  "media": {
+    "portrait": "landing/assets/portrait.png",
+    "video": "landing/assets/cta-video.mp4",
+    "poster": "landing/assets/cta-poster.jpg",
+    "contact_base": "landing/assets/contact-base.webp",
+    "contact_lit": "landing/assets/contact-lit.webp"
+  },
+  "outlines": {
+    "LET'S GET": {
+      "d": "M137 0V1409H432V228H1188V0ZM1254.88 0V1409H2362.88V1181H1549.88V827H2301.88V599H1549.88V228H2403.88V0ZM3123.76 1181V0H2828.76V1181H2373.76V1409H3579.76V1181ZM3822.6400000000003 898H3603.6400000000003L3577.6400000000003 1409H3849.6400000000003ZM5108.52 406Q5108.52 199 4955.02 89.5Q4801.52 -20 4504.52 -20Q4233.52 -20 4079.5200000000004 76.0Q3925.5200000000004 172 3881.5200000000004 367L4166.52 414Q4195.52 302 4279.52 251.5Q4363.52 201 4512.52 201Q4821.52 201 4821.52 389Q4821.52 449 4786.02 488.0Q4750.52 527 4686.02 553.0Q4621.52 579 4438.52 616Q4280.52 653 4218.52 675.5Q4156.52 698 4106.52 728.5Q4056.5200000000004 759 4021.5200000000004 802.0Q3986.5200000000004 845 3967.0200000000004 903.0Q3947.5200000000004 961 3947.5200000000004 1036Q3947.5200000000004 1227 4091.0200000000004 1328.5Q4234.52 1430 4508.52 1430Q4770.52 1430 4902.02 1348.0Q5033.52 1266 5071.52 1077L4785.52 1038Q4763.52 1129 4696.02 1175.0Q4628.52 1221 4502.52 1221Q4234.52 1221 4234.52 1053Q4234.52 998 4263.02 963.0Q4291.52 928 4347.52 903.0Q4403.52 878 4574.52 842Q4777.52 799 4865.02 762.5Q4952.52 726 5003.52 677.5Q5054.52 629 5081.52 561.5Q5108.52 494 5108.52 406ZM6297.280000000001 211Q6412.280000000001 211 6520.280000000001 244.5Q6628.280000000001 278 6687.280000000001 330V525H6343.280000000001V743H6957.280000000001V225Q6845.280000000001 110 6665.780000000001 45.0Q6486.280000000001 -20 6289.280000000001 -20Q5945.280000000001 -20 5760.280000000001 170.5Q5575.280000000001 361 5575.280000000001 711Q5575.280000000001 1059 5761.280000000001 1244.5Q5947.280000000001 1430 6296.280000000001 1430Q6792.280000000001 1430 6927.280000000001 1063L6655.280000000001 981Q6611.280000000001 1088 6517.280000000001 1143.0Q6423.280000000001 1198 6296.280000000001 1198Q6088.280000000001 1198 5980.280000000001 1072.0Q5872.280000000001 946 5872.280000000001 711Q5872.280000000001 472 5983.780000000001 341.5Q6095.280000000001 211 6297.280000000001 211ZM7088.160000000001 0V1409H8196.16V1181H7383.160000000001V827H8135.160000000001V599H7383.160000000001V228H8237.16V0ZM8957.04 1181V0H8662.04V1181H8207.04V1409H9413.04V1181Z",
+      "width": 9435.040000000003,
+      "focus": 2976.26
+    },
+    "IN TOUCH": {
+      "d": "M137 0V1409H432V0ZM1430.88 0 816.88 1085Q834.88 927 834.88 831V0H572.88V1409H909.88L1532.88 315Q1514.88 466 1514.88 590V1409H1776.88V0ZM2990.6400000000003 1181V0H2695.6400000000003V1181H2240.6400000000003V1409H3446.6400000000003V1181ZM4842.52 711Q4842.52 491 4755.52 324.0Q4668.52 157 4506.52 68.5Q4344.52 -20 4128.52 -20Q3796.5200000000004 -20 3608.0200000000004 175.5Q3419.5200000000004 371 3419.5200000000004 711Q3419.5200000000004 1050 3607.5200000000004 1240.0Q3795.5200000000004 1430 4130.52 1430.0Q4465.52 1430 4654.02 1238.0Q4842.52 1046 4842.52 711ZM4541.52 711Q4541.52 939 4433.52 1068.5Q4325.52 1198 4130.52 1198Q3932.5200000000004 1198 3824.5200000000004 1069.5Q3716.5200000000004 941 3716.5200000000004 711Q3716.5200000000004 479 3827.0200000000004 345.5Q3937.5200000000004 212 4128.52 212Q4326.52 212 4434.02 342.0Q4541.52 472 4541.52 711ZM5518.400000000001 -20Q5227.400000000001 -20 5072.900000000001 122.0Q4918.400000000001 264 4918.400000000001 528V1409H5213.400000000001V551Q5213.400000000001 384 5292.900000000001 297.5Q5372.400000000001 211 5526.400000000001 211Q5684.400000000001 211 5769.400000000001 301.5Q5854.400000000001 392 5854.400000000001 561V1409H6149.400000000001V543Q6149.400000000001 275 5983.900000000001 127.5Q5818.400000000001 -20 5518.400000000001 -20ZM6936.280000000001 212Q7203.280000000001 212 7307.280000000001 480L7564.280000000001 383Q7481.280000000001 179 7320.780000000001 79.5Q7160.280000000001 -20 6936.280000000001 -20Q6596.280000000001 -20 6410.780000000001 172.5Q6225.280000000001 365 6225.280000000001 711Q6225.280000000001 1058 6404.280000000001 1244.0Q6583.280000000001 1430 6923.280000000001 1430Q7171.280000000001 1430 7327.280000000001 1330.5Q7483.280000000001 1231 7546.280000000001 1038L7286.280000000001 967Q7253.280000000001 1073 7156.780000000001 1135.5Q7060.280000000001 1198 6929.280000000001 1198Q6729.280000000001 1198 6625.780000000001 1074.0Q6522.280000000001 950 6522.280000000001 711Q6522.280000000001 468 6628.780000000001 340.0Q6735.280000000001 212 6936.280000000001 212ZM8533.16 0V604H7919.160000000001V0H7624.160000000001V1409H7919.160000000001V848H8533.16V1409H8828.16V0Z",
+      "width": 8966.160000000002,
+      "focus": 2843.1400000000003
+    },
+    "ENTRE EM": {
+      "d": "M137 0V1409H1245V1181H432V827H1184V599H432V228H1286V0ZM2227.88 0 1613.88 1085Q1631.88 927 1631.88 831V0H1369.88V1409H1706.88L2329.88 315Q2311.88 466 2311.88 590V1409H2573.88V0ZM3351.76 1181V0H3056.76V1181H2601.76V1409H3807.76V1181ZM4801.64 0 4474.64 535H4128.64V0H3833.6400000000003V1409H4537.64Q4789.64 1409 4926.64 1300.5Q5063.64 1192 5063.64 989Q5063.64 841 4979.64 733.5Q4895.64 626 4752.64 592L5133.64 0ZM4766.64 977Q4766.64 1180 4506.64 1180H4128.64V764H4514.64Q4638.64 764 4702.64 820.0Q4766.64 876 4766.64 977ZM5179.52 0V1409H6287.52V1181H5474.52V827H6226.52V599H5474.52V228H6328.52V0ZM6848.280000000001 0V1409H7956.280000000001V1181H7143.280000000001V827H7895.280000000001V599H7143.280000000001V228H7997.280000000001V0ZM9251.16 0V854Q9251.16 883 9251.66 912.0Q9252.16 941 9261.16 1161Q9190.16 892 9156.16 786L8902.16 0H8692.16L8438.16 786L8331.16 1161Q8343.16 929 8343.16 854V0H8081.160000000001V1409H8476.16L8728.16 621L8798.16 356L8861.16 582L9120.16 1409H9513.16V0Z",
+      "width": 9650.160000000002,
+      "focus": 3204.26
+    },
+    "CONTATO": {
+      "d": "M795 212Q1062 212 1166 480L1423 383Q1340 179 1179.5 79.5Q1019 -20 795 -20Q455 -20 269.5 172.5Q84 365 84 711Q84 1058 263.0 1244.0Q442 1430 782 1430Q1030 1430 1186.0 1330.5Q1342 1231 1405 1038L1145 967Q1112 1073 1015.5 1135.5Q919 1198 788 1198Q588 1198 484.5 1074.0Q381 950 381 711Q381 468 487.5 340.0Q594 212 795 212ZM2852.88 711Q2852.88 491 2765.88 324.0Q2678.88 157 2516.88 68.5Q2354.88 -20 2138.88 -20Q1806.88 -20 1618.38 175.5Q1429.88 371 1429.88 711Q1429.88 1050 1617.88 1240.0Q1805.88 1430 2140.88 1430.0Q2475.88 1430 2664.38 1238.0Q2852.88 1046 2852.88 711ZM2551.88 711Q2551.88 939 2443.88 1068.5Q2335.88 1198 2140.88 1198Q1942.88 1198 1834.88 1069.5Q1726.88 941 1726.88 711Q1726.88 479 1837.38 345.5Q1947.88 212 2138.88 212Q2336.88 212 2444.38 342.0Q2551.88 472 2551.88 711ZM3800.76 0 3186.76 1085Q3204.76 927 3204.76 831V0H2942.76V1409H3279.76L3902.76 315Q3884.76 466 3884.76 590V1409H4146.76V0ZM4924.64 1181V0H4629.64V1181H4174.64V1409H5380.64V1181ZM6402.52 0 6277.52 360H5740.52L5615.52 0H5320.52L5834.52 1409H6182.52L6694.52 0ZM6211.52 582 6072.52 987 6008.52 1192Q5992.52 1134 5978.52 1088.0Q5964.52 1042 5806.52 582ZM7388.400000000001 1181V0H7093.400000000001V1181H6638.400000000001V1409H7844.400000000001V1181ZM9240.28 711Q9240.28 491 9153.28 324.0Q9066.28 157 8904.28 68.5Q8742.28 -20 8526.28 -20Q8194.28 -20 8005.780000000001 175.5Q7817.280000000001 371 7817.280000000001 711Q7817.280000000001 1050 8005.280000000001 1240.0Q8193.28 1430 8528.28 1430.0Q8863.28 1430 9051.78 1238.0Q9240.28 1046 9240.28 711ZM8939.28 711Q8939.28 939 8831.28 1068.5Q8723.28 1198 8528.28 1198Q8330.28 1198 8222.28 1069.5Q8114.280000000001 941 8114.280000000001 711Q8114.280000000001 479 8224.78 345.5Q8335.28 212 8526.28 212Q8724.28 212 8831.78 342.0Q8939.28 472 8939.28 711Z",
+      "width": 9326.28,
+      "focus": 4777.14
+    }
+  },
+  "featured": {
+    "selected_projects/bike_sharing": {
+      "metrics": [
+        {
+          "value": {
+            "en": "+64.4%",
+            "pt-BR": "+64,4%"
+          },
+          "label": {
+            "en": "Mean daily rentals · 2012 vs 2011",
+            "pt-BR": "Média de aluguéis diários · 2012 vs 2011"
+          }
+        },
+        {
+          "value": {
+            "en": "461.5",
+            "pt-BR": "461,5"
+          },
+          "label": {
+            "en": "Mean rentals at peak hour · 5–6 PM",
+            "pt-BR": "Média de aluguéis no horário de pico · 17h–18h"
+          }
+        }
+      ],
+      "frames": [
+        {
+          "caption": {
+            "en": "Hourly demand & rider segments",
+            "pt-BR": "Demanda horária e segmentos"
+          },
+          "images": {
+            "light_en": "landing/assets/bike-1-light-en.svg",
+            "light_pt": "landing/assets/bike-1-light-pt.svg",
+            "dark_en": "landing/assets/bike-1-dark-en.svg",
+            "dark_pt": "landing/assets/bike-1-dark-pt.svg"
+          }
+        },
+        {
+          "caption": {
+            "en": "Seasonality · 2011–2012",
+            "pt-BR": "Sazonalidade · 2011–2012"
+          },
+          "images": {
+            "light_en": "landing/assets/bike-2-light-en.svg",
+            "light_pt": "landing/assets/bike-2-light-pt.svg",
+            "dark_en": "landing/assets/bike-2-dark-en.svg",
+            "dark_pt": "landing/assets/bike-2-dark-pt.svg"
+          }
+        },
+        {
+          "caption": {
+            "en": "Daily holdout · observed vs estimated",
+            "pt-BR": "Teste diário · observado e estimado"
+          },
+          "images": {
+            "light_en": "landing/assets/bike-3-light-en.svg",
+            "light_pt": "landing/assets/bike-3-light-pt.svg",
+            "dark_en": "landing/assets/bike-3-dark-en.svg",
+            "dark_pt": "landing/assets/bike-3-dark-pt.svg"
+          }
+        }
+      ]
+    }
+  }
+}

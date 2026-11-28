@@ -1,0 +1,48 @@
+{# Responsibility: Compose the Bike Sharing report from validated project evidence and canonical EP components.
+   Boundaries: No page shell, shared styles, browser controllers, analytical calculation or model training. #}
+{% import 'components/web/hero_projects.html' as h %}
+{% import 'components/web/report_sections.html' as r %}
+{% import 'components/web/analytical.html' as a %}
+{% import 'components/web/editorial.html' as e %}
+{% import 'components/web/disclosure.html' as d %}
+{% import 'components/web/plotly.html' as p %}
+{% import 'components/web/localization.html' as t %}
+{% import 'components/web/navigation.html' as n %}
+{% macro paragraph(key) %}<p{{ t.binding(message('content.bike.report.'+key)) }}>{{ t.value(message('content.bike.report.'+key)) }}</p>{% endmacro %}
+{% macro content(sections, report) %}
+{% set prefix='content.bike.report.' %}
+{% set overview=[{'label':message(prefix+'days'),'value':message(prefix+'days_value')},{'label':message(prefix+'hours'),'value':message(prefix+'hours_value')},{'label':message(prefix+'rentals'),'value':message(prefix+'rentals_value')}] %}
+{{ h.hero_projects({'category':message(prefix+'category'),'licenses':[report.badges.mit,report.badges.cc_by_nc_4_0],'title':report.title,'subtitle':none,'description':report.description,'business_context':message(prefix+'context'),'objectives':[message(prefix+'objective1'),message(prefix+'objective2'),message(prefix+'objective3')],'notebook_href':report.links.notebook,'documentation_href':none,'technologies':report.technologies},sections[0].id) }}
+{% call r.section(sections[1]) %}
+{{ a.metrics(overview) }}
+{% call a.prose() %}{{ paragraph('explore') }}{{ n.text_link(message('shared.project.documentation'),report.links.documentation.en,false,report.links.documentation['pt-BR']) }}{% endcall %}
+{% call d.indexed_item(1,message('content.section.2.label'),true) %}{% call a.prose() %}{{ paragraph('growth') }}{{ n.text_link(message('content.section.2.title'),'#'+sections[2].id,false) }}{% endcall %}{% endcall %}
+{% call d.indexed_item(2,message('content.section.3.label')) %}{% call a.prose() %}{{ paragraph('peak') }}{{ n.text_link(message('content.section.3.title'),'#'+sections[3].id,false) }}{% endcall %}{% endcall %}
+{% endcall %}
+{% call r.section(sections[2]) %}
+{{ e.minor_heading(message('content.bike.chart.demand.title'),level=3) }}
+{{ p.prepared_chart(report.charts['plot-demand']) }}
+{% call a.grid(2) %}{{ p.prepared_chart(report.charts['plot-seasonality']) }}{{ p.prepared_chart(report.charts['plot-composition']) }}{{ p.prepared_chart(report.charts['plot-weather']) }}{{ p.prepared_chart(report.charts['plot-weekday']) }}{% endcall %}
+{{ p.prepared_chart(report.charts['plot-corr']) }}
+{% call a.prose() %}{{ paragraph('corr') }}{% endcall %}
+{% endcall %}
+{% call r.section(sections[3]) %}
+{{ p.prepared_chart(report.charts['plot-hourly-profile']) }}
+{{ p.prepared_chart(report.charts['plot-hourly-heatmap']) }}
+{{ p.prepared_chart(report.charts['plot-hourly-workday']) }}
+{% call a.prose() %}{{ paragraph('peak') }}{% endcall %}
+{% endcall %}
+{% call r.section(sections[4]) %}
+{% call a.prose() %}{{ paragraph('daily_method') }}{% endcall %}
+{{ a.metrics([{'label':message(prefix+'rmse'),'value':message(prefix+'daily_rmse')},{'label':message(prefix+'mae'),'value':message(prefix+'daily_mae')},{'label':message(prefix+'r2'),'value':message(prefix+'daily_r2')}]) }}
+{% for id in ['plot-cv','plot-holdout','plot-residuals','plot-importance'] %}{{ p.prepared_chart(report.charts[id]) }}{% endfor %}
+{% call a.prose() %}{{ paragraph('importance') }}{% endcall %}
+{% endcall %}
+{% call r.section(sections[5]) %}
+{% call a.prose() %}{{ paragraph('hourly_method') }}{% endcall %}
+{{ a.metrics([{'label':message(prefix+'rmse'),'value':message(prefix+'hourly_rmse')},{'label':message(prefix+'mae'),'value':message(prefix+'hourly_mae')},{'label':message(prefix+'r2'),'value':message(prefix+'hourly_r2')}]) }}
+{% for id in ['plot-hourly-cv','plot-hourly-holdout','plot-hourly-errors'] %}{{ p.prepared_chart(report.charts[id]) }}{% endfor %}
+{% endcall %}
+{{ r.conclusion(sections[6].id,[{'label':message('shared.conclusion.results'),'body':[message(prefix+'results')]},{'label':message('shared.conclusion.findings'),'body':[message(prefix+'findings')]},{'label':message('shared.conclusion.limitations'),'body':[message(prefix+'limitations')]},{'label':message('shared.conclusion.next_steps'),'body':[message(prefix+'next_steps')]}],report.artifacts) }}
+{{ r.references(sections[7].id,[{'label':message(prefix+'data_source'),'href':'https://archive.ics.uci.edu/dataset/275/bike+sharing+dataset','description':message(prefix+'data_description'),'note':message(prefix+'data_license'),'licenses':[dict(report.badges.cc_by_4_0_data,href='https://creativecommons.org/licenses/by/4.0/')],'overview':overview}],[{'label':message(prefix+'kb_ml'),'href':'https://github.com/eduardojr-pereira/data-science-knowledge-base/tree/main/05_machine_learning'},{'label':message(prefix+'kb_viz'),'href':'https://github.com/eduardojr-pereira/data-science-knowledge-base/tree/main/02_data_analysis_visualization'},{'label':message(prefix+'pitfalls'),'href':'https://scikit-learn.org/stable/common_pitfalls.html'},{'label':message(prefix+'cv_ref'),'href':'https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html'},{'label':message('shared.project.notebook'),'href':report.links.notebook}],[message(prefix+'method1'),message(prefix+'method2'),message(prefix+'method3')]) }}
+{% endmacro %}

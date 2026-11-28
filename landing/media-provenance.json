@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "assets": {
+    "assets/bike-1-dark-en.svg": {
+      "sha256": "2f501508b1a63f6875ad07dda6987079443d8274de0e166b25a0cbb1ab1caaa7",
+      "source_study": "ep_selected_preview_05.html",
+      "study_sha256": "c7bed44bba868e6e39b3779959cfa87d3e5ad2e4a0e497a90cb1e42799982076",
+      "rights_review": "pending"
+    },
+    "assets/bike-1-dark-pt.svg": {
+      "sha256": "e6348f40e1368ba61a10a6d6d3008f20b9731c2b9b0bf924d87a401023e5e567",
+      "source_study": "ep_selected_preview_05.html",
+      "study_sha256": "c7bed44bba868e6e39b3779959cfa87d3e5ad2e4a0e497a90cb1e42799982076",
+      "rights_review": "pending"
+    },
+    "assets/bike-1-light-en.svg": {
+      "sha256": "de9e5a9d8fac82caabbf0aa0de6c97513a3f4367552a83e04a1e9818c605d2f2",
+      "source_study": "ep_selected_preview_05.html",
+      "study_sha256": "c7bed44bba868e6e39b3779959cfa87d3e5ad2e4a0e497a90cb1e42799982076",
+      "rights_review": "pending"
+    },
+    "assets/bike-1-light-pt.svg": {
+      "sha256": "37724cd697e3c917e2cd1e5f56fe179637a0d02d1dbc0dec0aa313dde97b5156",
+      "source_study": "ep_selected_preview_05.html",
+      "study_sha256": "c7bed44bba868e6e39b3779959cfa87d3e5ad2e4a0e497a90cb1e42799982076",
+      "rights_review": "pending"
+    },
+    "assets/bike-2-dark-en.svg": {
+      "sha256": "109cd6aeebba85782b1ffe9a7a115cc122b25802dcfcf17a099e6908b867a775",
+      "source_study": "ep_selected_preview_05.html",
+      "study_sha256": "c7bed44bba868e6e39b3779959cfa87d3e5ad2e4a0e497a90cb1e42799982076",
+      "rights_review": "pending"
+    },
+    "assets/bike-2-dark-pt.svg": {
+      "sha256": "9b88baaf6f412e15ac90ff5e9c6eba4c70ed4bb37e16cc889cbb30bc7f5fa9ce",
+      "source_study": "ep_selected_preview_05.html",
+      "study_sha256": "c7bed44bba868e6e39b3779959cfa87d3e5ad2e4a0e497a90cb1e42799982076",
+      "rights_review": "pending"
+    },
+    "assets/bike-2-light-en.svg": {
+      "sha256": "ea5abd2591be8fc52b8de6bc607f41c10c9e0f02b037c7c990430a95865381d3",
+      "source_study": "ep_selected_preview_05.html",
+      "study_sha256": "c7bed44bba868e6e39b3779959cfa87d3e5ad2e4a0e497a90cb1e42799982076",
+      "rights_review": "pending"
+    },
+    "assets/bike-2-light-pt.svg": {
+      "sha256": "ba4b3038bf8ca514b4ec153ed970ac6ff2088baa7f6721d715a5698b88848007",
+      "source_study": "ep_selected_preview_05.html",
+      "study_sha256": "c7bed44bba868e6e39b3779959cfa87d3e5ad2e4a0e497a90cb1e42799982076",
+      "rights_review": "pending"
+    },
+    "assets/bike-3-dark-en.svg": {
+      "sha256": "b6dfa9c1448114e360bd96b6d3604eff22c95dd011140d66a4f3012abdb8c495",
+      "source_study": "ep_selected_preview_05.html",
+      "study_sha256": "c7bed44bba868e6e39b3779959cfa87d3e5ad2e4a0e497a90cb1e42799982076",
+      "rights_review": "pending"
+    },
+    "assets/bike-3-dark-pt.svg": {
+      "sha256": "fbb9ebe109edf5875de172f2b485c3f75bbf9b49125f72826036314fac33ccac",
+      "source_study": "ep_selected_preview_05.html",
+      "study_sha256": "c7bed44bba868e6e39b3779959cfa87d3e5ad2e4a0e497a90cb1e42799982076",
+      "rights_review": "pending"
+    },
+    "assets/bike-3-light-en.svg": {
+      "sha256": "f04e17c502ce2406a757ca07f16372b25601062c1bf7ecb2ccf37f316fca4da4",
+      "source_study": "ep_selected_preview_05.html",
+      "study_sha256": "c7bed44bba868e6e39b3779959cfa87d3e5ad2e4a0e497a90cb1e42799982076",
+      "rights_review": "pending"
+    },
+    "assets/bike-3-light-pt.svg": {
+      "sha256": "af5759d9dd2b61730a319dea5bc88985ae9c2fbb8e6cf01616af372b6310e589",
+      "source_study": "ep_selected_preview_05.html",
+      "study_sha256": "c7bed44bba868e6e39b3779959cfa87d3e5ad2e4a0e497a90cb1e42799982076",
+      "rights_review": "pending"
+    },
+    "assets/contact-base.webp": {
+      "sha256": "11f09777d869acecf8acbed2f8ca9ae1e968e46855de74e7147eda675594b438",
+      "source_study": "ep_contact_preview_07.html",
+      "study_sha256": "98d8306959a6e8f74924bd76ab2d89c522766cbb0c483382f6833f8840213960",
+      "rights_review": "pending"
+    },
+    "assets/contact-lit.webp": {
+      "sha256": "d9018cac20dc0b5d7c6191b5c958f5dd9358ee3c6ed763450f45532a30ea9e00",
+      "source_study": "ep_contact_preview_07.html",
+      "study_sha256": "98d8306959a6e8f74924bd76ab2d89c522766cbb0c483382f6833f8840213960",
+      "rights_review": "pending"
+    },
+    "assets/cta-poster.jpg": {
+      "sha256": "6c6de794dc6a8fd3a5bcb60814623a61fe73df2486edad21fce7b0bc96c660db",
+      "source_study": "ep_cta_preview_02.html",
+      "study_sha256": "d2ec27341c9046adf7282bf60a176a51010821380624d6e5686c56d9f39c88ff",
+      "rights_review": "pending"
+    },
+    "assets/cta-video.mp4": {
+      "sha256": "8e81f0685b886258b5876a368d7910facc8066c901d0b193114ba4721087ab02",
+      "source_study": "ep_cta_preview_02.html",
+      "study_sha256": "d2ec27341c9046adf7282bf60a176a51010821380624d6e5686c56d9f39c88ff",
+      "rights_review": "pending"
+    },
+    "assets/portrait.png": {
+      "sha256": "ca6f1583b45272e20ff38f9605819d1ddaba0728fbcd896a4c46e41bae815809",
+      "source_study": "ep_about_preview_04.html",
+      "study_sha256": "a73a45261754d07ac3ac40e8f28e23cc2acab71f09b60c9ff667f57fb98a9ab9",
+      "rights_review": "pending"
+    }
+  }
+}
